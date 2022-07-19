@@ -1,0 +1,161 @@
+
+body.subpage main #modal {
+    position: fixed;
+    /* display: block; */
+    display: none;
+    top: 7rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 10rem 3rem;
+
+    padding: 10rem 3rem;
+    z-index: 3;
+    background-color: rgba(50, 50, 50, 0.95);
+    overflow-y: auto;
+}
+body.subpage main #modal.open {
+    display: block;
+    animation-name: modal-opacity;
+    animation-duration: 0.5s;
+}
+@keyframes modal-opacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* body.subpage main #modal::before,
+body.subpage main #modal::after {
+    content: "";
+    position: relative;
+    display: block;
+    margin: 5rem 0;
+    width: 100%;
+    height: 50px;
+} */
+body.subpage main #modal #modal-closer {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+    z-index: 2;
+}
+body.subpage main #modal #modal-closer::before,
+body.subpage main #modal #modal-closer::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: 4rem;
+    height: .2rem;    
+    background-color: white;
+    opacity: 1;
+}
+body.subpage main #modal #modal-closer::before{
+    transform: translate(-50%, -0.1rem) rotate(45deg);
+    animation-name: turn-clockwise;
+    animation-duration: 1s;
+}
+body.subpage main #modal #modal-closer::after {
+    transform: translate(-50%, -0.1rem) rotate(-45deg);
+    animation-name: turn-counter-clockwise;
+    animation-duration: 1s;
+}
+@keyframes turn-clockwise {
+    0% { transform: translate(-50%, -0.1rem); 
+         opacity: 0}
+    25% { transform: translate(-50%, -0.1rem);
+          opacity: 0; }
+    100% { transform: translate(-50%, -0.1rem) rotate(45deg);
+           opacity: 1; }
+}
+@keyframes turn-counter-clockwise {
+    0% { transform: translate(-50%, -0.1rem); 
+         opacity: 0 }
+    25% { transform: translate(-50%, -0.1rem);
+          opacity: 0; }
+    100% { transform: translate(-50%, -0.1rem) rotate(-45deg);
+           opacity: 1; }
+}
+
+body.subpage main #modal figure {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+body.subpage main #modal figure img { 
+    display: block;
+    width: 100%;
+    max-height: 54vh;
+    object-fit: contain;
+    margin-bottom: 2rem;    
+    filter: drop-shadow(0 0 1.5rem white);
+}
+
+
+body.subpage main #modal figure figcaption {
+    text-align: center;
+    letter-spacing: 0.06rem;
+}
+body.subpage main #modal figure figcaption span:first-child {
+    display: block;
+    font-size: 120%;
+    font-weight: 600;    
+    transform: none;
+    animation-name: slide-down;
+    animation-duration: 1s;
+}
+body.subpage main #modal figure figcaption span:nth-child(2) {
+    display: block;
+    height: 0.1rem;
+    width: 100%;
+    /* border-bottom: 0.1rem solid linear-gradient(white, red);
+    border-bottom-width: 0.1rem;
+    border-bottom-style: solid;
+    border-bottom-color: ; */
+    background-image: linear-gradient(to right, rgb(200, 200, 200), rgb(255, 255, 255) 50%, rgb(200, 200, 200));
+    width: 100%;
+    margin: 0.2rem auto 1rem;
+    /* margin-bottom: 1rem; */
+    animation-name: elongate;
+    animation-duration: 1s;
+}
+body.subpage main #modal figure figcaption span:last-child {
+    display: block;
+    transform: none;
+    animation-name: slide-up;
+    animation-duration: 1s;
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-2rem);
+           opacity: 0; }
+    10% { transform: translateY(-2rem);
+          opacity: 0; }
+    to {transform: none;
+        opacity: 1;}
+}
+@keyframes slide-up {
+    from { transform: translateY(2rem);
+        opacity: 0; }
+    10% { transform: translateY(2rem);
+        opacity: 0; }
+    to {transform: none;
+        opacity: 1;}
+}
+@keyframes elongate {
+    from { width: 0;
+        opacity: 0; }
+    10% { width: 0;
+        opacity: 0; }
+    to { width: 100%;
+        opacity: 1;}
+}
+

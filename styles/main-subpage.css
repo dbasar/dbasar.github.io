@@ -1,0 +1,220 @@
+
+main {
+    /* margin-top: 7rem; */
+
+    width: 100%;
+    min-height: 100%;
+    /* min-height: calc(100% - 7rem); */
+    
+    position: relative;
+}
+
+body.subpage main {
+    display: flex;
+    flex-direction: column;
+    padding: calc(50vh + 3.5rem) 3rem 4rem;
+    overflow-y: hidden;
+}
+
+body.subpage main picture {    
+    display: block;
+    position: fixed;
+    width: 100%;
+    /* flex: 0 0 100%; */
+    /* max-height: 100%; */
+    top: 7rem; /*top bar yüksekliği */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* margin-bottom: -50rem; */
+    overflow: hidden;
+    z-index: 0;    
+
+}
+
+body.subpage main picture > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+
+body.subpage main::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9) 50vh, rgba(255, 255, 255, 0.9));
+
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9) 50vh, rgba(255, 255, 255, 0.9));
+    z-index: 1; /* picture un önünde olsun diye */
+}
+
+body.subpage h1 {
+    font-size: 2.5rem;
+    font-size: 4rem;
+    line-height: 4rem;
+    vertical-align: middle;    
+    /* border-bottom: 1px solid gray; */
+    letter-spacing: .2rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 2; /* picture ve main::before un önünde olsun diye */
+}
+body.subpage main h1 {
+   /* margin-top: 4rem; /* vh desteklenmiyorken 
+    margin: calc(50vh - 3.5rem) 3rem 1rem 3rem; */
+    margin-bottom: 1rem;
+    text-shadow: 0 0 0.08rem grey; /* transparan arka planın önünden okunsun diye */
+}
+
+body.subpage main h1 span {
+    display: block;
+    transform: none;
+    transition: transform 1s ease;
+}
+
+body.subpage main h1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .1rem;
+    background: linear-gradient(to right, rgb(100, 100, 100), rgb(200, 200, 200)); 
+    transition: width 1.5s ease; /*sayfa yüklemesinde alt çizgi uzasın diye*/
+}
+body.subpage main p {    
+    letter-spacing: .05rem;
+    line-height: 160%;
+    position: relative;
+    z-index: 2; /* picture ve main::before un önünde olsun diye */
+    text-shadow: 0 0 0.08rem grey; /* transparan arka planın önünden okunsun diye */
+}
+body.subpage main p {
+    /* margin: 1rem 3rem;         */
+    margin: 1rem 0;
+    transition: transform 1s ease; /*sayfa yüklemesindeki animasyon için */
+    transform: none;
+}
+
+
+
+body.subpage main form {
+    z-index: 2;
+    margin-top: 2rem;
+    transform: none;
+    transition: transform 1s ease;
+}
+body.subpage main form input,
+body.subpage main form textarea {
+    width: 100%;    
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-radius: .2rem;
+    border: 0;
+    box-shadow: none;
+    transition: box-shadow .2s ease;
+    font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Unicode', Arial, sans-serif;
+    letter-spacing: .08rem;
+}
+
+body.subpage main form input {
+    height: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;    
+}
+body.subpage main form textarea {
+    height: 20rem;
+    resize: none;
+    padding: 1rem;
+}
+body.subpage main form input:focus,
+body.subpage main form textarea:focus {
+    box-shadow: 0 0 0 .4rem rgb(200, 200, 200);
+    outline: none;
+}
+body.subpage main form button {
+    height: 4rem;
+    width: 20rem;
+    max-width: 100%;
+    font-size: 2rem;
+    border-radius: .2rem;
+    border: .2rem solid rgb(200, 200, 200);
+    font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Unicode', Arial, sans-serif;
+    letter-spacing: .08rem;
+    cursor: pointer;
+    background-color: rgb(100, 100, 100);
+    color: white;
+    transition: background-color .2s ease;
+}
+body.subpage main form button:hover {
+    background-color: rgb(150, 150, 150);
+}
+
+
+
+
+body.subpage.fade main h1::after { /* sayfa yüklemesi animasyonu*/
+    width: 0;
+} 
+body.subpage.fade main h1 span {
+    transform: translateY(-4rem);
+}
+body.subpage.fade main p { /*sayfa yüklemesi animasyonu */
+    transform: translateY(4rem);
+}
+body.subpage.fade main form {
+    transform: translateY(4rem);
+}
+body.subpage main footer {
+    /* margin: auto 3rem 0 3rem; */
+    padding-top: 4rem;
+    z-index: 2; /* picture ve main::before un önünde olsun diye */
+    text-shadow: 0 0 0.08rem grey; /* transparan arka planın önünden okunsun diye */
+    
+    margin-top: auto;
+    position: relative;
+}
+
+
+
+
+
+body main span.copy {
+    font-size: 1.3rem;
+    letter-spacing: .1rem;
+}
+
+
+body.subpage main img.showroom {
+    display: block;
+    width: 100%;
+    width: calc(100% + 6rem);
+    margin-left: -3rem;
+    z-index: 2;
+    cursor: pointer;
+    margin-bottom: 6rem;
+    background-color: white;
+    padding: .5rem;
+    
+    transform: none;
+    transition: transform 1s ease, box-shadow .3s ease;
+    /* box-shadow: 0 0 .5rem .5rem gray; */
+}
+body.subpage main img.showroom:first-of-type {
+    margin-top: 5rem;
+}
+body.subpage main img.showroom:hover {
+    box-shadow: 0 0 1.5rem white;
+}
+
+
+body.subpage.fade main img.showroom {
+    transform: translateY(4rem);
+}

@@ -1,0 +1,35 @@
+
+body {
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+
+body.subpage main::before {
+    background: linear-gradient(to bottom, transparent, rgba(60, 60, 60, 0.9) calc(75vh + 3.5rem), rgba(60, 60, 60, 0.9));
+}
+
+body.subpage main h1::after {
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(200, 200, 200));
+}
+
+@media screen and (min-width: 700px) {
+
+    body.subpage main::before {
+        background: linear-gradient(to bottom, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
+    }
+
+}
+
+@media screen and (min-width: 1150px) {
+
+    body.subpage main::before {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.445), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.955), rgba(255, 255, 255, 0.2)); 
+
+        background: linear-gradient(to right, rgb(60, 60, 60), transparent); 
+
+        background: linear-gradient(to right, rgba(60, 60, 60, 0.8), rgba(60, 60, 60, 0.8) 40%, transparent); 
+
+        background: linear-gradient(to right, rgba(60, 60, 60, 0.9), rgba(60, 60, 60, 0.9) 50%, transparent); 
+    }
+
+} 

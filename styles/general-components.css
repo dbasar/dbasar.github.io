@@ -1,0 +1,52 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 7px;
+    height: 100%;
+}
+
+body {
+    /* font-size: 1.8rem; */
+    font-size: 2rem;
+    font-weight: 300;
+    font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Unicode', Arial, sans-serif;
+    color: rgb(60, 60, 60);
+    position: relative;
+    background-color: white;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 1.5s ease; /* Sayfa açılırken 1sn transition */
+}
+body.fade {
+    opacity: 0;
+    transition: opacity .3s ease; /* sayfa kapanırken .3sn transition - js de de 300ms gecikme */
+}
+
+a {
+    color: rgb(60, 60, 60);
+    text-decoration: none;
+}
+
+/* LOGO */
+
+.logo {
+    font-family: Dancing Script;
+}
+.logo span {
+    display: block;
+}
+.logo span:first-child {
+    font-size: 5.6rem;
+    padding-left: 1rem;
+    margin-bottom: -1rem;
+}
+.logo span:last-child {
+    font-size: 4.2rem;
+    white-space: nowrap;
+}
+

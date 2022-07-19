@@ -1,0 +1,692 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* s */
+}
+
+/* html ve body 100% height yaptım */
+
+html {
+    font-size: 7px;
+    height: 100%;
+}
+
+body {
+    font-size: 1.8rem;
+    font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Unicode', Arial, sans-serif;
+    color: rgb(60, 60, 60);
+    /* overflow-x: hidden; */
+    position: relative;
+    background-color: white;
+
+    height: 100%;
+
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+body.fade {
+    opacity: 0;
+}
+
+a {
+    color: rgb(60, 60, 60);
+    text-decoration: none;
+}
+
+
+
+/*
+
+MENÜ AÇILDIĞINDA ARKA PLAN YALNIZCA SİYAH OLUR
+
+#container #menu-switch::before {
+    content: "";
+    background-color: transparent;    
+}
+#container.menu-open #menu-switch::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    opacity: .5;
+    background-color: black;    
+    transition: background-color .3s ease ;
+} */
+
+
+/* ÜST BARIN STİLLEMESİ */
+
+#top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 7rem;
+    background-color: white;
+    border-bottom: .1rem solid gray;
+    box-shadow: 0 0 .3rem gray;
+    z-index: 7;
+    cursor: pointer;
+}
+
+body #top-bar::before {
+    content: "";
+    background-color: transparent;   
+    opacity: .5;
+}
+body.menu-open #top-bar::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: black; 
+    transition: background-color .3s ease;
+    z-index: 2;
+} 
+
+body #top-bar::after {
+    content: "";
+    z-index: 1;
+}
+body.menu-open #top-bar::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px); 
+    transition: -webkit-backdrop-filter .3s ease;
+    transition: backdrop-filter .3s ease;
+} 
+
+#top-bar span {
+    display: block;
+    width: 4rem;
+    height: .2rem;
+    background-color: rgb(60, 60, 60);
+    position: absolute;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
+    transition: all .3s ease;
+}
+#top-bar span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(60, 60, 60);
+    transform: translateY(-1rem);
+    transition: all .3s ease;
+}
+#top-bar span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(60, 60, 60);
+    transform: translateY(1rem);
+    transition: all .3s ease;
+}
+#top-bar:hover span,
+#top-bar:hover span::before,
+#top-bar:hover span::after {
+    box-shadow: 0 0 .4rem grey;
+}
+
+body.menu-open #top-bar span {
+    background-color: transparent;
+    box-shadow: none;
+    z-index: 3; /*deneme*/
+}
+body.menu-open #top-bar span::before {
+    background-color: white;
+    transform: translate(0) rotate(45deg);
+}
+body.menu-open #top-bar span::after {
+    background-color: white;
+    transform: translate(0) rotate(-45deg);
+}
+
+
+
+
+
+
+
+/* --------------------------- */
+/* MENÜ AÇMA BUTONU ve ÜST KISIM */
+/* --------------------------- */
+
+
+/* #menu-switch {
+    margin-left: auto;
+    width: 4rem;
+    height: 100%;
+} */
+
+
+
+
+
+
+
+/* --------------------------- */
+/* MENU ELEMANLARININ STİLLERİ */
+/* --------------------------- */
+
+
+header {
+    position: fixed;
+    width: max-content;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+    overflow: auto;
+    padding: 5rem;
+
+    transform: translateX(-100%);
+
+    display: flex;    
+    flex-direction: column;
+    animation-name: menu-appear;
+    animation-duration: .1s;
+}
+body.menu-open header {
+    transform: translateX(0);
+    
+    transition: transform .2s ease;  
+}
+
+
+#menu-logo {
+    margin-bottom: 4rem;
+    margin-left: -1.2rem;
+    margin-top: -1.2rem;
+ }
+
+.logo {
+    font-family: Dancing Script;
+}
+.logo span {
+    display: block;
+}
+.logo span:first-child {
+    font-size: 5.6rem;
+    padding-left: 1rem;
+    margin-bottom: -1rem;
+}
+.logo span:last-child {
+    font-size: 4.2rem;
+}
+
+
+nav {
+    margin: 2.4rem 0;
+}
+nav ul {
+    list-style-type: none;
+}
+nav ul li {
+    margin: 1.6rem 0;
+    letter-spacing: .2rem;
+}
+nav ul li:last-child {
+    margin-top: 3.6rem;
+    margin-bottom: 4.8rem;
+}
+nav ul li.selected {
+    font-weight: bold;
+    color: rgb(30, 30, 30);
+    /* text-decoration: underline; */
+}
+nav ul li a:hover {
+    color: rgb(30, 30, 30);
+    text-decoration: underline;
+}
+
+
+
+footer {
+    margin-top: auto;
+    position: relative;
+}
+span.copy {
+    font-size: 1.3rem;
+    letter-spacing: .1rem;
+}
+
+
+
+
+/* ------------------------ */
+/* MAIN ------------------- */
+/* ------------------------ */
+
+
+main {
+    margin-top: 7rem;
+    width: 100%;
+    min-height: 100%;
+    
+    position: relative;
+}
+body.homepage main {
+    overflow: hidden;
+}
+
+body.subpage.half-page main {
+    display: flex;
+    flex-direction: column;
+    padding: calc(50vh - 3.5rem) 3rem 4rem;
+}
+
+body.subpage.half-page main picture {    
+    position: fixed;
+    width: 100%;
+    /* flex: 0 0 100%; */
+    /* max-height: 100%; */
+    top: 7rem; /*top bar yüksekliği */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* margin-bottom: -50rem; */
+    overflow: hidden;
+    z-index: 0;
+    
+}
+body.subpage.half-page main picture > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 15% top;
+}
+/* main.about picture::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, transparent, white);
+} */
+
+
+
+
+body.homepage main::after {
+    content: " \00a9  2022";
+    font-size: 1.3rem;
+    letter-spacing: .1rem;
+    position: absolute;
+    bottom: 2.8rem;
+    right: 2.8rem;
+    z-index: 1;
+    color: white;
+    text-shadow: 0 0 2rem black;
+}
+
+
+#content-logo {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1;
+    color: white;
+    text-shadow: 0 0 2rem black;
+}
+/* 
+.logo STİLLEMESİ MENÜ STİLLEMELERİ İÇİNDE
+} */
+
+.image-div {
+    width: 100%;
+    height: 130%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    
+    background-position: center;
+    background-size: cover;
+    background-color: gray;
+    background-image: url("../images/background-image.jpeg"); 
+    
+    animation-name: slide;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+@keyframes slide {
+    0% {bottom: 0;}
+    100% {bottom: -30%;}
+}
+
+body.subpage.half-page main::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9) 50vh, rgba(255, 255, 255, 0.9));
+
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9) 50vh, rgba(255, 255, 255, 0.9));
+    z-index: 1; /* picture un önünde olsun diye */
+}
+
+body.subpage h1 {
+    font-size: 2.5rem;
+    line-height: 4rem;
+    vertical-align: middle;    
+    /* border-bottom: 1px solid gray; */
+    letter-spacing: .2rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 2; /* picture ve main::before un önünde olsun diye */
+}
+body.subpage main h1 {
+   /* margin-top: 4rem; /* vh desteklenmiyorken 
+    margin: calc(50vh - 3.5rem) 3rem 1rem 3rem; */
+    margin-bottom: 1rem;
+    text-shadow: 0 0 0.08rem grey; /* transparan arka planın önünden okunsun diye */
+}
+
+body.subpage main h1 span {
+    display: block;
+    transform: none;
+    transition: transform 1s ease;
+}
+
+body.subpage main h1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .1rem;
+    background: linear-gradient(to right, rgb(100, 100, 100), rgb(200, 200, 200)); 
+    transition: width 1.5s ease; /*sayfa yüklemesinde alt çizgi uzasın diye*/
+}
+body.subpage main p {    
+    letter-spacing: .05rem;
+    line-height: 150%;
+    position: relative;
+    z-index: 2; /* picture ve main::before un önünde olsun diye */
+    text-shadow: 0 0 0.08rem grey; /* transparan arka planın önünden okunsun diye */
+}
+body.subpage.half-page main p {
+    /* margin: 1rem 3rem;         */
+    margin: 1rem 0;
+    transition: transform 1s ease; /*sayfa yüklemesindeki animasyon için */
+    transform: none;
+}
+
+body.subpage.static main h1::after { /* sayfa yüklemesi animasyonu*/
+    width: 0;
+} 
+body.subpage.static main h1 span {
+    transform: translateY(-4rem);
+}
+body.subpage.static main p { /*sayfa yüklemesi animasyonu */
+    transform: translateY(4rem);
+}
+body.subpage main footer {
+    /* margin: auto 3rem 0 3rem; */
+    padding-top: 4rem;
+    z-index: 2; /* picture ve main::before un önünde olsun diye */
+    text-shadow: 0 0 0.08rem grey; /* transparan arka planın önünden okunsun diye */
+}
+
+body.subpage main form {
+    z-index: 2;
+}
+
+/* footer stylingi header içinde */
+
+
+
+/* RESPONSİVE */
+
+@media screen and (min-width: 380px) {
+
+    html {
+        font-size: 9px;
+    }
+
+}
+
+
+@media screen and (min-width: 700px) {
+
+    
+    html {
+        font-size: 8px;
+    }
+
+    header {       
+      /*position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        right: 0;
+        background-color: white;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: auto;
+        padding: 3rem;
+        transition: left .4s ease;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 32rem;
+        height: auto;
+        right: auto;
+        bottom: auto;
+        overflow: visible;
+        transform: none;
+    }
+    main {
+      /*padding-top: 7rem;
+        width: 100%;
+        height: 100%;          
+        position: relative;
+        overflow: hidden;*/
+        margin-left: 32rem;
+        margin-top: 0;
+        width: auto;
+        /* width: auto;
+        height: auto;
+        min-height: 100%;       */
+    }
+    body.subpage.half-page main picture {
+        top: 0;
+        bottom: 0;
+        left: 32rem;
+        right: 0;
+        width: auto;
+    }
+    body.subpage.half-page main::before {
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9) calc(50vh + 3.5rem), rgba(255, 255, 255, 0.9));
+
+        /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(50vh - 7.5rem), rgba(255, 255, 255, 0.9) calc(50vh - 7.5rem), rgba(255, 255, 255, 0.9)); */
+    }
+    body.homepage .image-div {
+        left: 32rem;
+        right: 0;
+        width: auto;
+    }
+    body.homepage main::after {
+        content: "Özlem Yeşildal Başar \00a9  2022";
+        font-size: 1.3rem;
+        position: absolute;
+        bottom: 2.8rem;
+        right: 2.8rem;
+        z-index: 1;
+        color: white;
+        text-shadow: 0 0 2rem black;
+    }
+
+
+
+
+    /* main.about picture {
+        max-height: 100%;
+    }
+
+    main.about picture::after {
+        height: 100%;
+    }
+    main.about source,
+    main.about img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% top;
+    }
+    body.subpage main.about h1 {
+        /* margin-top: -20rem; 
+        margin-top: 0;
+    } */
+
+
+/*     
+    main.about picture {
+        width: 100%;
+        height: 100%;
+    }
+    main.about picture > * {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+    main.about picture::after {
+        height: 120%;
+    } */
+
+
+
+    header footer {
+        display: none;
+    }
+    #top-bar {
+        display: none;
+    }
+    #content-logo {
+        display: none;
+    }
+
+
+}
+
+@media screen and (min-width: 950px) {
+
+    html {
+        font-size: 9px;
+    }
+
+}
+
+@media screen and (min-width: 1150px) {
+
+
+    html {
+        --main-about-width: calc(100vw - 32rem);
+    }
+
+    body.subpage.half-page main {
+        padding: 6.5rem 10%;
+        padding: 6.5rem calc(var(--main-about-width) * 0.1);
+        align-items: flex-end;
+    }
+    body.subpage.half-page main::before {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.56), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.84), rgba(255, 255, 255, 0.3));
+
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6) calc(var(--main-about-width) * 0.4), rgba(255, 255, 255, 0.95) calc(var(--main-about-width) * 0.5), rgba(255, 255, 255, 0.95) calc(var(--main-about-width) * 0.9), rgba(255, 255, 255, 0.6));
+
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.4), rgba(255, 255, 255, 0.5) calc(var(--main-about-width) * 0.4), rgba(255, 255, 255, 0.85) calc(var(--main-about-width) * 0.5), rgba(255, 255, 255, 0.85) calc(var(--main-about-width) * 0.9), rgba(255, 255, 255, 0.5)); 
+
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2)); 
+
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.445), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.955), rgba(255, 255, 255, 0.2)); 
+    }
+
+    body.subpage main.furnitures::before {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    /* body.subpage main.contact::before {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.85) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.85) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0)); 
+    } */
+    /* main.about picture {
+        /* left: 32rem; */
+        /* display: flex; */
+        /*background-image: url(../images/about-large-ara.png);
+        background-size: contain;
+    } */
+    body.subpage.half-page main picture > * {
+        /* width: calc(var(--main-about-width) / 2);
+        width: 50%;
+
+        width: 100%; */
+        /* flex: 0 0 auto; */
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+    /* main.about picture::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 12.5%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(../images/about-large-son.png);
+        background-size: cover;
+        background-position: left top;
+    } */
+    /* main.about picture > * {
+        object-position: 70% top;
+    } */
+    /* main.about picture::after {
+        width: 120%;
+        height: 100%;
+        left: auto;
+        right: 0;        
+        background: linear-gradient(to right, transparent, white);
+    } */
+    body.subpage.half-page main picture ~ * {
+        width: 50%;
+        width: calc(var(--main-about-width) * 0.4);
+    }
+
+
+
+}
+
+@media screen and (min-width: 1250px) {
+    
+    html {
+        font-size: 10px;
+    }
+
+}

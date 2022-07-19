@@ -1,0 +1,101 @@
+
+@media screen and (min-width: 700px) {
+
+    
+    html {
+        font-size: 8px;
+    }
+
+    body header {       
+      /*position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: max-content;
+        background-color: white;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: auto;
+        padding: 3rem;
+        transition: left .4s ease;*/
+        width: 32rem;
+        transform: none;
+    }
+    body main {
+      /*padding-top: 7rem;
+        width: 100%;
+        height: 100%;          
+        position: relative;
+        overflow: hidden;*/
+        margin-left: 32rem;
+        width: auto;
+        /* width: auto;
+        height: auto;
+        min-height: 100%;       */
+    }
+
+    body.subpage main {
+        padding-top: 50vh;
+        padding: 50vh 6rem 6.5rem
+    }
+    body.subpage main picture {
+        top: 0;
+        left: 32rem;
+        width: auto;
+    }
+    body.subpage main::before {
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9) calc(50vh + 3.5rem), rgba(255, 255, 255, 0.9));
+
+        /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(50vh - 7.5rem), rgba(255, 255, 255, 0.9) calc(50vh - 7.5rem), rgba(255, 255, 255, 0.9)); */
+    }
+    /* body.homepage main .image-div {
+        left: 32rem;
+        right: 0;
+        width: auto;
+    } */
+    body.homepage main::after {
+        content: "Özlem Yeşildal Başar \00a9  2022";
+        font-size: 1.3rem;
+        position: absolute;
+        bottom: 2.8rem;
+        right: 2.8rem;
+        z-index: 1;
+        color: white;
+        text-shadow: 0 0 2rem black;
+    }
+
+
+    /* body header footer {
+        display: none;
+    } */
+    body #top-bar {
+        display: none;
+    }
+    #content-logo {
+        display: none;
+    }
+
+
+    /* body.subpage main img.showroom {
+        margin-left: 0;
+        width: 100%;
+    } */
+
+
+    body.subpage main #modal {
+        top: 0;
+        left: 32rem;
+        width: auto;
+        padding: 15rem 5rem;
+    }
+    body.subpage main #modal figure img {
+        max-height: 70vh;
+    }
+
+
+}
