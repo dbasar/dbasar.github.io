@@ -1,14 +1,14 @@
-
-
-main {
-    /* margin-top: 7rem; */
-    width: 100%;
-    min-height: 100%;
-    
-    position: relative;
-}
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
 
 body.homepage main {
+    width: 100%;
+    min-height: 100%;    
+    position: relative;
     overflow: hidden;
 }
 
@@ -47,13 +47,23 @@ body.homepage main::after {
     background-color: gray;
     background-image: url("../images/background-image.jpeg"); 
     
-    animation-name: slide;
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    -webkit-animation-name: slide;    
+            animation-name: slide;
+    -webkit-animation-duration: 8s;
+            animation-duration: 8s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
 
     opacity: 0;
+    -webkit-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
     transition: opacity 1s ease;
+}
+@-webkit-keyframes slide {
+    0% {bottom: 0;}
+    100% {bottom: -30%;}
 }
 @keyframes slide {
     0% {bottom: 0;}

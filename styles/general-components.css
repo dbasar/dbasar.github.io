@@ -1,6 +1,14 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 
 * {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -15,15 +23,19 @@ body {
     font-size: 2rem;
     font-weight: 300;
     font-family: Montserrat, 'Lucida Sans', 'Lucida Sans Unicode', Arial, sans-serif;
-    color: rgb(60, 60, 60);
     position: relative;
-    background-color: white;
+    background-color: rgb(60, 60, 60);
+    color: white;
     height: 100%;
     opacity: 1;
+    -webkit-transition: opacity 1.5s ease;
+    -o-transition: opacity 1.5s ease;
     transition: opacity 1.5s ease; /* Sayfa açılırken 1sn transition */
 }
 body.fade {
     opacity: 0;
+    -webkit-transition: opacity .3s ease;
+    -o-transition: opacity .3s ease;
     transition: opacity .3s ease; /* sayfa kapanırken .3sn transition - js de de 300ms gecikme */
 }
 
@@ -49,4 +61,3 @@ a {
     font-size: 4.2rem;
     white-space: nowrap;
 }
-

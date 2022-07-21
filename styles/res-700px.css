@@ -1,4 +1,11 @@
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @media screen and (min-width: 700px) {
 
     
@@ -7,35 +14,14 @@
     }
 
     body header {       
-      /*position: fixed;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: max-content;
-        background-color: white;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow: auto;
-        padding: 3rem;
-        transition: left .4s ease;*/
         width: 32rem;
-        transform: none;
+        -webkit-transform: none;
+            -ms-transform: none;
+                transform: none;
     }
     body main {
-      /*padding-top: 7rem;
-        width: 100%;
-        height: 100%;          
-        position: relative;
-        overflow: hidden;*/
         margin-left: 32rem;
         width: auto;
-        /* width: auto;
-        height: auto;
-        min-height: 100%;       */
     }
 
     body.subpage main {
@@ -49,15 +35,10 @@
     }
     body.subpage main::before {
         inset: 0;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9) calc(50vh + 3.5rem), rgba(255, 255, 255, 0.9));
-
-        /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(50vh - 7.5rem), rgba(255, 255, 255, 0.9) calc(50vh - 7.5rem), rgba(255, 255, 255, 0.9)); */
+        background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(75vh, rgba(60, 60, 60, 0.9)), to(rgba(60, 60, 60, 0.9)));
+        background: -o-linear-gradient(top, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
+        background: linear-gradient(to bottom, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
     }
-    /* body.homepage main .image-div {
-        left: 32rem;
-        right: 0;
-        width: auto;
-    } */
     body.homepage main::after {
         content: "Özlem Yeşildal Başar \00a9  2022";
         font-size: 1.3rem;
@@ -81,12 +62,6 @@
     }
 
 
-    /* body.subpage main img.showroom {
-        margin-left: 0;
-        width: 100%;
-    } */
-
-
     body.subpage main #modal {
         top: 0;
         left: 32rem;
@@ -96,6 +71,5 @@
     body.subpage main #modal figure img {
         max-height: 70vh;
     }
-
 
 }

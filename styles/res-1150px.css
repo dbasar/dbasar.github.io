@@ -1,6 +1,11 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
 
 @media screen and (min-width: 1150px) {
-
 
     html {
         --main-about-width: calc(100vw - 32rem);
@@ -12,15 +17,9 @@
         /* align-items: flex-end; */
     }
     body.subpage main::before {
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.56), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.84), rgba(255, 255, 255, 0.3));
-
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6) calc(var(--main-about-width) * 0.4), rgba(255, 255, 255, 0.95) calc(var(--main-about-width) * 0.5), rgba(255, 255, 255, 0.95) calc(var(--main-about-width) * 0.9), rgba(255, 255, 255, 0.6));
-
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.4), rgba(255, 255, 255, 0.5) calc(var(--main-about-width) * 0.4), rgba(255, 255, 255, 0.85) calc(var(--main-about-width) * 0.5), rgba(255, 255, 255, 0.85) calc(var(--main-about-width) * 0.9), rgba(255, 255, 255, 0.5)); 
-
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2)); 
-
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.445), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.45), rgba(255, 255, 255, 0.9) calc(var(--main-about-width) * 0.95), rgba(255, 255, 255, 0.2) calc(var(--main-about-width) * 0.955), rgba(255, 255, 255, 0.2)); 
+        background: -webkit-gradient(linear, left top, right top, from(rgba(60, 60, 60, 0.9)), color-stop(50%, rgba(60, 60, 60, 0.9)), to(transparent));
+        background: -o-linear-gradient(left, rgba(60, 60, 60, 0.9), rgba(60, 60, 60, 0.9) 50%, transparent);
+        background: linear-gradient(to right, rgba(60, 60, 60, 0.9), rgba(60, 60, 60, 0.9) 50%, transparent); 
     }
 
     body.subpage main.furnitures::before {
@@ -28,25 +27,17 @@
     }
     
     body.subpage main picture > * {
-        /* width: calc(var(--main-about-width) / 2);
-        width: 50%;
-
-        width: 100%; */
-        /* flex: 0 0 auto; */
         top: 0;
         left: 0;
         bottom: 0;
     }
     
     body.subpage main picture ~ * {
-        width: 50%;
-        width: calc(var(--main-about-width) * 0.4);
         width: 60%;
     }
     body.subpage main img.showroom {
         width: 60%;
     }
-
 
 
     body.subpage main form input[type="text"] {
@@ -64,17 +55,5 @@
     body.subpage main #modal {
         padding: 15rem 10rem;
     }
-
-
-
-
-
-    /* body.subpage main img.showroom {
-
-        margin-left: calc(calc(var(--main-about-width) * 0.1) * -1);
-        width: calc(50% + calc(calc(var(--main-about-width) * 0.1) * 2));
-        padding: calc(var(--main-about-width) * 0.1);
-    } */
-
 
 }
