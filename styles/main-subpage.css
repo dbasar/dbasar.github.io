@@ -41,27 +41,19 @@ body.subpage main::after {
     background-size: cover;
     background-position: center top;
 }
-body.subpage main.about::after {
-    background-image: url(../images/about-es.png);
-}
 body.subpage main.contact::after {
-    background-image: url(../images/contact.jpg);
+    background-image: url(../images/backgrounds/contact.jpg);
 }
 body.subpage main.furniture::after {
-    background-image: url(../images/furniture.jpg);
+    background-image: url(../images/backgrounds/furniture.jpg);
 }
 body.subpage main.industrial-design::after {
-    background-image: url(../images/industrial-design.jpg);
+    background-image: url(../images/backgrounds/industrial-design.jpg);
 }
-
-/* body.subpage main picture > * {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center top;
-       object-position: center top;
-} */
+body.subpage main.about::after {
+    background-image: url(../images/backgrounds/about.jpg);
+    background-position: right top;
+}
 
 
 body.subpage main::before {

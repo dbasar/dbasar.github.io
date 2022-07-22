@@ -1,11 +1,7 @@
 @media screen and (min-width: 500px) {
 
-    body.subpage main.about::after {
+    /* body.subpage main.about::after {
         background-image: url(../images/about-s.png);
-    }
-    /* body.subpage main.contact::after {
-        background-image: url(../images/contact-s.jpg);
     } */
-
 
 }

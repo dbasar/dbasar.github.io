@@ -35,11 +35,8 @@
         width: calc(100vw - 32rem);
         /* bottom: 0; */
     }
-    body.subpage main.about::after {
+    /* body.subpage main.about::after {
         background-image: url(../images/about-m.png);
-    }
-    /* body.subpage main.contact::after {
-        background-image: url(../images/contact.jpg);
     } */
     body.subpage main::before {
         inset: 0;
