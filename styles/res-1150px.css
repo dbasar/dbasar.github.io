@@ -26,14 +26,18 @@
         background-color: rgba(255, 255, 255, 0.8);
     }
     
-    body.subpage main picture > * {
+    /* body.subpage main picture > * {
         top: 0;
         left: 0;
         bottom: 0;
-    }
+    } */
     
-    body.subpage main picture ~ * {
+    body.subpage main > * {
         width: 60%;
+    }
+    body.subpage main.about::after {  /* about a has */
+        background-image: url(../images/about-l.png);
+        background-position: left 7%;
     }
     body.subpage main img.showroom {
         width: 60%;

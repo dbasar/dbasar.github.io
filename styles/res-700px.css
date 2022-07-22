@@ -19,7 +19,8 @@
             -ms-transform: none;
                 transform: none;
     }
-    body main {
+    body.subpage main,
+    body.homepage main {
         margin-left: 32rem;
         width: auto;
     }
@@ -28,11 +29,18 @@
         padding-top: 50vh;
         padding: 50vh 6rem 6.5rem
     }
-    body.subpage main picture {
-        top: 0;
+    body.subpage main::after {
+        /* top: 0; */
         left: 32rem;
-        width: auto;
+        width: calc(100vw - 32rem);
+        /* bottom: 0; */
     }
+    body.subpage main.about::after {
+        background-image: url(../images/about-m.png);
+    }
+    /* body.subpage main.contact::after {
+        background-image: url(../images/contact.jpg);
+    } */
     body.subpage main::before {
         inset: 0;
         background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(75vh, rgba(60, 60, 60, 0.9)), to(rgba(60, 60, 60, 0.9)));
