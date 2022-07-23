@@ -7,10 +7,10 @@
 
 body header {
     position: fixed;
-    width: -webkit-fit-content;
+    /* width: -webkit-fit-content;
     width: -moz-fit-content;
-    width: max-content;
-    width: 32rem;
+    width: fit-content;
+    width: 32rem; */
     max-width: 80%;
     top: 0;
     bottom: 0;
@@ -28,6 +28,7 @@ body header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;    
+    display: inline-flex;  /* yeni deneme */
     -webkit-box-orient: vertical;    
     -webkit-box-direction: normal;    
         -ms-flex-direction: column;    
