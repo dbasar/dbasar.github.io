@@ -14,25 +14,59 @@ let newImgIndex, oldImgIndex;
 
 
 function imageChange() {
-    heroLink.classList.add('fade');
+    // heroLink.classList.add('fade');
 
-    oldImgIndex = Array.from(imgNodes)
-                       .indexOf(document.querySelector('.image-div.active'));
+    // oldImgIndex = Array.from(imgNodes)
+    //                    .indexOf(document.querySelector('.image-div.active'));
 
-    imgNodes[oldImgIndex].classList.add('ending');
+    // imgNodes[oldImgIndex].classList.add('ending');
 
-    if (oldImgIndex === 3) {
-        newImgIndex = 0;
-    } else {
-        newImgIndex = oldImgIndex + 1;
-    }
-    imgNodes[newImgIndex].classList.add('active');
+    // if (oldImgIndex === 3) {
+    //     newImgIndex = 0;
+    // } else {
+    //     newImgIndex = oldImgIndex + 1;
+    // }
+    // imgNodes[newImgIndex].classList.add('active');
     
-    window.setTimeout(function() {
-        imgNodes[oldImgIndex].classList.remove('ending', 'active');
-    }, 2000);    
+    // window.setTimeout(function() {
+    //     imgNodes[oldImgIndex].classList.remove('ending', 'active');
+    // }, 2000);    
 
-    assignLink(newImgIndex);
+    // assignLink(newImgIndex);
+
+    // window.setTimeout(imageChange, 8000);
+
+
+
+    if (typeof oldImgIndex === 'undefined') {
+        oldImgIndex = 0;
+        imgNodes[0].classList.add('active');
+        imgNodes[0].removeAttribute('style');
+        assignLink(0);
+
+    } else {
+        heroLink.classList.add('fade');
+
+        oldImgIndex = Array.from(imgNodes)
+                           .indexOf(document.querySelector('.image-div.active'));
+
+        imgNodes[oldImgIndex].classList.add('ending');
+
+        if (oldImgIndex === 3) {
+            newImgIndex = 0;
+        } else {
+            newImgIndex = oldImgIndex + 1;
+        }
+
+        imgNodes[newImgIndex].classList.add('active');
+
+        window.setTimeout(function() {
+            imgNodes[oldImgIndex].classList.remove('ending', 'active');
+        }, 2000);   
+        assignLink(newImgIndex);
+    }
+
+    window.setTimeout(imageChange, 8000);
 }
 
 function assignLink(imgIndex) {
@@ -51,8 +85,5 @@ function assignLink(imgIndex) {
 }
 
 
-window.addEventListener('load', function() {
-    window.setInterval(imageChange, 8000);
-    assignLink(0);
-});
+window.addEventListener('load', imageChange);
 
