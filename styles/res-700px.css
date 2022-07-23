@@ -18,7 +18,12 @@
         -webkit-transform: none;
             -ms-transform: none;
                 transform: none;
+    }    
+
+    body #top-bar {
+        display: none;
     }
+
     body.subpage main,
     body.homepage main {
         margin-left: 32rem;
@@ -44,26 +49,18 @@
         background: -o-linear-gradient(top, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
         background: linear-gradient(to bottom, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
     }
-    body.homepage main::after {
-        content: "Özlem Yeşildal Başar \00a9  2022";
-        font-size: 1.3rem;
-        position: absolute;
-        bottom: 2.8rem;
-        right: 2.8rem;
-        z-index: 1;
-        color: white;
-        text-shadow: 0 0 2rem black;
-    }
 
-
-    /* body header footer {
-        display: none;
-    } */
-    body #top-bar {
+    body.homepage #content-logo {
         display: none;
     }
-    #content-logo {
+    body.homepage #hero-header .image-link {
+        top: 6rem;
+    }
+    body.homepage #home-copy #home-copy-small {
         display: none;
+    }
+    body.homepage #home-copy #home-copy-large {
+        display: inline;
     }
 
 
