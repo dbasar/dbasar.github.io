@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        *:active,
+        *:focus {
+            outline: none;
+        }
+
+
+        html {
+            font-size: 12px;
+        }
+
+
+
+
+
+
+
+
+        body {
+            color: #333;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        /* İlk sıradaki normal form */
+
+        #form {
+            margin-bottom: 20px;
+            background-color: rgb(240, 240, 240);
+            border-bottom: 1.5px solid #2c82e4;
+        }
+        #form h2 {
+            position: relative;
+            width: max-content;
+            margin: 50px auto 20px;
+            color: #2c82e4;
+            font-size: 42px;
+            font-variant: small-caps;
+            letter-spacing: -1px;
+            text-align: center;
+            transform: translate(25px);
+        }
+        #form h2::before {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -40px;
+            border: 4px solid rgb(12, 202, 129);
+            border-radius: 50%;
+
+        }
+        #form h2::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            top: 50%;
+            left: -52px;
+            transform: translateY(-90%) rotate(-45deg);
+            border-left: 3px solid rgb(12, 202, 129);
+            border-bottom: 3px solid rgb(12, 202, 129);
+        }
+        #form input[type="text"] {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 15px;
+            padding: 16px 16px;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #2c82e4;
+            border-radius: 4px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            text-align: center;
+        }
+        #form input[type="submit"] {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 12px 25px;
+            color: #fff;
+            background-color: #2c82e4;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #form input[type="submit"]:focus {
+            background-color: darkolivegreen;
+        }
+        @media (hover: hover) {
+            #form input[type="submit"]:hover {
+                background-color: #4c99ff;
+            }
+        }    
+        #form input[type="submit"]:active {
+            background-color: #4c99ff;
+        }    
+        #form input:active,
+        #form input:focus {
+            outline: none;
+        }
+
+
+        /* İkinci sıradaki fixed pozisyonlu form */
+        #form-copy {
+            display: flex;
+            position: fixed;
+            top: -70px;
+            width: 100%;
+            z-index: 4;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: rgb(240, 240, 240);
+            border-bottom: 1.5px solid #2c82e4;
+            transition: top .3s ease;
+        }
+        #form-copy > * {
+            height: 40px;
+        }
+        #form-copy h2 {
+            position: relative;
+            flex-basis: 50px;
+            flex-shrink: 0;
+            margin: 0 5px 0 10px;
+        }
+        #form-copy h2::before {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 12px;
+            border: 4px solid rgb(12, 202, 129);
+            border-radius: 50%;
+
+        }
+        #form-copy h2::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-90%) rotate(-45deg);
+            border-left: 3px solid rgb(12, 202, 129);
+            border-bottom: 3px solid rgb(12, 202, 129);
+        }
+        #form-copy input[type="text"] {
+            min-width: 0;
+            flex-basis: 220px;
+            /* flex-grow: 1; */
+            margin: 0 5px;
+            padding: 0 5px;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #2c82e4;
+            border-radius: 4px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 22px;
+            text-align: center;
+        }
+        #form-copy input[type="submit"] {
+            display: block;
+            margin: 0 10px 0 5px;
+            padding: 0 16px; 
+            color: #fff;
+            background-color: #2c82e4;
+            border: none;
+            border-radius: 4px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        #form-copy input[type="submit"]:focus {
+            background-color: darkolivegreen;
+        }
+        @media (hover: hover) {
+            #form-copy input[type="submit"]:hover {
+                background-color: #4c99ff;
+            }
+        }    
+        #form-copy input[type="submit"]:active {
+            background-color: #4c99ff;
+        }    
+
+        #form-copy input:active,
+        #form-copy input:focus {
+            outline: none;
+        }
+
+
+
+        article {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+            color: #fff;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #ccc;
+            cursor: pointer;
+        }
+
+        article > span:first-child {
+            display: block;
+            /**/
+            padding: 15px 65px 15px 40px;
+            /**/
+        }
+        @media (hover: hover) {
+            article > span:first-child:hover {
+                background-color: teal;
+            }
+        }    
+        article > span:first-child:focus {
+            background-color: darkolivegreen;
+        }
+        article:nth-child(odd) > span,
+        article:nth-child(odd) > span:active {
+            background: #4cafb3;
+        }
+        article:nth-child(even) > span,
+        article:nth-child(even) > span:active {
+            background-color: #57be8b;
+        }    
+        article > span:first-child:active {
+            background-color: teal;
+        }
+
+        article > span:last-child {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            z-index: 1;
+            border-left: 1.5px solid #fff;
+        }
+        article > span:last-child:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: calc(100% - 25px);
+            width: 25px;
+            height: 0;
+            border-top: 1.5px solid #fff;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        article > span:last-child:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: calc(100% - 25px);
+            width: 25px;
+            height: 0;
+            border-top: 1.5px solid #fff;
+            transform: translate(-50%, -50%) rotate(45deg);
+        } 
+        @media (hover: hover) {
+            article > span:last-child:hover {
+                background-color: crimson;
+            }
+        }
+        article > span:last-child:focus {
+            background-color: darkolivegreen;
+        }
+        
+        article.crossed-out span {
+            text-decoration: line-through;
+            background-color: gray;
+        }
+        article.crossed-out span:first-child::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            width: 20px;
+            height: 8px;
+            transform: translateY(-70%) rotate(-45deg);
+            border-bottom: 1.5px solid #fff;
+            border-left: 1.5px solid #fff;
+        }
+        article.crossed-out span:first-child:hover {
+            background-color: gray;
+        }
+        article.crossed-out span:first-child:focus,
+        article.crossed-out span:last-child:focus {
+            background-color: darkolivegreen;        
+        }
+        article.crossed-out span:first-child:active,
+        article.crossed-out span:last-child:active {
+            background-color: gray;
+        }
+
+        .no-list-item {
+            position: relative;
+            font-size: 21px;
+            text-align: center;
+        }
+        .face {
+            position: relative;
+            margin: 2rem auto;
+            width: 10rem;
+            height: 10rem;
+            background-image: linear-gradient(170deg, tomato , orange);
+            border-radius: 50%;
+        }
+        .face::before,
+        .face::after {
+            content: "";
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            top: 40%;
+            background-color: steelblue;
+            border-radius: 50%;
+        }
+        .face::before {
+            left: 30%;
+        }
+        .face::after {
+            right: 30%;
+        }
+        .hat {
+            position: relative;
+            width: 13rem;
+            height: 1rem;
+            left: -3.4rem;
+            top: 2rem;
+            overflow: visible;
+            border-radius: .5rem 50% .5rem .5rem;
+            background-color: brown;
+        }
+        .hat::after {
+            content: "";
+            position: absolute;
+            width: 9.2rem;
+            height: 3.5rem;
+            bottom: 0;
+            right: 0;
+            border-radius: 50% / 90%;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: brown;
+        }
+        .mouth {
+            position: relative;
+            width: 6rem;
+            height: 2rem;
+            top: 4.2rem;
+            left: 2.5rem;
+            transform: rotate(-30deg);
+            background-color: transparent;
+            border-left: .3rem solid rgb(160, 82, 82);
+            border-bottom: .3rem solid rgb(160, 82, 82);
+        }
+
+        
+        @media screen and (min-width: 700px) {
+            
+            html {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            body {
+                height: 100%;
+                overflow: auto;
+            }
+
+            section {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+            }
+
+            #form {
+                margin: 0;
+                left: 0;
+                right: calc(100% - 350px);
+                border-bottom: none;
+                border-right: 1.5px solid #2c82e4;
+            }
+
+            #form h2 {
+                width: auto;
+                transform: translate(40px);
+                text-align: left;
+            }
+
+            #form input[type="text"] {
+                max-width: none;
+                margin: 0 0 15px;
+                text-align: left;
+            }
+
+            #form input[type="submit"] {
+                margin: 0;
+            }
+
+            #form-copy {
+                display: none;
+            }
+
+            #list {
+                right: 0;
+                left: 350px;
+                padding: 70px 20px 0;
+                overflow: auto;
+            }
+            #list::after {
+                content: "";
+                height: 70px;
+                display: block;
+            }
+
+        }
+
+
+        @media screen and (min-width: 1050px) {
+
+            #form {
+                padding: 20px 50px;
+                right: calc(100% - 450px);
+            }
+
+            #list {
+                padding: 70px 50px 0;
+                left: 450px;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+
+        <section id="form">
+            <h2>To Do List</h2>
+            <input type="text" placeholder="What will you do?">
+            <input type="submit" value="Create">
+        </section>
+
+        <section id="form-copy">
+            <h2></h2>
+            <input type="text" placeholder="What will you do?">
+            <input type="submit" value="Create">
+        </section>
+
+        <section id="list">
+            <div class="no-list-item">
+                You have no list item yet...
+                <div class="face">
+                    <div class="hat"></div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            <!-- <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>
+            <article>
+                <span>d</span>
+                <span></span>
+            </article>  -->
+        </section>
+
+
+    <script type="text/javascript">
+    
+const submitButtons = document.querySelectorAll('input[type="submit"]');
+const textInputs = document.querySelectorAll('input[type="text"]');
+
+submitButtons[1].setAttribute('tabindex', '-1');
+textInputs[1].setAttribute('tabindex', '-1');
+
+const list = document.getElementById('list');
+
+
+for (let i = 0; i < 2; i++) {
+    submitButtons[i].addEventListener('click', () => {
+        let newText = textInputs[i].value.trim();
+        const noListItem = list.querySelector('.no-list-item');
+
+        if (newText != '') {        
+            noListItem.style.display = 'none';
+
+            let newArticle = document.createElement('article');
+            let newSpanOne = document.createElement('span');
+            let newSpanTwo = document.createElement('span');
+
+            let newTextNode = document.createTextNode(newText);
+            newSpanOne.appendChild(newTextNode);
+            newArticle.appendChild(newSpanOne);
+            newArticle.appendChild(newSpanTwo);
+
+            newSpanOne.setAttribute('tabindex', '0');
+            newSpanTwo.setAttribute('tabindex', '0');
+
+            newSpanOne.addEventListener('click', () => {
+                newArticle.classList.toggle('crossed-out');
+                document.activeElement.blur();
+            });
+            newSpanOne.addEventListener('keypress', (event) => {
+                if (event.keyCode == '32' ||
+                    event.key === '' ||
+                    event.code === 'Space' ||
+                    event.keyCode == '13' ||
+                    event.key === 'Enter' ||
+                    event.code === 'Enter') {
+                    newArticle.classList.toggle('crossed-out');
+                    document.activeElement.blur();
+                }
+            })
+            /*
+            newSpanTwo.addEventListener('click', () => {
+                newArticle.remove();
+            });
+            newSpanTwo.addEventListener('keypress', (event) => {
+                if (event.keyCode == '32' ||
+                    event.key === '' ||
+                    event.code === 'Space' ||
+                    event.keyCode == '13' ||
+                    event.key === 'Enter' ||
+                    event.code === 'Enter') {
+                    newArticle.remove();
+                }
+            });*/
+            newSpanTwo.addEventListener('click', listItemRemove, false);
+            newSpanTwo.addEventListener('keypress', (event) => {
+                if (event.keyCode == '32' ||
+                    event.key === '' ||
+                    event.code === 'Space' ||
+                    event.keyCode == '13' ||
+                    event.key === 'Enter' ||
+                    event.code === 'Enter') {
+                    listItemRemove();
+                }
+            }, false);
+            function listItemRemove() {
+                newArticle.remove();
+
+                const listItems = list.querySelectorAll('article');
+                if (listItems.length === 0) {
+                    noListItem.style.display = 'block';
+                }
+            }
+            list.appendChild(newArticle);            
+        } 
+        textInputs[i].value = '';
+        textInputs[i].focus();    
+    });
+}
+
+
+window.addEventListener('DOMContentLoaded', topBar);
+window.addEventListener('scroll', topBar);
+window.addEventListener('resize', topBar);
+
+let scrollCheck = false;
+
+function topBar() {
+    const form = document.getElementById('form');
+    let formHeight = form.offsetHeight;
+    const formCopy = document.getElementById('form-copy');
+
+    if (document.documentElement.scrollTop > formHeight &&
+        scrollCheck === false) {
+        formCopy.style.top = '0';
+
+        submitButtons[0].setAttribute('tabindex', '-1');
+        textInputs[0].setAttribute('tabindex', '-1');
+        submitButtons[1].setAttribute('tabindex', '0');
+        textInputs[1].setAttribute('tabindex', '0');
+
+        let text = textInputs[0].value;
+        textInputs[1].value = text;
+
+        scrollCheck = true;
+    } else if (document.documentElement.scrollTop > formHeight === false &&
+               scrollCheck === true) {
+        formCopy.style.top = '-70px';
+
+        submitButtons[1].setAttribute('tabindex', '-1');
+        textInputs[1].setAttribute('tabindex', '-1');
+        submitButtons[0].setAttribute('tabindex', '0');
+        textInputs[0].setAttribute('tabindex', '0');
+
+        let text = textInputs[1].value;
+        textInputs[0].value = text;
+
+        scrollCheck = false;
+    }
+    
+    // if (document.documentElement.scrollTop > formHeight) {
+    //     formCopy.style.top = '0';
+    // } else {
+    //     formCopy.style.top = '-70px';
+    // }
+}
+    
+    </script>
+</body>
+</html>

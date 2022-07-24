@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Sayı Bulma Oyunu</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            //padding: 40px;
+            height: 100%;
+            
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #182628;
+        }
+
+        #wrapper {            
+            min-height: 100%;
+            padding: 40px;
+            background-color: #333;
+            background-image: linear-gradient(160deg, #111, #444 40%, #444 60%, #111);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        #game {
+            display: block;
+            max-width: 500px;    
+            margin: auto;
+            padding: 0 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;        
+            overflow: hidden;
+        }
+
+        #game > * {
+            margin: 10px 0;
+        }
+
+        h1 {
+            color: #333;
+            font-weight: 400;
+            font-size: 28px;
+            font-variant: small-caps;
+            border-bottom: 1.5px solid #ccc;
+        }
+
+        .form {
+            display: flex;
+            height: 35px;
+            width: 100%;
+        }
+
+        @media screen and (min-width: 450px) {
+
+            .form {
+                width: 240px;
+            }
+
+        }
+
+        input {
+            padding: 0px 8px;
+            font-size: 16px;
+            border: 1.5px solid #555;
+            transition: all .3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input:focus,
+        input:active {
+            outline: none;
+        }
+        input.text-inp {
+            width: 0;
+            flex-basis: 0;
+            flex-grow: 1;
+            color: #333;
+            border-right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+        input.sub-inp {
+            width: 80px;
+            border-radius: 0 4px 4px 0;
+        }
+        input.additional {
+            width: 125px;
+            padding: 0 8px;
+            height: 30px;
+            border: 1.5px solid #555;
+            border-radius: 4px;
+        }
+        input.additional:last-child {
+            margin-top: 10px;
+        }
+        input.active {
+            color: #fff;
+            background-color: #555;
+            cursor: pointer;
+        }
+        input.active:active {
+            color: #333;
+            background-color: #fff;
+        }
+        input.dis {
+            cursor: default;
+            background-color: #888;
+            color: #fff;
+        }
+
+        .result {
+            color: #fff;
+            padding-left: 5px;
+        }
+        
+        .history {
+            display: none;
+        }
+        .history-title {
+            margin-bottom: 3px;
+            margin-left: 0;
+            margin-right: 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        ul {
+            margin-top: 3px;
+        }
+        li {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="game">
+            <h1>Sayı Bulma Oyunu</h1>
+            
+            <p class="welcome">
+                Javascript sayı bulma oyununa hoşgeldiniz.
+            </p>
+
+            <p class="definition">
+                Toplam 10 deneme içinde bilgisayarın belirlediği 1 ile 100 arasındaki sayıyı bulmaya çalışın. Denediğiniz sayıya göre yardım alacaksınız.
+            </p>
+
+            <!--  Yönlendirme  -->
+
+            <p class="orientation">
+                &nbsp;
+            </p>
+
+            <!--  Sayı girme inputları  -->
+
+            <div class="form">
+                <input type="text" class="text-inp">
+                <input type="submit" value="Dene" id="sub" class="sub-inp active">
+            </div class="form">
+
+            <!--  Eski tahminler  -->
+
+            <p class="guesses">
+                &nbsp;
+            </p>
+
+            <!--  Oyun sonucu  -->
+
+            <p class="result">
+            </p>
+
+            <!--  Oyunun puanları  -->
+
+            <p class="score">
+            </p>
+
+            <!--  Baştan başlama butonu  -->
+
+            <input type="submit" value="Yeni oyun" id="restart" class="additional dis">
+
+            <!--  Eski  sonuçların listesi  -->
+
+            <div class="history">
+                <p class="history-title">
+                    Önceki sonuçlar
+                </p>
+
+                <ul class="history-list">
+                </ul>
+
+                <input type="submit" value="Sıfırla" id="reset" class="additional active">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    
+let num = Math.ceil(Math.random() * 100);
+
+const ornt = document.querySelector('.orientation');
+const guss = document.querySelector('.guesses');
+const rslt = document.querySelector('.result');
+const scor = document.querySelector('.score');
+const hstt = document.querySelector('.history');
+const hstl = document.querySelector('.history-list');
+
+const inpt = document.querySelector('.text-inp');
+const subm = document.querySelector('#sub');
+
+const rstr = document.querySelector('#restart');
+const rest = document.querySelector('#reset');
+
+let turn = 0;
+let game = false;
+let point = 0;
+let notice;
+
+
+subm.addEventListener('click', check, false);
+rest.addEventListener('click', reset, false);
+
+
+function restart() {
+    num = Math.ceil(Math.random() * 100);
+
+    subm.addEventListener('click', check);
+    rstr.removeEventListener('click', restart);
+
+    notice = ' İptal';
+
+    if (turn != 10) {
+        point = 0;
+        board();
+    }
+
+    turn = 0;    
+
+    inpt.value = '';
+    inpt.focus();
+    ornt.textContent = 'Yeni oyuna başladınız';
+    subm.className = 'sub-inp active';
+    guss.innerHTML = '&nbsp;';
+    rslt.textContent = '';
+    rstr.className = 'additional dis';
+    scor.innerHTML = '';
+}
+
+
+function check() {
+
+    if (inpt.value.length == 0) {
+        ornt.textContent = 'Bir değer girin';
+        inpt.focus();
+    } else {
+
+        if (turn == 0) {
+            guss.textContent = 'Tahminleriniz:';
+            rstr.className = 'additional active';
+
+            rstr.addEventListener('click', restart);
+        } 
+
+        let val = Number(inpt.value);
+
+        inpt.value = '';
+        inpt.focus();
+
+        turn++;
+
+        if (val === num) {
+            rslt.textContent = 'Tebrikler! Kazandınız!';
+            rslt.style.backgroundColor = 'limegreen';
+
+            game = true;
+            notice = ' Başarı';
+            point = 100 - (turn - 1) * 10;
+        } else if (turn < 10) {
+
+            if (isNaN(val)) {
+                ornt.textContent = 'Geçersiz bir değer girdiniz';
+                val = 'X';
+            } else if (val < num && val < 1) {
+                ornt.textContent = 'Çok küçük bir değer girdiniz';
+                val = 'X';
+            } else if (val > num && val > 100) {
+                ornt.textContent = 'Çok büyük bir değer girdiniz';
+                val = 'X';
+            } else if (val < num) {
+                ornt.textContent = 'Daha büyük bir sayı girin';
+            } else {
+                ornt.textContent = 'Daha küçük bir sayı girin';
+            }
+
+        } else {
+            rslt.textContent = 'Kaybettiniz!';
+            rslt.style.backgroundColor = 'crimson';
+
+            game = true;
+            notice = ' Yenilgi';
+            point = 0;
+        }
+
+        guss.textContent += ' ' + val;
+        
+        if (game) {
+            subm.removeEventListener('click', check);
+
+            ornt.innerHTML = '&nbsp;';
+            subm.className = 'sub-inp dis';
+            scor.innerHTML = `Sayı: ${num}<br>Deneme sayınız: ${turn}<br>Puanınız: ${point}`;
+
+            game = false;
+
+            board();
+            
+            turn = 10;
+        }
+    }
+}
+
+
+function board() {
+    hstt.style.display = 'block';
+
+    let dat = new Date();
+    let scoreColor;
+    
+    let day = '0' + dat.getDate();
+    day = day.slice(-2);
+    let month = '0' + dat.getMonth();
+    month = month.slice(-2);
+
+    switch (notice) {
+        case ' İptal':
+            scoreColor = `<span style="color: darkorange;">${notice}</span>`;
+            break;
+        case ' Yenilgi':
+            scoreColor = `<span style="color: crimson;">${notice}</span>`;
+            break;
+        default: 
+            scoreColor = `<span style="color: green;">${notice}</span>`;
+            break;
+    }
+
+    hstl.innerHTML += `<li>${scoreColor}<br>${point} puan - ${turn} deneme<br>${day}.${month}.${dat.getFullYear()} ${dat.getHours()}:${dat.getMinutes()}</li>`;
+}
+
+
+function reset() {
+    inpt.focus();
+    hstl.innerHTML = '';
+    hstt.style.display = 'none';
+}
+
+
+    </script>
+    
+</body>
+</html>

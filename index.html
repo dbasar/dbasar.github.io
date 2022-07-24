@@ -1,89 +1,2009 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mobilya ve Endüstri Ürünleri Tasarımları Portfolyo">
-    <meta name="author" content="Doruk Başar">
-    <title>Özlem Yeşildal Başar - Mobilya ve Endüstri Ürünleri Tasarımları</title>
+    <title>TKM arayuz monospace</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Roboto+Mono&family=Ubuntu+Mono&family=VT323&display=swap" rel="stylesheet"> 
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            font-size: 10px;
+            width: 100%;
+        }
+
+        /* HTML, BODY, CONTAİNER, SİZER */
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-size: 2.5rem;
+            line-height: 1.5;
+            background-color: #FFFAFF;
+            /* font-family: 'Dosis', sans-serif; */
+            font-family: 'VT323', monospace;
+            letter-spacing: .1rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #container {
+            height: 100%;
+            width: 100%;
+            background-color: #333;
+
+            display: flex;
+            flex-direction: column;            
+            justify-content: space-between;
+        }
+
+        .sizer {
+            margin: auto;
+            padding: 0 3rem;
+        }
+        /****/
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100vw;          
+            height: 6rem;
+            /* padding: 0 2rem; */
+            font-size: 5rem;
+            background-color: #156694;
+            color: #fff;
+            /* font-family: 'Shadows Into Light', cursive; */
+            font-family: 'VT323', monospace;
+            border-bottom: .4rem solid #d87943;
+            /* box-shadow: 0 .2rem .6rem #aaa ;  */
+            z-index: 1;
+        } 
+
+        header .sizer {            
+            display: flex;
+            align-items: stretch;
+            height: 6rem;
+            padding: .3rem 3rem .7rem;
+        }   
+
+        header .sizer > * {
+            padding: 0 .2rem;
+        }
+
+        /* Tkm yazısı ve hover focus active bilgileri */
+
+        #logo {
+            font-size: 5rem;
+            line-height: 4.4rem;
+            border: .3rem solid transparent;
+            /* transition: all .3s ease; */
+            cursor: pointer;
+
+            //float: left;
+        }
+
+        #logo:hover {
+            color: #C2B8B2;
+            /* text-shadow: 0 0 .6rem #8A716A; */
+        }
+
+        @media (hover: none), (hover: on-demand) {
+
+            #logo:hover {
+                color: #fff;
+                /* text-shadow: none; */
+            }
+
+        }
+
+        #logo:focus {
+            color: #C2B8B2;
+            /* text-shadow: 0 0 .6rem #8A716A; */
+            border: .3rem solid #8A716A;
+            border-radius: 5px;
+            /* box-shadow: 0 0 3px 2px #C2B8B2; */
+            outline: none;
+        }
+        #logo:active {
+            color: #C2B8B2;
+            /* text-shadow: 0 0 .6rem #8A716A; */
+            border: .3rem solid transparent;
+            /* box-shadow: none; */
+            outline: none;
+        }
+        /**/
+        /****/
+
+        /* HAMBURGER MENU */
+
+        /* Hamburger container flex item bilgileri - kendi de flex container */
+
+        #hamburger {
+            margin-left: auto;
+            margin-right: 1.5rem;
+            display: flex;
+            cursor: pointer;
+            outline: none;
+            border: .3rem solid transparent;
+
+
+            //float: right;
+        }
+        /**/
+
+        /* Hamburger container focus ve active bilgileri */
+
+        #hamburger:focus {
+            border: .3rem solid #8A716A;
+            border-radius: 5px;
+            /* box-shadow: 0 0 3px 2px #C2B8B2; */
+            outline: none;
+        }
+        #hamburger:active {
+            /* border: none; */
+            /* box-shadow: none; */
+            outline: none;
+        }
+        /**/
+
+        /* Hamburger menü kapalı hal çizgileri ve hover efekt bilgieri */
+
+        #hamburger span {
+            margin: auto;
+            position: relative;
+        }
+        #hamburger span::before,
+        #hamburger span::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #hamburger span,
+        #hamburger span::before,
+        #hamburger span::after {
+            width: 4.5rem;
+            height: .4rem;
+            /* border-radius: .2rem; */
+            background-color: #fff;
+            /* transition: all .3s ease; */
+        }
+
+        #hamburger:hover .burger-closed,
+        #hamburger:hover .burger-closed::before, 
+        #hamburger:hover .burger-closed::after {
+            background-color: #C2B8B2;
+            /* box-shadow: 0 0 .6rem #8A716A; */
+        }
+
+        #hamburger .burger-closed::before {
+            transform: translateY(-1rem);
+        }
+        #hamburger .burger-closed::after {
+            transform: translateY(1rem);
+        }
+
+        /* #hamburger:hover .burger-closed::before {
+            transform: translateY(-1.2rem);
+        }
+        #hamburger:hover .burger-closed::after {
+            transform: translateY(1.2rem);
+        }     */
+        /**/
+
+        /* hamburger menu X şekil çizgileri ve hover efekt bilgileri */
+
+        #hamburger .burger-open {
+            background-color: transparent;
+            /* transition: all .24s ease; */
+        }
+        #hamburger .burger-open::before,
+        #hamburger .burger-open::after {
+            background-color: #fff;
+        }
+        #hamburger .burger-open::before {
+            transform: rotate(45deg);
+        }
+        #hamburger .burger-open::after {
+            transform: rotate(-45deg);
+        }
+
+        #hamburger:hover .burger-open::before,
+        #hamburger:hover .burger-open::after {
+            background-color: #C2B8B2;
+            /* box-shadow: 0 0 .6rem #8A716A; */
+        } 
+        /* #hamburger:hover .burger-open::before {
+            transform: rotate(35deg);
+        }
+        #hamburger:hover .burger-open::after {
+            transform: rotate(-35deg);
+        } */
+        /**/
+        
+        /* Touchsreen için hover bilgileri */
+
+        @media (hover: none), (hover: on-demand) {
+
+            #hamburger:hover .burger-closed,        
+            #hamburger:hover .burger-closed::before,        
+            #hamburger:hover .burger-closed::after,
+            #hamburger:hover .burger-open::before,
+            #hamburger:hover .burger-open::after {
+                background-color: #fff;
+                /* box-shadow: none; */
+            }
+            #hamburger:hover .burger-closed::before {
+                transform: translateY(-1rem);
+            }
+            #hamburger:hover .burger-closed::after {
+                transform: translateY(1rem);
+            }
+            #hamburger:hover .burger-open::before {
+                transform: rotate(45deg);
+            }
+            #hamburger:hover .burger-open::after {
+                transform: rotate(-45deg);
+            }
+
+        }    
+        /**/
+
+        /* hamburger çizgileri focus ve active bilgileri */
+
+        #hamburger:focus .burger-closed,
+        #hamburger:active .burger-closed,
+        #hamburger:focus .burger-closed::before,
+        #hamburger:active .burger-closed::before, 
+        #hamburger:focus .burger-closed::after,
+        #hamburger:active .burger-closed::after {
+            background-color: #C2B8B2;
+            /* box-shadow: 0 0 .6rem #8A716A;*/
+        } 
+        /* #hamburger:focus .burger-closed::before,
+        #hamburger:active .burger-closed::before {
+            transform: translateY(-1.2rem);
+        }
+        #hamburger:focus .burger-closed::after,     
+        #hamburger:active .burger-closed::after {
+            transform: translateY(1.2rem);
+        }   */
+
+        #hamburger:active .burger-open {
+            background-color: transparent;
+        }
+        #hamburger:focus .burger-open::before,
+        #hamburger:active .burger-open::before,        
+        #hamburger:focus .burger-open::after,
+        #hamburger:active .burger-open::after {
+            background-color: #C2B8B2;
+            /* box-shadow: 0 0 .6rem #8A716A; */
+        }
+        /* #hamburger:focus .burger-open::before,
+        #hamburger:active .burger-open::before {
+            transform: rotate(35deg);
+        }
+        #hamburger:focus .burger-open::after,
+        #hamburger:active .burger-open::after {
+            transform: rotate(-35deg); 
+        }  */
+        /**/
+        /****/
+
+
+        /* NAV BİLGİLERİ */
+
+        /* Nav ve açık kapalı hal bilgileri */        
+        nav {
+            /* font-family: 'Special Elite', cursive;  */
+            font-family: 'VT323', monospace; 
+            position: fixed;
+            width: 100vw;     
+            height: calc(100vh - 6rem);
+            top: 6rem;
+            /* right: 0;
+            left: 0; */
+            bottom: 0;
+            font-size: 3rem;
+        }
+        .nav-closed {
+            opacity: 0;
+            visibility: hidden;
+            z-index: -1;
+            transition: opacity .5s ease, visibility .5s ease, z-index 0s ease .5s;
+        }
+        .nav-open {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+            transition: opacity .5s ease, visibility .5s ease;
+        }
+        /**/
+
+        /* Nav opasitesi için arka plan bilgileri */        
+        .nav-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #549b68;
+            opacity: .9;
+        }
+        /**/
+
+        /* Nav iç üç tane div bilgileri */
+        #front-menu,
+        #hardness-menu,
+        #keybinds-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+
+            transition: opacity .5s ease, visibility .5s ease, left .5s ease;
+        
+            /* Bu alt menülerin boyları yetersiz kaldığında menünün aşağı doğraı scroll olabilmesi için */
+            overflow-y: auto;
+
+            /* dikey scrollbarın gözükmemesi için */
+            scrollbar-width: none; /* Firefoxta */
+            -ms-overflow-style: none; /* IE'de */
+        }
+
+        /* Yine scrollbarı gizlemek için webkitte */
+        #front-menu::-webkit-scrollbar,
+        #hardness-menu::-webkit-scrollbar,
+        #keybinds-menu::-webkit-scrollbar {
+            width: 0;
+        }
+
+        /* Touchscreen ekranda tuşdizimi butonu görünmesin */
+
+        @media (hover: none), (hover: on-demand) {
+
+            #front-menu > :nth-child(6) {
+                display: none;
+            }
+
+        }
+        /**/
+        
+        .nav-page-closed {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .nav-page-open {
+            opacity: 1;
+            visibility: visible;
+        }
+        /**/
+
+        /* Nav iki iç kısmın doğrudan alt elemanlarının bilgileri */
+        nav > *:not(:first-child) > * {
+            position: relative;
+            //max-width: 40rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: .2rem;
+            transition: all .3s linear;
+        }
+        /* Sayfa kapalıyken menü alt elemanları biraz solda ki açılında kapanınca kayma etkisi yapsın */
+        .nav-page-closed > :nth-child(2) {
+            left: -1rem;
+        }
+        .nav-page-closed > :nth-child(3) {
+            left: -2rem;
+        }
+        .nav-page-closed > :nth-child(4) {
+            left: -3rem;
+        }
+        .nav-page-closed > :nth-child(5) {
+            left: -4rem;
+        }
+        .nav-page-closed > :nth-child(6) {
+            left: -5rem;
+        }
+        .nav-page-closed > :nth-child(7) {
+            left: -6rem;
+        }
+        .nav-page-closed > :nth-child(8) {
+            left: -7rem;
+        }
+        .nav-page-closed > :nth-child(9) {
+            left: -8rem;
+        }
+        .nav-page-closed > :nth-child(10) {
+            left: -9rem;
+        }
+        .nav-page-closed > :nth-child(11) {
+            left: -10rem;
+        }
+        .nav-page-closed > :nth-child(12) {
+            left: -11rem;
+        }
+        .nav-page-closed > :nth-child(13) {
+            left: -12rem;
+        }
+
+        .nav-page-open > * {
+            left: 0;
+        }
+
+        .flex-div {
+            flex-basis: 7rem;
+            flex-shrink: 0;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .option {
+            flex-basis: 5rem;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* Menü sayfalarının içindeki alt ve üst okların bilgileri */
+        nav .fixed-arrow-top,
+        nav .fixed-arrow-bottom {
+            position: fixed;
+            width: 100vw;
+            left: 0;
+            right: 0;
+            height: 6rem;
+            z-index: 2;
+            overflow: hidden;
+            opacity: .85;
+            cursor: pointer;
+            transition: none;
+            display: none;
+        }
+        nav .fixed-arrow-top {
+            top: 6rem;            
+            background-image: linear-gradient(to bottom, rgba(79, 139, 96, .85), rgba(79, 139, 96, .85) 30%, transparent);
+        } 
+        nav .fixed-arrow-bottom {
+            bottom: 0;
+            background-image: linear-gradient(to top, rgba(79, 139, 96, .85), rgba(79, 139, 96, .85) 30%, transparent);
+        }
+        nav .fixed-arrow-top::after,
+        nav .fixed-arrow-bottom::after {
+            display: block;
+            content: "";
+            position: absolute;            
+            height: 0;
+            width: 0;            
+            left: calc(50% - 1.4rem);
+            border-width: 2rem 1.4rem;
+            border-style: solid;
+            border-radius: .5rem;
+            transition: border .3s ease;
+        }
+        nav .fixed-arrow-top::after {
+            border-color: transparent transparent #fff transparent;
+            top: calc(50% - 4.2rem);
+        }
+        nav .fixed-arrow-bottom::after {
+            border-color: #fff transparent transparent transparent;
+            bottom: calc(50% - 4.2rem);
+        }
+        nav .fixed-arrow-top:hover::after {
+            border-color: transparent transparent #C2B8B2 transparent;
+        }
+        nav .fixed-arrow-bottom:hover::after {
+            border-color: #C2B8B2 transparent transparent transparent;
+        }
+        .nav-page-closed > .fixed-arrow-bottom {
+            left: 0;
+        }
+        /**/
+        
+
+        /* Nav içinde buton spanlarının bilgileri */
+
+        /* Doğrudan yazıların biçimlendirmesi */
+        .option .focusable,
+        .option .keybind-div,
+        .option .colon {
+
+            display: inline-block;
+
+            border: .3rem solid transparent;
+            /*Bu padding değeri yazı tipinin yarattığı hizalandırma bozukluğunu düzeltmek için*/
+            /*padding: .8rem .4rem 0 .5rem;*/
+            padding: .5rem;
+            line-height: 2rem;
+            /* transition: border .15s ease, color .15s ease, text-shadow .15s ease;   */
+            cursor: pointer;
+        }
+
+        /* Keybind menüsünde her bir .option divi aynı zamanda .flex-option divi. Bunları ve içeriklerini ayrı biçimlendirdim */
+        .flex-option {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .flex-option .keybind-flex-div {
+            display: flex;
+            flex-basis: 49%;
+        }
+        .flex-option .keybind-flex-div .spacer {
+            flex: 1 1 0;
+        }
+        .flex-option .keybind-flex-div:first-child div:last-child {
+            text-align: right;
+        }
+        /**/
+
+        /* Geri butonunun oku */
+        .arrow {
+            position: relative;            
+        }
+        .arrow::before {
+            content: "";
+            display: inline;
+            position: absolute;
+            top: .8rem;
+            left: 1.6rem;
+            height: 0;
+            width: 0;
+            border-width: .8rem;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+            transition: all .15 ease;
+        }
+        /**/
+
+        /* Keybind menüsünde tuşa basmayı bekleme ekranı */
+
+        #keybind-waiting-board,
+        #keybind-warning-board {            
+            position: fixed;
+            width: 36rem;
+            max-width: 100%;
+            height: auto;
+            top: calc(3rem + 50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            background-color: #5ca771;
+            border: .3rem solid #e5a682;
+            text-align: center;
+            /* //line-height: 10rem; */
+            padding: 3rem 4rem;
+            transition: all .3s ease;
+        }
+        .keybind-board-closed {
+            visibility: hidden;
+            opacity: 0;
+        }
+        .keybind-board-open {
+            visibility: visible;
+            opacity: 1;
+        }
+        #keybind-warning-board .ok-button {
+            display: inline-block;
+            margin-top: 1.2rem;
+            /* padding: .7rem .8rem 0 .9rem; */
+            padding: 0 1.2rem;
+            height: auto;
+            background-color: #ee5566;
+            cursor: pointer;
+            border: .3rem solid #e5a682;
+        }
+
+
+        /* Nav içindeki hover efekti bilgileri ve touchscreen hover efekti bilgileri */
+
+        .option .focusable:hover {
+            color: #C2B8B2;
+            /* text-shadow: 0 0 .6rem #8A716A; */
+        }
+        .option .focusable:hover > .arrow::before {
+            border-right-color: #C2B8B2;
+        }
+
+        @media (hover: none), (hover: on-demand) {
+
+            .option .focusable:hover {
+                color: #fff;
+                /* text-shadow: none; */
+            }
+            .option .focusable:hover > .arrow::before {
+                border-right-color: #fff;
+            }
+
+        }
+        /**/
+
+        /* Nav içindeki focus ve active efekti bilgileri */
+
+        .option .focusable:focus {
+            color: #C2B8B2;
+            /* text-shadow: 0 0 .6rem #8A716A; */
+            border: .3rem solid #8A716A;
+            border-radius: 5px;
+            /* box-shadow: 0 0 3px 2px #C2B8B2; */
+            outline: none;
+        }
+        .option .focusable:active {
+            color: #C2B8B2;
+            /* text-shadow: 0 0 .6rem #8A716A; */
+            border: .3rem solid transparent;
+            /* box-shadow: none; */
+            outline: none;
+        }
+        .option .focusable:focus > .arrow::before,
+        .option .focusable:active > .arrow::before {
+            border-right-color: #C2B8B2;
+        }
+        /**/
+        /****/
+
+        /* MAİN ELEMANLARI */
+
+        /* Main */
+        main {
+            display: block;
+            flex: 0 0 auto;
+            margin-top: 6rem;
+            background-color: #333;
+            color: #fff;
+            font-size: 2.2rem;
+            line-height: 1.1;
+        }
+        /**/
+
+        /* Main article, section ve içindeki ana elemanlar */
+        main .sizer > article {
+            border-bottom: .2rem solid #d87943;
+            padding: 1.5rem 0 2.5rem;
+        }
+        main .sizer > article:last-of-type {
+            border-bottom: none;
+        }
+        main .sizer > section {
+            padding: 1.5rem 0 2.5rem;
+            display: none;
+        }
+        main .sizer h2 {
+            margin-top: 1rem;
+            font-size: 3.4rem;
+            line-height: .9;
+        }
+        main .sizer h3 {
+            margin-top: 1rem;
+            font-size: 3rem;
+        }
+        main .sizer p {
+            margin: 1.6rem 0;
+            position: relative;
+        }
+        main .sizer > article p:first-of-type::before {
+            display: block;
+            content: "";
+            position: absolute;
+            top: .2rem;
+            left: -3rem;
+            width: 2rem;
+            height: 2rem;
+            background-color: #fff;
+        }
+        main .sizer > article p:last-of-type::after {
+            display: inline-block;
+            content: "";
+            width: 2rem;
+            height: .4rem;
+            background-color: #fff;
+        } 
+        /**/
+
+        /* Main içindeki span elemenları */
+        main .sizer span.count-board {
+            display: block;
+            width: 15rem;
+            margin-bottom: 1.2rem;
+            background-color: #333;
+            border: .2rem solid #D9C6BC;
+            line-height: 1.4;
+            font-size: 4rem;
+            text-align: center;
+        }
+        main .sizer span.button {
+            display: block;
+            margin-bottom: 1.2rem;
+            background-color: #A8626A;
+            border: .2rem solid #D9C6BC;
+            width: 15rem;
+            text-align: center;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+        main .sizer span.count-button {
+            display: inline-block;
+            width: 6.9rem;
+            border: .2rem solid #D9C6BC;
+            line-height: 1.4;
+            margin-bottom: 1.2rem;
+            margin-right: 1.2rem;
+            text-align: center;
+            position: relative;
+            background-color: #d87943;
+            cursor: pointer;
+        }
+        main .sizer span.count-button:nth-of-type(2)::before,
+        main .sizer span.count-button:nth-of-type(3)::before {
+            display: block;
+            content: "";
+            position: absolute;
+            width: 2rem;
+            height: .5rem;
+            background-color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        main .sizer span.count-button:nth-of-type(3)::after {
+            display: block;
+            content: "";
+            position: absolute;
+            width: .5rem;
+            height: 2rem;
+            background-color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        main .sizer span.back-button {
+            display: block;
+            margin-bottom: 1.2rem;
+            margin-top: 3rem;
+            background-color: #549b68;
+            border: .2rem solid #D9C6BC;
+            width: 10rem;
+            text-align: center;
+            line-height: 1.4;
+            cursor: pointer;
+            position: relative;
+        }
+        main .sizer span.back-button::before {
+            content: "";
+            display: inline;
+            position: absolute;
+            top: 1rem;
+            left: 1.6rem;
+            height: 0;
+            width: 0;
+            border-width: .6rem;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+            transition: all .15 ease;
+        }
+        /**/
+        /****/
+
+        /* FOOTER */
     
-    <link rel="stylesheet" href="./styles/general-components.css">
-    <link rel="stylesheet" href="./styles/top-bar.css">
-    <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/main-homepage.css">
-    <link rel="stylesheet" href="./styles/res-380px.css">
-    <link rel="stylesheet" href="./styles/res-700px.css">
-    <link rel="stylesheet" href="./styles/res-950px.css">
-    <link rel="stylesheet" href="./styles/res-1150px.css">
-    <link rel="stylesheet" href="./styles/res-1250px.css">
+        footer {
+            background-color: #d87943;
+            flex: 0 0 auto;
+        }
+        footer .sizer {
+            min-height: 8rem;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer .sizer span {
+            text-align: center;
+            line-height: 3rem;
+        }
+        /****/
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        /* ANA ELEMANLARI MEDİA QUERYLERİ */
+
+        @media screen and (min-width: 780px) {
+
+            html {
+                font-size: 11px;
+            }
+
+            #container > * {
+                width: 100vw;
+            }
+
+            .sizer {
+                max-width: 650px;
+            }
+
+            header {
+                --widthV: calc(100% - 620px);
+                --widthS: calc(var(--widthV) / 2);
+                --widthB: calc(var(--widthS) / 2);
+                /* background-image: linear-gradient(to right, #58a7d4, #58a7d4 var(--widthB), #1772a5 var(--widthS), #1772a5 calc(100% - var(--widthS)), #58a7d4 calc(100% - var(--widthB)), #58a7d4); */
+                background-image: linear-gradient(to right, #0d4260, #0d4260 var(--widthB), #156694 var(--widthS), #156694 calc(100% - var(--widthS)), #0d4260 calc(100% - var(--widthB)), #0d4260);
+            }
+
+            .nav-background {
+                --widthV: calc(100% - 620px);
+                --widthS: calc(var(--widthV) / 2);
+                --widthB: calc(var(--widthS) / 2); 
+                /* background-image: linear-gradient(to right, #7bfad7 ,  #7bfad7  var(--widthB), #5ca771 var(--widthS), #5ca771 calc(100% - var(--widthS)),  #7bfad7  calc(100% - var(--widthB)),  #7bfad7 ); */
+                /* background-image: linear-gradient(to right, #468257 ,  #468257  var(--widthB), #5ca771 var(--widthS), #5ca771 calc(100% - var(--widthS)),  #468257  calc(100% - var(--widthB)),  #468257 ); */
+                background-image: linear-gradient(to right, #3f754e ,  #3f754e  var(--widthB), #549b68 var(--widthS), #549b68 calc(100% - var(--widthS)),  #3f754e  calc(100% - var(--widthB)),  #3f754e );
+            }
+
+            footer {
+                --widthV: calc(100% - 620px);
+                --widthS: calc(var(--widthV) / 2);
+                --widthB: calc(var(--widthS) / 2); 
+                /* background-image: linear-gradient(to right, #7bfad7 ,  #7bfad7  var(--widthB), #5ca771 var(--widthS), #5ca771 calc(100% - var(--widthS)),  #7bfad7  calc(100% - var(--widthB)),  #7bfad7 ); */
+                background-image: linear-gradient(to right, #a95423 ,  #a95423  var(--widthB), #d87943 var(--widthS), #d87943 calc(100% - var(--widthS)),  #a95423  calc(100% - var(--widthB)),  #a95423 );
+            }
+
+            nav .fixed-arrow-top,
+            nav .fixed-arrow-bottom {
+                width: 650px;
+                left: 50vw;
+                transform: translateX(-50%);
+        }
+
+        }
+        /****/
+       
+
+        
+    </style>
 
 </head>
-<body class="fade homepage">
+
+<body>
+    
+    <div id="container">
 
         <header>
-
-            <div id="menu-logo" class="logo"><a href="/index.html"><span>Özlem</span><span>Yeşildal Başar</span></a></div>
-
-            <nav>
-                <ul>
-                    <li><a href="/furniture.html">Mobilyalar</a></li>
-                    <li><a href="/industrial-design.html">Ürün Tasarımları</a></li>
-                    <li><a href="/about.html">Hakkında</a></li>
-                    <li><a href="/contact.html">İletişim</a></li>
-                    <li class="brands"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-instagram"></i></a><a href="#"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </nav>
-
-            <!-- <footer>
-                <a href="/en">EN/TR</a>
-            </footer> -->
-
+            <div class="sizer">
+                <span id="logo" tabindex="0">TKM</span>
+                <div id="hamburger" tabindex="0">
+                    <span class="burger-closed"></span>
+                </div>  
+            </div>          
         </header>
 
-        <div id="top-bar"><span></span></div>
+        <nav class="nav-closed">
+
+            <div class="nav-background"></div>
+
+            <div id="front-menu" class="nav-page-closed">
+                <div class="fixed-arrow-top"></div>
+                <div class="flex-div"></div>
+                <div class="option">
+                    <span id="front-first" class="focusable">YENİ OYUN</span>
+                </div>
+                <div class="option">
+                    <span id="front-second" class="focusable">PUAN TABLOSU</span>
+                </div>
+                <div class="option">
+                    <span id="front-third" class="focusable">Zorluk</span>
+                </div>
+                <div class="option">
+                    <span id="front-fourth" class="focusable">Tuşdizimi</span>
+                </div>
+                <div class="option">
+                    <span id="front-fifth" class="focusable">EN</span>
+                </div>
+                <div class="flex-div"></div>
+                <div class="fixed-arrow-bottom"></div>
+            </div>
+
+            <div id="hardness-menu" class="nav-page-closed">
+                <div class="fixed-arrow-top"></div>
+                <div class="flex-div"></div>
+                <div class="option">
+                    <span id="hardness-first" class="focusable">Kolay</span>
+                </div>
+                <div class="option">
+                    <span id="hardness-second" class="focusable">Orta</span>
+                </div>
+                <div class="option">
+                    <span id="hardness-third" class="focusable">Zor</span>
+                </div>
+                <div class="option">&nbsp;</div>
+                <div class="option">
+                    <span id="menu-back-one" class="focusable"><span class="arrow">&nbsp;&nbsp;&nbsp;</span>GERİ&nbsp;&nbsp;</span>
+                </div>
+                <div class="flex-div"></div>
+                <div class="fixed-arrow-bottom"></div>
+            </div>
+
+            <div id="keybinds-menu" class="nav-page-closed">
+
+                <div class="fixed-arrow-top"></div>
+
+                <div class="flex-div"></div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Menü</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">Escape</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Geri</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">Backspace</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Yukarı</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">ArrowUp</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Yukarı 2</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">ArrowLeft</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Aşağı</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">ArrowDown</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Aşağı 2</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">ArrowRight</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Taş</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">KeyA</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Kağıt</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">Keys</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option flex-option">
+                    <div class="keybind-flex-div">
+                        <div class="spacer"></div>
+                        <div>
+                            <span class="focusable key">Makas</span>
+                        </div>                       
+                    </div>                    
+                    <div>
+                        <span class="colon">:</span>
+                    </div>
+                    <div class="keybind-flex-div">
+                        <div>
+                            <span class="keybind-div">KeyD</span>
+                        </div>                        
+                        <div class="spacer"></div>                        
+                    </div>                    
+                </div>
+
+                <div class="option">&nbsp;</div>
+
+                <div class="option">
+                    <span id="keybind-reset" class="focusable">
+                        Sıfırla
+                    </span>
+                </div>
+
+                <div class="option">&nbsp;</div>
+
+                <div class="option">
+                    <span id="menu-back-two" class="focusable"><span class="arrow">&nbsp;&nbsp;&nbsp;</span>GERİ&nbsp;&nbsp;</span>
+                </div>
+
+                <div class="flex-div"></div>
+
+                <div class="fixed-arrow-bottom"></div>
+
+                <div id="keybind-waiting-board" class="keybind-board-closed">
+                    Bir tuşa basın
+                </div>
+
+                <div id="keybind-warning-board" class="keybind-board-closed">
+                    Bu tuşu kullanamazsınız<br>
+                    <span class="ok-button">Tamam</span>
+                </div>
+
+            </div>
+
+        </nav>
 
         <main>
+            <div class="sizer">
+                <!-- <div style="height: 50px;"></div> -->
+                
+                <article id="game-definition">
+                    <h2>JavaScript Taş Kağıt Makas Oyunu</h2>
+                    <p>
+                        JavaScript motoruyla hazırlanmış, tarayıcı tabanlı taş kağıt makas oyununa hoşgeldiniz.
+                    </p>
+                    <p>
+                        Yeni oyuna başlayabilirsiniz ya da kaldığınız yerden devam edebilirsiniz.<!--
+                    --></p>
+                    <span class="button">Yeni Oyun</span>
+                    <span class="button">Oyuna Devam</span>
+                </article>
+                
+                <article id="history">
+                    <h2>Tarihçe</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos autem sapiente provident pariatur dolorum expedita quo. Sapiente, tenetur? Ipsa adipisci harum pariatur temporibus corrupti, perferendis laborum impedit iste consequatur. Ab?<!--
+                    --></p>
+                    <span class="button">Devamı</span>
+                </article>
+                
+                <article id="scoreboard">
+                    <h2>Son Puanınız</h2>
+                    <p>
+                        Henüz bir oyun oynamadınız.<!--
+                    --></p>
+                    <span class="button">Puan Tablosu</span>
+                </article>
 
-            <div id="content-logo" class="logo">
-                <span>Özlem</span><span>Yeşildal Başar</span>
+                <section id="mode-selection">
+                    <h3>Yeni Oyun</h3>
+                    <p>
+                        Tek bir oyun şeklinde mi yoksa ardışık oyunlu turnuva şeklinde mi oynamak istersiniz?
+                    </p>
+                    <span class="button">Tekli Oyun</span>
+                    <span class="button">Turnuva</span>
+                    <span class="back-button">&nbsp;Geri</span>
+                </section>
+
+                <section id="tour-count">
+                    <h3>Yeni Turnuva Oyunu</h3>
+                    <p>
+                        Turnuva oyununun kaç tur sürmesini istersiniz?
+                    </p>
+                    <span class="count-board">5</span>
+                    <span class="count-button">&nbsp;</span><!--
+                    --><span class="count-button">&nbsp;</span> <br>
+                    <span class="button">Devam</span> 
+                    <span class="back-button">&nbsp;Geri</span>
+                </section>
+
+                <section id="player-count">
+                    <h3>Oyuncu Sayısı</h3>
+                    <p>
+                        Oyunda kaç oyuncu olmasını istediğinizi seçin.
+                    </p>
+                    <span class="count-board">2</span>
+                    <span class="count-button">&nbsp;</span><!--
+                    --><span class="count-button">&nbsp;</span> <br>
+                    <span class="button">Oyunu Kur</span>
+                    <span class="back-button">&nbsp;Geri</span>
+                </section>
+
+                <section id="game-preface">
+                    <h3>&nbsp;</h3>
+                    <p>
+                        &nbsp;
+                    </p>
+                    <p>
+                        Oyuna devam 
+                    </p>
+                    <p>
+                        Çıkış
+                    </p>
+                </section>
+                
             </div>
-
-            <!-- <div class="image-div"></div> -->
-
-            <div id="hero-header">
-                <div class="image-div" style="opacity: 1;"></div>
-                <div class="image-div"></div>
-                <div class="image-div"></div>
-                <div class="image-div"></div>
-            </div>
-
-            <div id="hero-link" class="fade">
-                <a href="/industrial-design.html">
-                    <span>Ürün</span>
-                    <span></span>
-                    <span>Tasarımları</span>
-                </a>
-            </div>
-
-            <footer>
-                <span id="home-copy-small">&copy; 2022</span>
-                <span id="home-copy-large">Özlem Yeşildal Başar &copy; 2022</span>    
-            </footer>
-
         </main>
 
-    <script src="./scripts/page-main-components.js"></script>
-    <script src="./scripts/menu-switch.js"></script>
-    <script src="./scripts/homepage-slideshow.js"></script>
-    <script src="./scripts/page-load.js"></script>
+        <footer>
+            <div class="sizer">
+                <span>JavaScript Taş Kağıt Makas Oyunu &copy; 2020</span>
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+
+
+
+var container = document.querySelector('#container');
+
+var header = document.querySelector('header');
+var hamburger = document.querySelector('#hamburger');
+var hardnessButton = document.querySelector('#front-third');
+var keybindsButton = document.querySelector('#front-fourth');
+var menuBackOne = document.querySelector('#menu-back-one');
+var menuBackTwo = document.querySelector('#menu-back-two');
+
+var nav = document.querySelector('nav');
+var frontMenu = document.querySelector('#front-menu');
+var hardnessMenu = document.querySelector('#hardness-menu');
+var keybindsMenu = document.querySelector('#keybinds-menu'); 
+var keybindReset = document.getElementById('keybind-reset');
+
+var main = document.querySelector('main');
+
+
+/* Üstteki sıfırlamada kullanılan, alttaki de normal kullanılan tuşkilidi tuş veritabanı */
+
+var keyBindSource = [{keyCode: 27, key: 'Escape', code: 'Escape'}, 
+                     {keyCode: 8, key: 'Backspace', code: 'Backspace'}, 
+                     {keyCode: 38, key: 'ArrowUp', code: 'ArrowUp'}, 
+                     {keyCode: 37, key: 'ArrowLeft', code: 'ArrowLeft'}, {keyCode: 40, key: 'ArrowDown', code: 'ArrowDown'}, {keyCode: 39, key: 'ArrowRight', code: 'ArrowRight'}, 
+                     {keyCode: 65, key: 'a', code: 'KeyA'}, 
+                     {keyCode: 83, key: 's', code: 'KeyS'}, 
+                     {keyCode: 68, key: 'd', code: 'KeyD'}, 
+                     {keyCode: 13, key: 'Enter', code: 'Enter'}, 
+                     {keyCode: 9, key: 'Tab', code: 'Tab'}];
+
+var keyBindStorage = JSON.parse(JSON.stringify(keyBindSource));
+/**/
+
+/* EVENT LİSTENERLAR */
+
+
+
+
+
+
+/* Tuşdizimi değiştirme komutları */
+
+var keys = keybindsMenu.querySelectorAll('.key');
+var keyBindDivs = keybindsMenu.querySelectorAll('.keybind-div');
+
+var i, k, l, m, n, o, p, r, s, index, text;
+
+for (i = 0; i < keys.length; i++) {
+
+    keys[i].addEventListener('keydown', keyBindChangePress, false);
+    function keyBindChangePress(d) {
+
+        if (d.keyCode === keyBindStorage[9].keyCode ||
+            d.key === keyBindStorage[9].key) {
+            text = this.textContent;
+            keyBindChange(d);
+        }
+    }
+    keys[i].addEventListener('click', keyBindChange, false);
+}
+
+function okExecute(g) {
+    document.querySelector('#keybind-warning-board').className = 'keybind-board-closed';
+    window.removeEventListener('click', okExecute, true);
+    window.removeEventListener('keydown', okExecute, true);
+    g.preventDefault();
+    event.stopImmediatePropagation();
+}
+
+function changeExecute(p) {  
+
+    if (p.keyCode != 13 &&
+        p.key != 'Enter' &&
+        p.keyCode != 9 &&
+        p.key != 'Tab') {
+
+        keyBindStorage[index].keyCode = p.keyCode;
+        keyBindStorage[index].key = p.key;
+        keyBindStorage[index].code = p.code;
+
+        p.preventDefault();
+        document.querySelector('#keybind-waiting-board').className = 'keybind-board-closed';
+
+        keyBindDivs[index].textContent = p.code;        
+        
+        for (l = 0; l < 9; l++) {
+
+            if (l != index && keyBindDivs[l].textContent == p.code) {
+                keyBindDivs[l].textContent = '--';
+                keyBindStorage[l].keyCode = '';
+                keyBindStorage[l].key = '';
+                keyBindStorage[l].code = '';
+            }
+        }
+        window.removeEventListener('keydown', changeExecute, true);
+        window.removeEventListener('click', changeExecuteClick, true);
+        event.stopImmediatePropagation();
+
+    } else {       
+        document.querySelector('#keybind-waiting-board').className = 'keybind-board-closed';
+        document.querySelector('#keybind-warning-board').className = 'keybind-board-open';
+
+        p.preventDefault();
+        window.removeEventListener('keydown', changeExecute, true);
+        window.removeEventListener('click', changeExecuteClick, true);
+
+        window.addEventListener('click', okExecute, true);
+        window.addEventListener('keydown', okExecute, true);
+
+        event.stopImmediatePropagation();
+    }
+}
+
+function changeExecuteClick() {
+    document.querySelector('#keybind-waiting-board').className = 'keybind-board-closed';
+    window.removeEventListener('keydown', changeExecute, true);
+    window.removeEventListener('click', changeExecuteClick, true);
+    event.stopImmediatePropagation();
+}
+
+function keyBindChange(c) {
+    document.querySelector('#keybind-waiting-board').className = 'keybind-board-open';
+
+    if (text == undefined) {
+        text = this.textContent;
+    }
+    for (k = 0; k < 9; k++) {
+        if (text == keys[k].textContent) {
+            index = k;
+            break;
+        }            
+    }
+    text = undefined;
+    
+    window.addEventListener('keydown', changeExecute, true);
+    window.addEventListener('click', changeExecuteClick, true);
+    event.stopImmediatePropagation();
+}            
+/**/
+
+/* Tuşdizimi sıfırlama */
+
+keybindReset.addEventListener('click', resetKeys, false);
+keybindReset.addEventListener('keydown', function() {
+    if (event.keyCode == 13 || event.key == 'Enter') {
+        resetKeys();
+    }
+}, false);
+function resetKeys() {
+    keyBindStorage = JSON.parse(JSON.stringify(keyBindSource));
+    var m = -1;
+    while (++m < 9) {
+        keyBindDivs[m].textContent = keyBindSource[m].code;
+    }
+    document.activeElement.blur();
+}
+/**/
+
+
+
+
+/* Aşağı ve yukarı oklar ve okları tıklamayla aşağı ve yukarı scroll hareketi */
+
+var menuList = [frontMenu, hardnessMenu, keybindsMenu];
+
+function menuArrows(event, openPage) {
+    var activeMenuPage;
+    
+    if (openPage != undefined) {
+        activeMenuPage = openPage;
+    } else if (this != window) {
+        //activeMenuPage = nav.querySelector('.nav-page-open');
+        activeMenuPage = this;
+    } else if (this == window && nav.querySelector != undefined) {
+        activeMenuPage = nav.querySelector('.nav-page-open');
+    } 
+    var activeMenuPageArrowTop = activeMenuPage.querySelector('.fixed-arrow-top');
+    var activeMenuPageArrowBottom = activeMenuPage.querySelector('.fixed-arrow-bottom');
+
+    if (activeMenuPage.scrollTop >= 50) {
+        activeMenuPageArrowTop.style.display = 'block';
+    } else {
+        activeMenuPageArrowTop.style.display = 'none';
+    }   
+
+    if (activeMenuPage.scrollHeight - (activeMenuPage.scrollTop + activeMenuPage.clientHeight) >= 50) {
+        activeMenuPageArrowBottom.style.display = 'block';
+    } else {
+        activeMenuPageArrowBottom.style.display = 'none';
+    }  
+}
+
+for (m = 0; m < 3; m++) {
+    menuList[m].addEventListener('scroll', menuArrows, true);
+    menuList[m].querySelector('.fixed-arrow-top').addEventListener('click', function() {
+        this.parentElement.scrollBy({
+            top: -120,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, true);
+    menuList[m].querySelector('.fixed-arrow-bottom').addEventListener('click', function() {
+        this.parentElement.scrollBy({
+            top: 120,
+            left: 0,
+            behavior: 'smooth'
+        })
+    });
+}
+
+window.addEventListener('resize', function() {
+    if (document.querySelector('.nav-page-open') != undefined) {
+        menuArrows();
+    }
+}, true);
+/**/
+
+
+
+
+
+
+
+
+
+/* Menu içinde mouse ve enter butonu eventleri */
+
+hamburger.addEventListener('click', menu, false);
+hamburger.addEventListener('keydown', enteer, false);
+hamburger.pass = 'Hamburger';
+
+hardnessButton.addEventListener('click', menu, false);
+hardnessButton.addEventListener('keydown', enteer, false);
+hardnessButton.pass = 'Hardness Menu';
+
+keybindsButton.addEventListener('click', menu, false);
+keybindsButton.addEventListener('keydown', enteer, false);
+keybindsButton.pass = 'Keybinds Menu';
+
+menuBackOne.addEventListener('click', menu, false);
+menuBackOne.addEventListener('keydown', enteer, false);
+menuBackOne.pass = 'Menu Back One';
+
+menuBackTwo.addEventListener('click', menu, false);
+menuBackTwo.addEventListener('keydown', enteer, false);
+menuBackTwo.pass = 'Menu Back Two';
+
+header.addEventListener('click', menu, false);
+
+function enteer(g) {
+    if (g.keyCode === keyBindStorage[9].keyCode ||
+        g.key === keyBindStorage[9].key) {
+        menu(g);
+    }
+}
+/**/
+
+
+
+/* tabindex sayfa başlangıç variable ı */
+
+var tabI = 0;
+/**/
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+/* Sayfa üzerindeki (enter harici) tuşların etkileri */
+
+window.addEventListener('keydown', keyPress, false);
+
+function keyPress(e) {
+    var tabItems;
+
+    if (e.keyCode === keyBindStorage[0].keyCode || 
+        e.key === keyBindStorage[0].key) {
+        window.pass = 'Hamburger';
+        menu(event);        
+
+    } else if (e.keyCode === keyBindStorage[4].keyCode || 
+               e.keyCode === keyBindStorage[5].keyCode || 
+               e.key === keyBindStorage[4].key || 
+               e.key === keyBindStorage[5].key) {
+        tabItems = document.querySelectorAll('[tabindex]');
+                
+        if (document.activeElement.hasAttribute('tabindex') == false) {        
+            if (tabItems.length > 2) {
+                tabI = 1;
+            } else {
+                tabI = 0;
+            }          
+        } else {
+            for (n = 0; n < tabItems.length; n++) {
+                if (tabItems[n] === document.activeElement) {
+                    break;
+                }
+            }
+            if ((n + 1) >= tabItems.length) {
+                tabI = -1;
+            } else {
+                tabI = n;
+            }
+        }
+
+        tabI++;
+        focusMove();
+        event.preventDefault();
+        
+    } else if (e.keyCode === keyBindStorage[2].keyCode ||
+               e.keyCode === keyBindStorage[3].keyCode ||
+               e.key === keyBindStorage[2].key || 
+               e.key === keyBindStorage[3].key) {
+        tabItems = document.querySelectorAll('[tabindex]');
+
+        if (document.activeElement.hasAttribute('tabindex') == false) {        
+            if (tabItems.length > 2) {
+                tabI = tabItems.length;
+            } else {
+                tabI = 1;
+            }          
+        } else {
+            for (n = 0; n < tabItems.length; n++) {
+                if (tabItems[n] === document.activeElement) {
+                    break;
+                }
+            }
+            if (n === 0) {
+                tabI = tabItems.length;
+            } else {
+                tabI = n;
+            }
+        }
+        
+        tabI--;
+        focusMove();           
+        event.preventDefault();       
+
+    } else if (e.key == 'Tab' || e.keyCode == 9) {
+
+        /* Önemli detay -- Önce aşağıdaki kodları çalıştırıyor sonra sekme atlıyor */
+        tabItems = document.querySelectorAll('[tabindex]');
+
+        /* Aşağıdaki ilk if koşulu, browser butonlarından dosyaya ilk tab geçişini ifade ediyor. - çok önemli */ 
+
+        if (document.activeElement.hasAttribute('tabindex') == false) {
+            // if (tabItems.length > 2) {
+            //     tabI = 2;
+                
+            // } else {
+            //     tabI = 0;
+            // } Bunlardan vazgeçtim mozilladaki garip davranış yüzünden
+            tabI = 0;
+            focusMove();
+            event.preventDefault();
+
+        } else {
+            for (n = 0; n < tabItems.length; n++) {
+                if (tabItems[n] === document.activeElement) {
+                    break;
+                }
+            }
+            if (n + 1 >= tabItems.length) {
+                tabI = 0;
+
+            } else {
+                tabI = n + 1;
+                focusMove();
+                event.preventDefault();
+            }
+        }
+
+        /* Bu kod tab düğmesinin normal sekme kaydırma işlevini ortadan kaldırmak için */
+        //event.preventDefault();
+            
+    } else if (e.keyCode === keyBindStorage[1].keyCode || 
+               e.key === keyBindStorage[1].key) {
+
+        if (document.querySelector('nav').className == 'nav-open' &&
+            document.querySelector('#front-menu').className == 'nav-page-closed') {
+            window.pass = 'Menu Back Two';
+            menu(event);
+
+        } else if (document.querySelector('nav').className == 'nav-open') {
+            window.pass = '';
+            menu(event);
+
+        } else {
+            document.activeElement.blur();
+        }
+    } else {
+        event.preventDefault();
+    }
+
+    /* Aşağı ok, yukarı ok ve tab butonlarının sekme kaydırma hareketi ve hareket sırasında bulundukları eleman içinde ortaya getirilecek şekilde scroll edilmesi */
+
+    function focusMove() {
+
+        if ('scroll' in document.activeElement && 
+            'closest' in document.activeElement) {
+            tabItems[tabI].focus({preventScroll:true});
+            
+            var par = document.activeElement.closest('.option');
+
+            if (par != null) {
+                var point = par.offsetTop - keybindsMenu.clientHeight / 2 + document.activeElement.offsetHeight / 2;
+
+                keybindsMenu.scroll({
+                top: point,
+                left: 0,
+                behavior: 'smooth'
+                });
+            }
+        } else {
+            tabItems[tabI].focus();
+        }
+    }
+    /**/
+
+    // var amama = document.querySelector('main .sizer > div');
+    // amama.innerHTML = tabI;
+
+}
+
+/**/
+/****/
+
+
+
+/* MENÜ AÇMA KAPAMA */
+
+function menu(event) {
+    //var nav = document.querySelector('nav');
+    //var frontMenu = document.querySelector('#front-menu');
+    //var hardnessMenu = document.querySelector('#hardness-menu');
+
+    var enter = event.currentTarget.pass;
+    
+    function toggleNav(a, b, c, d) {  
+       var i, k, l;
+
+        if (a == open) {            
+            b.className = 'nav-page-open';  
+            b.scrollTop = 0;
+            menuArrows(event, b);
+
+            var openPageButtons = b.querySelectorAll('.option span.focusable');
+            
+            for (i = 0; i < openPageButtons.length; i++) {
+                openPageButtons[i].setAttribute('tabindex', '0');
+            } 
+        } else {
+            var closePageButtons = b.querySelectorAll('.option span.focusable');
+
+            for (i = 0; i < closePageButtons.length; i++) {
+                closePageButtons[i].removeAttribute('tabindex');
+            }
+            nav.className = 'nav-closed';
+            b.className = 'nav-page-closed';
+            document.body.style.overflowY = 'auto';
+            hamburger.firstElementChild.className = 'burger-closed';
+        }     
+      
+        var closedPageButtonsOne = c.querySelectorAll('.option span.focusable');
+        var closedPageButtonsTwo = d.querySelectorAll('.option span.focusable');
+
+        for (k = 0; k < closedPageButtonsOne.length; k++) {
+            closedPageButtonsOne[k].removeAttribute('tabindex');
+        }
+        for (l = 0; l < closedPageButtonsTwo.length; l++) {
+            closedPageButtonsTwo[l].removeAttribute('tabindex');
+        }
+
+        c.className = 'nav-page-closed'; 
+        d.className = 'nav-page-closed';         
+    }
+
+    if (this == hamburger || enter == 'Hamburger') {
+
+        if (nav.className == 'nav-closed') {
+            nav.className = 'nav-open';
+            document.body.style.overflowY = 'hidden';
+            hamburger.firstElementChild.className = 'burger-open';
+            toggleNav(open, frontMenu, hardnessMenu, keybindsMenu);
+        } else {
+            toggleNav(close, frontMenu, hardnessMenu, keybindsMenu);
+        }
+    } else if (this ==  hardnessButton || enter == 'Hardness Menu') {
+        toggleNav(open, hardnessMenu, frontMenu, keybindsMenu);
+    } else if (this == keybindsButton || enter == 'Keybinds Menu') {
+        //keybindsMenu.scrollTop = 0;
+        //fixedArrowTop.style.display = 'block';
+        toggleNav(open, keybindsMenu, frontMenu, hardnessMenu);
+    } else if (this == menuBackOne || enter == 'Menu Back One') {
+        toggleNav(open, frontMenu, hardnessMenu, keybindsMenu);
+    } else if (this == menuBackTwo || enter == 'Menu Back Two') {
+        toggleNav(open, frontMenu, hardnessMenu, keybindsMenu);
+    } else {
+        toggleNav(close, frontMenu, hardnessMenu, keybindsMenu);
+    }
+
+    //enter = '';
+    //container.scrollTop = 0;    
+    event.stopPropagation();
+    
+    document.activeElement.blur();
+
+    
+    //tabI = 1;
+    /**/
+}
+/****/
+
+
+
+
+
+
+
+
+
+var mainPageArticles = main.querySelectorAll('article');
+var mainPageSections = main.querySelectorAll('section');
+
+var newGameButton = mainPageArticles[0].querySelector('span:nth-of-type(1)');
+newGameButton.toggle = mainPageSections[0];
+newGameButton.addEventListener('click', pageToggle);
+
+// Burdaki variable lar oyunun referans parametreleri
+var gameMode, tourCount = 5, playerCount = 2,
+    playersDatabase = ['Adem', 'Hakkı', 'Bulut', 'Hakiki', 'Kayseri', 'Cantık', 'Nasılsın', 'Hasan', 'Göktan', 'Hüseyin',
+                       'Resim', 'Itır', 'Eker', 'Eken', 'Ekmeyen', 'Asık', 'Surat', 'Gülen', 'Gülmeyen', 'Öcü',
+                       'Moruk', 'Bunak', 'Harun', 'Behzat', 'İsmet', 'Akbaba', 'Hayri', 'Hayalet', 'Savcı', 'Esra',
+                       'Tahsin', 'Müdür', 'Peder', 'Valide', 'Lari', 'Vali', 'Kaymakam', 'Bey', 'Meskun', 'Mahal',
+                       'Hacı', 'Emekli', 'Baba', 'Türbe', 'Yedi', 'Numara', 'Kırk', 'Öküz', 'Pide', 'Kastamonu', 
+                       'Taşköprü', 'Sarmısak', 'Azdavay', 'Daday', 'Azdaday', 'Side', 'Cide', 'Boz', 'Pınarbaşı', 'Araç',
+                       'Etli', 'Ekmek', 'Tirit', 'Köy', 'Kasaba', 'Şehir', 'Ahmet', 'Adnan', 'Çağan', 'Çağatay',
+                       'Efe', 'Ege', 'Arda', 'Deniz', 'Doruk', 'Ümit', 'Özlem', 'Nilüfer', 'Cumhuriyet', 'Adalet',
+                       'Mahkeme', 'Ecinni', 'Hukuk', 'Avukat', 'Dava', 'Mübaşir', 'Oturum', 'Karton', 'Erdem', 'Ekrem',
+                       'Lamel', 'Lam', 'Hemato', 'Dahiliye', 'Pediatri', 'Objektif', 'Orhan', 'Caner', 'Gül'];
+
+// Aşağıdaki variable lar oyunlarda belirlenen parametreler 
+var playersArray, groupCount, 
+    groups = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+
+/* Section[0] Yeni oyun sayfasının butonları */
+
+var singleGameButton = mainPageSections[0].querySelector('span:nth-of-type(1)');
+singleGameButton.toggle = mainPageSections[2];
+singleGameButton.mode = 'single';
+singleGameButton.addEventListener('click', pageToggle);
+
+var tournamentButton = mainPageSections[0].querySelector('span:nth-of-type(2)');
+tournamentButton.toggle = mainPageSections[1];
+tournamentButton.mode = 'tournament';
+tournamentButton.addEventListener('click', pageToggle);
+
+var newGameBackButton = mainPageSections[0].querySelector('span.back-button');
+newGameBackButton.toggle = [mainPageArticles[0], mainPageArticles[1], mainPageArticles[2]];
+newGameBackButton.addEventListener('click', pageToggle);
+/**/
+
+/* Section[1] yani turnuva sayfası */
+
+var tournamentContinue = mainPageSections[1].querySelector('span:nth-of-type(4)');
+tournamentContinue.toggle = mainPageSections[2];
+tournamentContinue.addEventListener('click', pageToggle);
+
+var tournamentBackButton = mainPageSections[1].querySelector('span.back-button');
+tournamentBackButton.toggle = mainPageSections[0];
+tournamentBackButton.addEventListener('click', pageToggle);
+
+var tournamentAdd = mainPageSections[1].querySelector('span:nth-of-type(3)');
+tournamentAdd.addEventListener('click', function() {
+    if (tourCount < 12) {
+        tourCount++;
+        mainPageSections[1].querySelector('span:nth-of-type(1)').textContent = tourCount;
+    }
+});
+
+var tournamentSubtract = mainPageSections[1].querySelector('span:nth-of-type(2)');
+tournamentSubtract.addEventListener('click', function() {
+    if (tourCount > 2) {
+        tourCount--;
+        mainPageSections[1].querySelector('span:nth-of-type(1)').textContent = tourCount;
+    }
+});
+/**/
+
+/* Section[2] Oyuncu sayısı belirleme sayfası */
+
+var playerCountBackButton = mainPageSections[2].querySelector('span.back-button');
+playerCountBackButton.addEventListener('click', function() {
+    if (gameMode === 'single') {
+        this.toggle = mainPageSections[0];
+    } else {
+        this.toggle = mainPageSections[1];
+    }
+    pageToggle(event);
+});
+
+var playerCountAdd = mainPageSections[2].querySelector('span:nth-of-type(3)');
+playerCountAdd.addEventListener('click', function() {
+    if (playerCount < 100) {
+        playerCount++;
+        mainPageSections[2].querySelector('span:nth-of-type(1)').textContent = playerCount;
+    }
+});
+
+var playerCountSubtract = mainPageSections[2].querySelector('span:nth-of-type(2)');
+playerCountSubtract.addEventListener('click', function() {
+    if (playerCount > 2) {
+        playerCount--;
+        mainPageSections[2].querySelector('span:nth-of-type(1)').textContent = playerCount;
+    }
+});
+
+// Oyuncu sayısını belirlemedeki devam (ya da oyunu kur) butonuna bastıktan sonra yeni oyun parametreleri hazırlanmış olan playerCount ve tourCount variable ları ile yeniden belirlenir.
+var playerCountContinue = mainPageSections[2].querySelector('span:nth-of-type(4)');
+playerCountContinue.toggle = mainPageSections[3];
+
+playerCountContinue.addEventListener('click', function() {
+    var tempArray = [];
+    var highestIndex = playersDatabase.length;    
+
+    while (playersDatabase.length !== 0) {
+        var removedIndex = Math.floor(Math.random() * playersDatabase.length);
+        tempArray.push(playersDatabase[removedIndex]);
+        playersDatabase.splice(removedIndex, 1);
+    }
+    playersDatabase = tempArray;
+    tempArray = [];
+    playersArray = [];
+
+    for (s = 0; s < playerCount - 1; s++) {
+        playersArray[s] = playersDatabase[s];
+    }
+    //playersArray.unshift('Player');
+    playersArray.splice(Math.floor(Math.random() * playerCount), 0, 'Player');
+
+    //var tempCount;
+    if (playerCount <= 7) {
+        groupCount = 1;
+    } else if (playerCount % 7 === 0) {
+        groupCount = playerCount / 7;
+    } else {
+        groupCount = Math.floor(playerCount / 7) + 1;
+    }
+    
+    for (s = 0; s < playersArray.length; s++) {
+        groups[(s + 1) % groupCount].push(playersArray[s]);
+    }
+
+    for (s = 0; s < groupCount; s++) {
+        var element = document.createElement('p');
+        for (i = 0; i < groups[s].length; i++) {
+            groups[s][i] = ' ' + groups[s][i];
+        }
+        var text = document.createTextNode('Grup ' + (s + 1) + ' oyuncuları:' + groups[s]);
+        element.appendChild(text);
+        mainPageSections[3].appendChild(element);
+    }
+
+    pageToggle(event);
+});
+/**/
+
+
+
+
+function pageToggle(event) {
+    var evt = event.currentTarget;
+    for (o = 0; o < mainPageArticles.length; o++) {
+        mainPageArticles[o].style.display = 'none';
+    }
+    for (p = 0; p < mainPageSections.length; p++) {
+        mainPageSections[p].style.display = 'none';
+    }
+
+    if (evt.mode != undefined) {
+        gameMode = evt.mode;
+    }
+
+    if (Array.isArray(evt.toggle)) {
+        for (r = 0; r < evt.toggle.length; r++) {
+            evt.toggle[r].style.display = 'block';
+        }
+    } else {
+        evt.toggle.style.display = 'block';
+    }
+
+    if (evt.toggle === mainPageSections[3]) {
+        var gameHead = mainPageSections[3].querySelector('h3');
+        if (gameMode === 'single') {
+            gameHead.textContent = 'Tekli oyun';
+        } else {
+            gameHead.textContent = 'Turnuva oyunu - 0/' + tourCount + ' tur oynandı';
+        }
+        var playerCountHead = mainPageSections[3].querySelector('p:first-of-type');
+        
+        playerCountHead.textContent = 'Toplam ' + playerCount + ' oyuncu';
+        if (groupCount > 1) {
+            playerCountHead.textContent += ', ' + groupCount + ' grup';
+        }
+    }    
+}
+
+
+
+// var singleGame = document.querySelector('#mode-selection span:nth-of-type(1)');
+// singleGame.mode = 'single';
+// tournament.mode = 'tournament';
+// var gameMode;
+
+// singleGame.addEventListener('click', gameModeSelect);
+// tournament.addEventListener('click', gameModeSelect);
+
+// function gameModeSelect() {
+//     gameMode = this.mode;
+//     document.querySelector('#mode-selection p').textContent = gameMode;   
+// }
+
+// var tourCount = 5;
+// var tourCountSpans = document.querySelectorAll('#tour-count span');
+
+// tourCountSpans[2].addEventListener('click', function() {
+//     if (tourCount < 12) {
+//         tourCount++;
+//         tourCountSpans[0].textContent = tourCount;
+//     }     
+// });
+// tourCountSpans[1].addEventListener('click', function() {
+//     if (tourCount > 2) {
+//         tourCount--;
+//         tourCountSpans[0].textContent = tourCount;
+//     }   
+// });
+
+
+// var playerCount = 2;
+// var playerCountSpans = document.querySelectorAll('#player-count span');
+
+// playerCountSpans[2].addEventListener('click', function() {
+//     if (playerCount < 100) {
+//         playerCount++;
+//         playerCountSpans[0].textContent = playerCount;
+//     }
+// });
+// playerCountSpans[1].addEventListener('click', function() {
+//     if (playerCount > 2) {
+//         playerCount--;
+//         playerCountSpans[0].textContent = playerCount;
+//     }
+// })
+
+
+
+
+    </script>
 
 </body>
+
 </html>

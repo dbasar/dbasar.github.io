@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page navigation</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        html, 
+        body {
+            width: 100%;
+        }
+
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 18px;
+            line-height: 1.5;
+
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #eee;
+        }
+        header .bottom {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            //width: 100%;
+            background-color: #579;
+        }
+        
+        nav {
+            display: flex;
+        }
+        nav > * {
+            padding: 15px;
+            //margin-left: 20px;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+        }
+        nav > *:hover {
+            text-decoration: underline;
+        }
+        
+        main {
+            padding: 20px 40px;
+        }
+        
+        article {
+            padding-top: 90px;
+        }
+        h3 {
+            margin-bottom: 23px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <div id="logo">Zımbırtı</div>
+        <nav>
+            <a href="#first-subdivision">First</a>
+            <a href="#second-subdivision">Second</a>
+            <a href="#third-subdivision">Third</a>
+            <a href="#fourth-subdivision">Fourth</a>
+            <a href="#fifth-subdivision">Fifth</a>
+        </nav>
+        <div class="bottom"></div>
+    </header>
+    <main>
+        <article id="first-subdivision">
+            <h3>First Subdivision</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint voluptate quo quae quis obcaecati temporibus cum eum pariatur officiis nam deleniti laborum laboriosam quisquam esse ducimus, officia odit debitis ab?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, rem.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam inventore saepe facere natus ducimus, vitae sit dolorum rerum ullam dolorem.
+            </p>
+        </article>
+
+        <article id="second-subdivision">
+            <h3>Second Subdivision</h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi sunt enim, tempora velit consectetur quidem architecto cumque maxime mollitia voluptas quo suscipit officiis dolore molestias quos nostrum illo a facilis.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi labore quo praesentium quibusdam! Molestias suscipit saepe distinctio est odit itaque dignissimos nesciunt? Nam quibusdam quos, iure blanditiis temporibus perspiciatis nostrum?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore repudiandae doloribus, dicta nisi maxime non!
+            </p>
+        </article>
+
+        <article id="third-subdivision">
+            <h3>Third Subdivision</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quia, maxime autem nobis ea odit est pariatur ullam laboriosam quis, sed a, harum veniam? Non sit eveniet labore rem omnis.
+            </p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quis.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, et vitae fugit delectus dolorum sit asperiores porro itaque est deleniti pariatur dignissimos nisi iusto ad. Inventore, rerum quidem perspiciatis, provident voluptate sapiente quae optio perferendis corrupti itaque numquam aut?
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, repellat?
+            </p>
+        </article>
+
+        <article id="fourth-subdivision">
+            <h3>Fourth Subdivision</h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. In cumque atque architecto doloremque reiciendis laudantium culpa magnam iure fugiat, esse ducimus impedit. Necessitatibus minus eius vero praesentium numquam eveniet cupiditate?
+            </p>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur veritatis nulla magni nisi, ipsum suscipit?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis veniam amet rerum molestiae adipisci eligendi, dolore, consectetur velit impedit voluptas incidunt cum ex recusandae laudantium.
+            </p>
+        </article>
+
+        <article id="fifth-subdivision">
+            <h3>Fifth Subdivision</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quo debitis quibusdam neque fugiat saepe. Commodi harum voluptatem impedit, soluta quaerat dignissimos nesciunt officia consequuntur ullam eligendi a facilis illo.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt odio nemo distinctio eligendi repellendus beatae tenetur aspernatur praesentium doloribus quod molestias necessitatibus commodi, amet numquam ut qui nobis debitis laborum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate a sed corrupti neque aliquam saepe?
+            </p>
+            <P>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ducimus eligendi ratione ut saepe doloremque quos ipsam nesciunt aliquam. Rerum ea voluptas nulla. Labore corporis, officiis blanditiis fugit doloribus obcaecati.
+            </P>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium necessitatibus a hic facere, accusantium recusandae sequi quas perferendis ad, tempore, deserunt voluptas eligendi architecto optio numquam voluptatum explicabo ducimus exercitationem.
+            </p>
+        </article>
+
+    </main>
+
+    <script type="text/javascript">
+
+const logo = document.getElementById('logo');
+const main = document.querySelector('main');
+const firstSubdivision = document.getElementById('first-subdivision');
+const secondSubdivision = document.getElementById('second-subdivision');
+const thirdSubdivision = document.getElementById('third-subdivision');
+const fourthSubdivision = document.getElementById('fourth-subdivision');
+const fifthSubdivision = document.getElementById('fifth-subdivision');
+
+const links = document.querySelectorAll('nav > *');
+
+let height, place;
+
+window.addEventListener('scroll', loreley, false)
+
+function loreley() {  
+    height = document.documentElement.scrollHeight;
+    place = document.documentElement.scrollTop;
+    
+    let gradient = height - document.body.clientHeight;
+    let location = Math.ceil(place); 
+    let percent = location / gradient * 100;
+    logo.innerText = place + ' ' ;
+
+    document.querySelector('header .bottom').style.width = percent + '%';
+
+    let i = -1;
+
+    while (++i < 5) {
+        links[i].style.borderTopColor = '';
+    }
+
+    if (place >= firstSubdivision.offsetTop &&
+        place < secondSubdivision.offsetTop - 10) {
+        logo.innerText += ' ' + firstSubdivision.getBoundingClientRect().top;
+        links[0].style.borderTopColor = 'red';
+    } else if (place >= secondSubdivision.offsetTop - 10 &&
+               place < thirdSubdivision.offsetTop - 10) {
+                
+        links[1].style.borderTopColor = 'red';
+    } else if (place >= thirdSubdivision.offsetTop - 10 &&
+               place < fourthSubdivision.offsetTop - 10) {
+                
+        links[2].style.borderTopColor = 'red';
+    } else if (place >= fourthSubdivision.offsetTop - 10 &&
+               place < fifthSubdivision.offsetTop - 10) {
+                
+        links[3].style.borderTopColor = 'red';
+    } else if (place >= fifthSubdivision.offsetTop - 10) {
+                
+        links[4].style.borderTopColor = 'red';
+    }
+}
+    
+    
+    </script>
+</body>
+</html>

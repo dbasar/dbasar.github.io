@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DorukPen</title>
+
+    <style> 
+    
+        body {
+            background-color: aquamarine;
+        }
+
+        iframe {
+            border: 1px solid gray;
+            background-color: white;
+        }
+    
+    </style>
+
+</head>
+<body>
+    <!--
+    <iframe src="../../../index.html" frameborder="0"></iframe>
+    <iframe src="../../dfgh.html" frameborder="0"></iframe>
+        -->
+
+    <iframe id="result-frame" srcdoc="" frameborder="0"></iframe>
+
+    <div id="text-area" contenteditable="true">asdf</div>
+
+    <p>
+        Bu örnek kusursuz bir örnek olmadı çünkü her yazı girişinde tarayıcıda bir yenilenme oluyor. 
+    </p>
+
+    <script>
+
+        const resultFrame = document.getElementById('result-frame');
+
+        let preText = '<!DOCTYPE html><html><body>';
+        let postText = '</body></html>';
+
+        const textArea = document.getElementById('text-area');
+
+        textArea.addEventListener('input', function() {
+            let currentContent = textArea.innerText;
+            let totalContent = preText + currentContent + postText;
+            resultFrame.setAttribute('srcdoc', totalContent);
+        });
+
+    </script>
+
+</body>
+</html>

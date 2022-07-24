@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            margin: 0;
+            font-size: 7px;
+        }
+
+        @media screen and (min-width: 400px) {
+
+            html {
+                font-size: 8px;
+            }
+
+        }
+
+        @media screen and (min-width: 800px) {
+
+            html {
+                font-size: 10px;
+            }
+
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-size: 3rem;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        #main {
+            margin: auto;
+            height: 50rem;
+            width: 40rem;
+            background-color: aliceblue;
+            border: .2rem solid lightblue;
+            border-radius: 1rem;
+            padding: 0.5rem;
+        }
+
+        .row {
+            display: flex;
+            height: 16.6666%;
+        }
+        
+        #screen {
+            border: .2rem solid lightblue;
+            border-radius: 1rem;
+            margin: 0.5rem;
+            width: 100%;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            background-color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .button {
+            border: .2rem solid lightblue;
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0.5rem;
+            border-radius: 1rem;
+            background-color: #91D4D1;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+       
+        .bigger-font {
+            font-size: 4rem;
+        }
+
+        .button:active {
+            font-size: 2.4rem;
+            background-color: rgb(87, 241, 169);
+        }
+
+        @media (pointer: fine) {
+
+            .button:hover {
+                background-color: rgb(87, 241, 169);
+            }
+
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <div id="main">
+
+        <div id="screen-container" class="row">
+            <div id="screen">0</div>
+        </div>
+
+        <div class="row">
+            <div class="button" id="button-left-paranthesis">&#40;</div>
+            <div class="button" id="button-right-paranthesis">&#41;</div>
+            <div class="button" id="button-percantile">&#37;</div>
+            <div class="button" id="button-clear">&#65;&#67;</div>
+        </div>
+
+        <div class="row">
+            <div class="button" id="button-seven">&#55;</div>
+            <div class="button" id="button-eight">&#56;</div>
+            <div class="button" id="button-nine">&#57;</div>
+            <div class="button bigger-font" id="button-addition">&#43;</div>
+        </div>
+
+        <div class="row">
+            <div class="button" id="button-four">&#52;</div>
+            <div class="button" id="button-five">&#53;</div>
+            <div class="button" id="button-six">&#54;</div>
+            <div class="button bigger-font" id="button-subtraction">&minus;</div>
+        </div>
+
+        <div class="row">
+            <div class="button" id="button-one">&#49;</div>
+            <div class="button" id="button-two">&#50;</div>
+            <div class="button" id="button-three">&#51;</div>
+            <div class="button bigger-font" id="button-division">&#47;</div>
+        </div>
+
+        <div class="row">
+            <div class="button bigger-font" id="button-equals">&#61;</div>
+            <div class="button" id="button-zero">&#48;</div>
+            <div class="button bigger-font" id="button-dot">&#46;</div>
+            <div class="button bigger-font" id="button-multiplication">&lowast;</div>
+        </div>
+
+    </div>
+
+    <script>
+
+// Ekran elemanı
+
+const screen = document.getElementById('screen');
+
+
+// Bütün butonların elemanları
+
+const buttonOne = document.getElementById('button-one');
+const buttonTwo = document.getElementById('button-two');
+const buttonThree = document.getElementById('button-three');
+const buttonFour = document.getElementById('button-four');
+const buttonFive = document.getElementById('button-five');
+const buttonSix = document.getElementById('button-six');
+const buttonSeven = document.getElementById('button-seven');
+const buttonEight = document.getElementById('button-eight');
+const buttonNine = document.getElementById('button-nine');
+const buttonZero = document.getElementById('button-zero');
+
+const buttonAddition = document.getElementById('button-addition');
+const buttonSubtraction = document.getElementById('button-subtraction');
+const buttonDivision = document.getElementById('button-division');
+const buttonMultiplication = document.getElementById('button-multiplication');
+const buttonClear = document.getElementById('button-clear');
+const buttonEquals = document.getElementById('button-equals');
+const buttonDot = document.getElementById('button-dot');
+const buttonLeftParanthesis = document.getElementById('button-left-paranthesis');
+const buttonRightParanthesis = document.getElementById('button-right-paranthesis');
+const buttonPercantile = document.getElementById('button-percantile');
+
+
+// Ara değişkenler
+
+let result;
+let calculated = false;
+let paranthesisCount = 0;
+let lastChar;
+let screenText;
+
+
+// Butonların event listener ları
+
+buttonClear.addEventListener('click', function() {
+    input('clear');
+});
+
+buttonOne.addEventListener('click', function() {
+    input('1');
+});
+buttonTwo.addEventListener('click', function() {
+    input('2');
+});
+buttonThree.addEventListener('click', function() {
+    input('3');
+});
+buttonFour.addEventListener('click', function() {
+    input('4');
+});
+buttonFive.addEventListener('click', function() {
+    input('5');
+});
+buttonSix.addEventListener('click', function() {
+    input('6');
+});
+buttonSeven.addEventListener('click', function() {
+    input('7');
+});
+buttonEight.addEventListener('click', function() {
+    input('8');
+});
+buttonNine.addEventListener('click', function() {
+    input('9');
+});
+buttonZero.addEventListener('click', function() {
+    input('0');
+});
+
+buttonAddition.addEventListener('click', function() {
+    input('+');
+});
+buttonSubtraction.addEventListener('click', function() {
+    input('-');
+});
+buttonDivision.addEventListener('click', function() {
+    input('/');
+});
+buttonMultiplication.addEventListener('click', function() {
+    input('*');
+});
+buttonDot.addEventListener('click', function() {
+    input('.');
+});
+buttonLeftParanthesis.addEventListener('click', function() {
+    input('(');
+});
+buttonRightParanthesis.addEventListener('click', function() {
+    input(')');
+});
+buttonPercantile.addEventListener('click', function() {
+    input('%');
+})
+
+buttonEquals.addEventListener('click', calculate);
+
+
+// Karakter ekleme fonksiyonu
+
+function input(event) {
+
+    lastChar = screen.innerText.charAt(screen.innerText.length - 1);
+    
+    switch(event) {
+
+        case 'clear':
+            screen.innerText = 0;
+            calculated = false;
+            paranthesisCount = 0;
+            break;
+
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '0':
+            if (screen.innerText === '0' ||
+                calculated) {
+                calculated = false;
+                screen.innerText = event;
+            } else if (lastChar === '+' ||
+                       lastChar === '-' ||
+                       lastChar === '/' ||
+                       lastChar === '*') {
+                screen.innerText += ' ' + event;
+            } else if (lastChar === ')' ||
+                       lastChar === '%') {
+                screen.innerText += ' * ' + event;
+            } else {
+                screen.innerText += event;
+            }
+            break;     
+
+        case '+':
+        case '-':
+        case '/':
+        case '*':
+            if (lastChar !== '+' &&
+                lastChar !== '-' &&
+                lastChar !== '/' &&
+                lastChar !== '*' &&
+                lastChar !== '(') {
+                calculated = false;
+                screen.innerText += ' ' + event;
+            }
+            break;
+
+        case '.':
+            if (screen.innerText === '0' ||
+                calculated) {
+                    calculated = false;
+                    screen.innerText = '0' + event;
+            } else if (lastChar === '+' ||
+                       lastChar === '-' ||
+                       lastChar === '/' ||
+                       lastChar === '*') {
+                screen.innerText += ' 0' + event;
+            } else if (lastChar === ')' ||
+                       lastChar === '%') {
+                screen.innerText += ' * 0' + event;
+            } else {
+                let i = (screen.innerText.length - 1);
+                for (i; i > -1; i--) {
+                    if (screen.innerText[i] === '.') {
+                        break;
+                    } else if (screen.innerText[i] === ' ' || i === 0) {
+                        screen.innerText += event;
+                        break;
+                    }
+                }                
+            }
+            break;
+
+        case '(':
+            paranthesisCount++;
+            calculated = false;
+
+            if (screen.innerText === '0') {
+                screen.innerText = event;
+            } else if (lastChar === '+' ||
+                       lastChar === '-' ||
+                       lastChar === '/' ||
+                       lastChar === '*') {
+                screen.innerText += ' ' + event;
+            } else if (lastChar === '(') {
+                screen.innerText += event;
+            } else {
+                screen.innerText += ' * ' + event;
+            }
+            break;
+         
+        case ')':
+            if (paranthesisCount > 0) {
+                if (screen.innerText !== '0' &&
+                    lastChar !== '+' &&
+                    lastChar !== '-' &&
+                    lastChar !== '/' &&
+                    lastChar !== '*' &&
+                    lastChar !== '(') {
+                    screen.innerText += event;
+                    paranthesisCount--;
+                }
+            }
+            break;
+
+        case '%':            
+            if (calculated) {
+                calculated = false;
+                screen.innerText += event;
+            } else if (lastChar !== '+' &&
+                       lastChar !== '-' &&
+                       lastChar !== '/' &&
+                       lastChar !== '*' &&
+                       lastChar !== '(' &&
+                       lastChar !== '%') {
+                screen.innerText += event;
+            }
+    }    
+}
+
+// Hesaplama fonksiyonu
+
+function calculate() {
+
+    lastChar = screen.innerText.charAt(screen.innerText.length - 1);
+
+    if (lastChar !== '+' &&
+        lastChar !== '-' &&
+        lastChar !== '/' &&
+        lastChar !== '*' &&
+        lastChar !== '(') {
+
+        let tempString = screen.innerText.replace(/%/g, '/100');
+
+        if (paranthesisCount > 0) {
+            while (paranthesisCount !== 0) {
+                tempString += ')';
+                paranthesisCount--;
+            }
+        }
+
+        calculated = true;
+        screen.innerText = eval(tempString);
+    }    
+}
+
+
+// alert(Function('"use strict";return (' + '0. * 3' + ')')());
+
+
+/* 0.1 * 3 === 0.300000000004 yapıyor. Bu neden böyle oluyor? 
+
+https://betterprogramming.pub/why-is-0-1-0-2-not-equal-to-0-3-in-most-programming-languages-99432310d476
+
+bu sayfada biraz açıklıyor */
+
+
+
+
+    </script>
+    
+</body>
+</html>
