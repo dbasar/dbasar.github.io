@@ -7,7 +7,6 @@
 */
 
 @media screen and (min-width: 700px) {
-
     
     html {
         font-size: 8px;
@@ -24,11 +23,27 @@
         display: none;
     }
 
+
+    body.homepage main #content-logo {
+        display: none;
+    }
+    body.homepage main #hero-link {
+        top: 6rem;
+    }
+    body.homepage main footer #home-copy-small {
+        display: none;
+    }
+    body.homepage main footer #home-copy-large {
+        display: inline;
+    }
+
+
     body.subpage main,
     body.homepage main {
         margin-left: 32rem;
         width: auto;
     }
+
 
     body.subpage main {
         padding-top: 50vh;
@@ -45,22 +60,9 @@
     } */
     body.subpage main::before {
         inset: 0;
-        background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(75vh, rgba(60, 60, 60, 0.9)), to(rgba(60, 60, 60, 0.9)));
         background: -o-linear-gradient(top, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
+        background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(75vh, rgba(60, 60, 60, 0.9)), to(rgba(60, 60, 60, 0.9)));
         background: linear-gradient(to bottom, transparent, rgba(60, 60, 60, 0.9) 75vh, rgba(60, 60, 60, 0.9));
-    }
-
-    body.homepage #content-logo {
-        display: none;
-    }
-    body.homepage #hero-header .image-link {
-        top: 6rem;
-    }
-    body.homepage #home-copy #home-copy-small {
-        display: none;
-    }
-    body.homepage #home-copy #home-copy-large {
-        display: inline;
     }
 
 
@@ -72,6 +74,10 @@
     }
     body.subpage main #modal figure img {
         max-height: 70vh;
+    }
+
+    body.subpage main address a[href^="tel"] {
+        pointer-events: none;
     }
 
 }
