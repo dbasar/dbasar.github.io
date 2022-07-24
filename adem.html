@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Doruk Başar">
+    <title>Başlık</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 10px;
+        }
+        @media screen and (min-width: 1200px) {
+            html {
+                font-size: 12px;
+            }            
+        }
+
+        body {
+            font-size: 1.6rem;
+            color: rgb(60,60,60);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            height: 10rem;
+            background-color: aquamarine;
+        }
+
+        main {
+            padding: 1rem;
+        }
+        @media screen and (min-width: 1000px) {
+            main {
+                padding: 1.5rem;
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            main {
+                padding: 2.4rem;
+            }
+        }
+
+
+        #selections .viewport-long {
+            display: none;
+        }
+        @media screen and (min-width: 1000px) {
+            #selections .viewport-short {
+                display: none;
+            }
+            #selections .viewport-long {
+                display: block;
+            }
+        }
+        
+
+
+
+        #selections {
+            display: none;
+        }
+        
+
+        
+
+        #selections > * {
+            width: 100%;
+            display: flex;
+            margin-bottom: 1rem;
+            height: 3rem;
+            align-items: center;
+        }
+        @media screen and (min-width: 1000px) {
+            #selections > * {
+                height: 4rem;
+            }
+        }
+        #selections > * > div.first-column {
+            flex-basis: 10%;
+            flex-grow: 0;
+            /* flex-shrink: 0;
+            display: flex;
+            padding: .5rem;
+            align-items: center; */
+        }
+        /* #selections > *:nth-child(even) > div.first-column {
+            background-color: wheat;
+        } */
+        /* #selections > * > div.first-column span {
+            background-color: brown;
+            color: white;
+            width: 80%;
+            padding: .6rem;
+            /* border-radius: .5rem; */
+        
+        #selections > * > div.second-column {
+            flex: 0 0 75%;
+            display: flex;
+        }
+        #selections > * > div.third-column {
+            flex: 0 0 15%;
+            display: flex;
+            height: 80%;
+        }        
+        @media screen and (min-width: 1000px) {
+            #selections > * > div.second-column {
+                flex: 0 0 80%;
+            }
+            #selections > * > div.third-column {
+                flex: 0 0 10%;
+            }        
+        }
+        @media screen and (min-width: 1200px) {
+            #selections > * > div.second-column {
+                flex: 0 0 82%;
+            }
+            #selections > * > div.third-column {
+                flex: 0 0 8%;
+            }        
+        }
+
+
+
+        #selections > * > div.second-column > * {
+            flex-basis: 25%;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        #selections > * > div.second-column > * input[type="text"] {
+            display: block;
+            height: 2.5rem;
+            width: 90%;
+            padding-left: .4rem;
+            /* Biraz sola kayması için ayarlar */
+            font-size: 1.6rem;
+            border: .1px solid rgb(80, 80, 80);
+            border-radius: .1rem;
+            margin-left: -.5rem;
+        }
+        #selections > * > div.third-column > button {
+            flex: 0 0 40%;
+            margin: 0 auto;
+            cursor: pointer;
+            border: 0;
+            background-color: orangered;
+            border-radius: .5rem;
+            color: white;
+        }
+        #selections > * > div.third-column > button:hover {
+            background-color: darkorange;
+        }
+        @media screen and (min-width: 1000px) {
+            #selections > * > div.second-column > * input[type="text"] {
+                height: 3.2rem;
+            }
+            #selections > * > div.third-column > button {
+                height: 3.2rem;
+            }
+        }
+
+
+
+        /* Edit class ı alan selection görünsün */
+
+        #selections > .edit > div.second-column:nth-child(3) {
+            display: none;
+        }
+        #selections > .edit > div.third-column > button:first-child {
+            display: none;
+        }
+        #selections > *:not(:first-child):not(.edit) > div.second-column:nth-child(2) {
+            display: none;
+        }
+        #selections > *:not(:first-child):not(.edit) > div.third-column > button:nth-child(2) {
+            display: none;
+        }
+
+
+        /* Template div i yok et */
+
+        #selection-template {
+            display: none;
+        }
+        
+
+        /* Selection log paragrafı */
+
+        p#selection-log {
+            margin-top: 5rem;
+            /* font-weight: bold; */
+        }
+
+        
+        /* Alttaki ana butonların stilleri */
+
+
+        .organize-button {
+            padding: .5rem 1rem;
+            cursor: pointer;
+            font-size: 1.6rem;
+            display: block;
+            margin-top: 4rem;
+            width: 16rem;
+            border: 0;
+            border-radius: .5rem;
+            color: white;
+        }
+        .organize-button:first-child {
+            background-color: orangered;
+        }
+        .organize-button:first-child:hover {
+            background-color: darkorange;
+        }
+        .organize-button:last-child {
+            background-color: rgb(233, 179, 17);
+        }
+        .organize-button:last-child:hover {
+            background-color: rgb(229, 211, 8);
+        }
+
+        
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <header></header>
+
+    <main>
+
+        <div id="selections">
+
+            <div id="selection-head">
+                <div class="first-column">
+                    <span class="label viewport-long">Parça</span>
+                </div>
+                <div class="second-column">
+                    <div>
+                        <span class="label viewport-short">İlk</span>
+                        <span class="label viewport-long">İlk kodonların sayısı</span>
+                    </div>
+                    <div>
+                        <span class="label viewport-short">Ara</span>
+                        <span class="label viewport-long">Ara kodon sayısı</span>
+                    </div>
+                    <div>
+                        <span class="label viewport-short">Son</span>
+                        <span class="label viewport-long">Son kodonların sayısı</span>
+                    </div>
+                    <div>
+                        <span class="label viewport-short">Bütün</span>
+                        <span class="label viewport-long">Bütün kodonların toplamı</span>
+                    </div>
+                </div>
+                <div class="third-column"></div>
+            </div>
+
+
+            <div id="selection-template" class="edit">
+                <div class="label-contaier first-column">
+                    <span class="piece-label"></span>
+                </div>                
+                <div class="second-column">                                    
+                    <div>                                        
+                        <input type="text">
+                    </div>
+                    <div>                                        
+                        <input type="text">
+                    </div>
+                    <div>                                        
+                        <input type="text">      
+                    </div>
+                    <div>
+                    </div>                                                
+                </div>
+                <div class="second-column">
+                    <div>
+                        <span class="piece-result">0</span>
+                    </div>
+                    <div>
+                        <span class="piece-result">0</span>
+                    </div>
+                    <div>
+                        <span class="piece-result">0</span>
+                    </div>
+                    <div>
+                        <span class="piece-result">0</span>
+                    </div>                                                        
+                </div>
+                <div class="third-column">
+                    <button class="edit-button"><b>&centerdot;&centerdot;&centerdot;</b></button>
+                    <button class="edit-button">&check;</button>
+                    <button class="edit-button">X</b></button>
+                </div>                
+            </div>
+           
+        </div>
+
+        
+        <p id="selection-log">Parça listesi boş</p>
+
+
+        <div id="buttons">
+
+            <button id="add-selection" class="organize-button">Parça Ekle</button>
+
+            <button id="calculate" class="organize-button">Hesapla</button>
+
+        </div>
+
+
+
+        <p id="test-p"></p>
+
+    </main>
+    
+    
+
+    <script>
+
+
+
+const selections = document.getElementById('selections');
+const selectionTemplate = document.getElementById('selection-template');
+const selectionLog = document.getElementById('selection-log');
+const buttonAddSelection = document.getElementById('add-selection');
+const selectionTemplateNode = selections.removeChild(selectionTemplate);
+let initialFirstValue;
+
+
+// parça ekle butonuna basılınca 
+
+function addSelection() {
+
+    const selectionsCount = selections.children.length;
+    
+    // Bu kısmı çıkarabilirim. Açıkta kutucuk varsa uyarı veriyor.
+    for (let i = 0; i < selectionsCount; i++) {
+        if (selections.children[i].classList.contains('edit')) {
+            selectionLog.textContent = `${i} numaralı parçayı tamamlayın`;
+
+            return;
+        }
+    }
+    
+    if (selections.style.display !== 'block') {
+        selections.style.display = 'block';
+    }
+    selectionLog.innerHTML = '&nbsp;';    
+    
+    const selectionID = 'selection-' + selectionsCount;
+    const selectionClone = selectionTemplateNode.cloneNode(true);
+
+    if (selectionsCount !== 1) {
+        selectionClone.children[1].querySelector('input').value = initialFirstValue;
+    }
+
+    selections.appendChild(selectionClone);
+    
+    reassignSelections(selectionsCount);
+
+    const buttonNodes = selectionClone.querySelectorAll('button');
+
+    for (let i = 1; i < 4; i++) {
+        buttonNodes[i - 1].addEventListener('click', function() {
+            edit(i, this);
+        });
+    }
+}
+
+// her üç edit butonunda ne yapacağının kabası
+
+function edit(buttonType, buttonNode) {
+
+    const selection = buttonNode.parentElement.parentElement;    
+
+    const codonsList = selection.children[2].children;
+    const inputsList = selection.children[1].children;
+    let i;
+
+    switch (buttonType) {
+        case 1:  
+            // Bu kısmı çıkarabilirim. Açıkta kutucuk varsa uyarı veriyor.
+            for (i = 0; i < selections.children.length; i++) {
+                if (selections.children[i].classList.contains('edit')) {
+                    selectionLog.textContent = `${i} numaralı parçayı tamamlayın`;
+
+                    return;
+                }
+            }
+
+            selection.classList.add('edit');
+
+            for (i = 0; i < 3; i++) {
+                inputsList[i].firstElementChild.value = codonsList[i].querySelector('span').textContent;
+            }
+            
+            break;
+        case 2: 
+            let totalValue = 0;
+            let currentInput;
+
+            for (i = 0; i < 3; i++) {
+                currentInput = Number(inputsList[i].firstElementChild.value);                
+
+                if (isNaN(currentInput)) {
+                    selectionLog.textContent = 'Geçerli bir değer girin';
+
+                    return;
+                } else if (Number.isInteger(currentInput) === false) {
+                    // bu kısmı silip yukarısı ile bağlayabilirim. tam sayı girin yerine geçerli bir değer girin diyebilir.
+                    selectionLog.textContent = 'Tam sayı girin';
+
+                    return;
+                } else {             
+                    
+                    if (i === 0) {
+                        initialFirstValue = currentInput;
+                    } else {
+                        codonsList[i].querySelector('span').textContent = currentInput;                        
+                    }
+                    totalValue += currentInput;
+                }          
+            }          
+            rearrangeValues(initialFirstValue);
+            selection.classList.remove('edit');
+            selectionLog.innerHTML = '&nbsp;';
+
+            // 0 sayısını girince kabul ediyor
+
+            break;
+        case 3:             
+            const selectionIndex = Array.from(selections.children).indexOf(selection);
+
+            if (selections.children.length === 2) {
+                selections.style.display = 'none';
+                selectionLog.textContent = 'Parça listesi boş';
+            } else {
+                selectionLog.innerHTML = '&nbsp;';
+            }            
+            selections.removeChild(selection);
+            reassignSelections(selectionIndex);
+           
+            break;
+    }
+}
+
+// Satırlardaki parça sayı ve id lerini silinen satırdan sonra yeniden düzenle
+
+function reassignSelections(count) {
+    
+    count = count || 1; // bu aslında gereksiz
+    
+    for (count; count < selections.children.length; count++) {
+        selections.children[count].id = 'selection-' + count;
+        selections.children[count].querySelector('span').textContent = 'P' + count;
+    }
+}
+
+// Bütün satırların değerlerini ilk değere göre yeniden ayarla
+
+function rearrangeValues(firstValue) {
+
+    let codonsList;
+    let total;
+    let i, q;    
+
+    for (i = 1; i < selections.children.length; i++) {
+        codonsList = selections.children[i].querySelectorAll('span');
+
+        codonsList[1].textContent = firstValue;
+
+        total = 0;
+
+        for (q = 1; q < 4; q++) {
+            total += Number(codonsList[q].textContent);
+        }
+        codonsList[4].textContent = total;
+    }
+}
+  
+
+// Parça ekle butonunun event listeneri
+
+buttonAddSelection.addEventListener('click', addSelection);
+
+
+// ------------------
+// BURAYA KADAR TAMAM
+// ------------------
+
+
+
+
+
+const testP = document.getElementById('test-p');
+
+
+
+//const lastArray = [];
+
+const itemOne = ['1s', '1s', '1s', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', '1e', '1e', '1e', '1e',];
+const itemTwo = ['2s', '2s', '2s', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', '2e', '2e'];
+const itemThree = ['2', '5'];
+
+const items = [itemOne, itemTwo, itemThree];
+const itemCount = items.length;
+
+const itemOrders = [];
+
+// for (let i = 0; i < itemCount.length; i++) {
+
+// }
+
+// function permutate() {
+//     let result = [];
+
+//     for (i = 0; i < items.length; i++) {
+
+//     }
+
+
+// }
+
+
+// for (let i = 0; i < items.length; i++) {
+//     if (i === 0) {
+//         for (let p = 0; p < items[i].length; p++) {
+//             lastArray.push(items[i][p]);
+//         }
+//     } else {
+//         for (let q = 0; q < lastArray.length + items[i].length; q++) {
+//             if (lastArray[q][lastArray[q].length - 1] === 's') {
+//                 //let lst = q;
+//                 continue;
+//             } else {
+//                 let lastLength = q + 1 + Math.max((lastArray.length - q + 1), items[i].length);
+                
+//             }
+//         }
+//     }
+    
+// }
+
+
+
+
+
+    </script>
+
+</body>
+</html>
