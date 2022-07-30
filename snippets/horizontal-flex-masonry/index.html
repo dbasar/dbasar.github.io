@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox Horizontal Grid</title>
+
+    <style>
+        body {
+            margin: 20px;
+            overflow-x: hidden;
+        }
+
+        
+        #flex-container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+        
+        figure {
+            margin: 8px;
+            height: 200px;
+            -webkit-box-flex: 1;
+                -ms-flex: 1 0 auto;
+                    flex: 1 0 auto;
+            -webkit-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+            border: 2px solid #333;
+            border: none;
+        }
+        
+        figure img {
+            height: 100%;
+            width: auto; /* eski */
+            width: 100%;
+            -o-object-fit: cover;
+               object-fit: cover;
+            cursor: pointer;
+            -webkit-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        figcaption {
+            display: none;
+        }
+        
+        figure.last {
+            -webkit-box-flex: 5;
+                -ms-flex: 5;
+                    flex: 5;
+        }
+        
+        
+        @media (pointer: fine) {
+            figure:hover {
+                -webkit-transform: scale(1.1, 1.1);
+                    -ms-transform: scale(1.1, 1.1);
+                        transform: scale(1.1, 1.1);
+                -webkit-box-shadow: 0 0 5px black;
+                        box-shadow: 0 0 5px black;
+                z-index: 1;
+                -webkit-column-span: all;
+                -moz-column-span: all;
+                        column-span: all;
+            }
+        }
+
+        
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="flex-container">
+
+        <figure>
+            <img src="./images/close-up-photo-of-swiss-cheese-plant-2090641.jpg" alt="">
+            <figcaption>A figure caption</figcaption>
+        </figure><figure>
+            <img src="./images/astronomy.jpg" alt="">
+            <figcaption>Uzun olmayan bir altyazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/bg.jpeg" alt="">
+            <figcaption>Resim yazısı</figcaption>
+        </figure><figure>
+            <img src="./images/colorful.jpg" alt="">
+            <figcaption>Yazı</figcaption>
+        </figure><figure>
+            <img src="./images/conifer-dawn-daylight-evergreen.jpg" alt="">
+            <figcaption>Başka bir yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/dawn-environment-fall.jpg" alt="">
+            <figcaption>Daha daha daha başkalardan bir yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/gray-asphalt-road-in-between-brown-orange-leaf-trees-during.jpg" alt="">
+            <figcaption>Çok çok başka bir yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/gray-bridge-and-trees-814499.jpg" alt="">
+            <figcaption>Çok yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/green-fern-plants.jpg" alt="">
+            <figcaption>Epeey uzun uzun uzun bir resim tanıtıcı yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/green-leaf-plant.jpg" alt="">
+            <figcaption>Uzunca olmayan ama kısa da olmayan bir yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/green-trees.jpg" alt="">
+            <figcaption>kısa yazı</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/image2.jpeg" alt="">
+            <figcaption>Sonuncu</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/headerstock.jpg" alt="">
+            <figcaption>Yazı</figcaption>
+        </figure>
+        <figure class="last"></figure>
+   
+
+    </div>
+
+</body>
+
+</html>
