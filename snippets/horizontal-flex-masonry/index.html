@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible", content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Doruk Başar">    
     <title>Flexbox Horizontal Grid</title>
 
     <style>
@@ -27,8 +30,8 @@
                 -ms-flex: 1 0 auto;
                     flex: 1 0 auto;
             -webkit-transition: all .3s ease;
-            -o-transition: all .3s ease;
-            transition: all .3s ease;
+                 -o-transition: all .3s ease;
+                    transition: all .3s ease;
             border: 2px solid #333;
             border: none;
         }
@@ -41,8 +44,8 @@
                object-fit: cover;
             cursor: pointer;
             -webkit-transition: all .3s ease;
-            -o-transition: all .3s ease;
-            transition: all .3s ease;
+                 -o-transition: all .3s ease;
+                    transition: all .3s ease;
         }
 
         figcaption {
@@ -57,7 +60,7 @@
         
         
         @media (pointer: fine) {
-            figure:hover {
+            figure:not(:last-child):hover {
                 -webkit-transform: scale(1.1, 1.1);
                     -ms-transform: scale(1.1, 1.1);
                         transform: scale(1.1, 1.1);
@@ -65,7 +68,7 @@
                         box-shadow: 0 0 5px black;
                 z-index: 1;
                 -webkit-column-span: all;
-                -moz-column-span: all;
+                   -moz-column-span: all;
                         column-span: all;
             }
         }
@@ -81,21 +84,28 @@
     <div id="flex-container">
 
         <figure>
+            <img src="./images/conifer-dawn-daylight-evergreen.jpg" alt="">
+            <figcaption>Başka bir yazı</figcaption>
+        </figure>
+        <figure>
             <img src="./images/close-up-photo-of-swiss-cheese-plant-2090641.jpg" alt="">
             <figcaption>A figure caption</figcaption>
-        </figure><figure>
+        </figure>
+        <figure>
+            <img src="./images/gray-bridge-and-trees-814499.jpg" alt="">
+            <figcaption>Çok yazı</figcaption>
+        </figure>
+        <figure>
             <img src="./images/astronomy.jpg" alt="">
             <figcaption>Uzun olmayan bir altyazı</figcaption>
         </figure>
         <figure>
             <img src="./images/bg.jpeg" alt="">
             <figcaption>Resim yazısı</figcaption>
-        </figure><figure>
+        </figure>
+        <figure>
             <img src="./images/colorful.jpg" alt="">
             <figcaption>Yazı</figcaption>
-        </figure><figure>
-            <img src="./images/conifer-dawn-daylight-evergreen.jpg" alt="">
-            <figcaption>Başka bir yazı</figcaption>
         </figure>
         <figure>
             <img src="./images/dawn-environment-fall.jpg" alt="">
@@ -104,10 +114,6 @@
         <figure>
             <img src="./images/gray-asphalt-road-in-between-brown-orange-leaf-trees-during.jpg" alt="">
             <figcaption>Çok çok başka bir yazı</figcaption>
-        </figure>
-        <figure>
-            <img src="./images/gray-bridge-and-trees-814499.jpg" alt="">
-            <figcaption>Çok yazı</figcaption>
         </figure>
         <figure>
             <img src="./images/green-fern-plants.jpg" alt="">
