@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spermiyogram Hesaplama</title>
+<style>
+        /* body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    input[type="number"], input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #sonuc {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    } */
+
+    /*  ------------------- */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7fc;
+        color: #333;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #ff4f4f;
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+    input[type="number"], input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    }
+
+    /* Tüm input alanlarında okları gizle */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number]{
+        -moz-appearance: textfield;
+    }
+
+    button {
+        padding: 12px 24px;
+        background-color: #ff4f4f;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #e63c3c;
+    }
+    #sonuc {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+
+/*         ------------------------------ */
+
+    /* body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h1 {
+        text-align: center;
+    }
+    label {
+        font-weight: bold;
+    }
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    input[type="number"], input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px;
+    }
+    button {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #sonuc {
+        margin-top: 20px;
+    } */
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spermiyogram Hesaplama</h1>
+        <label for="semenVolume">Semen Hacmi (ml):</label>
+        <!-- <input type="number" id="semenVolume" step="0.1" required><br><br> -->
+        <input type="text" id="semenVolume" required><br><br>
+
+        <table id="spermiyogramTable">
+            <tr>
+                <th></th>
+                <th colspan="5">Sayım</th>
+            </tr>
+            <!-- <tr>
+                <td>Hareketli Spermler</td>
+                <td><input type="number" class="motile" min="0"></td>
+                <td><input type="number" class="motile" min="0"></td>
+                <td><input type="number" class="motile" min="0"></td>
+                <td><input type="number" class="motile" min="0"></td>
+                <td><input type="number" class="motile" min="0"></td>
+            </tr>
+            <tr>
+                <td>Yerinde Hareketli Spermler</td>
+                <td><input type="number" class="yerinde" min="0"></td>
+                <td><input type="number" class="yerinde" min="0"></td>
+                <td><input type="number" class="yerinde" min="0"></td>
+                <td><input type="number" class="yerinde" min="0"></td>
+                <td><input type="number" class="yerinde" min="0"></td>
+            </tr>
+            <tr>
+                <td>Hareketsiz Spermler</td>
+                <td><input type="number" class="hareketsiz" min="0"></td>
+                <td><input type="number" class="hareketsiz" min="0"></td>
+                <td><input type="number" class="hareketsiz" min="0"></td>
+                <td><input type="number" class="hareketsiz" min="0"></td>
+                <td><input type="number" class="hareketsiz" min="0"></td>
+            </tr> -->
+            <tr>
+                <td>Hareketli Spermler</td>
+                <td><input type="text" class="motile"></td>
+                <td><input type="text" class="motile"></td>
+                <td><input type="text" class="motile"></td>
+                <td><input type="text" class="motile"></td>
+                <td><input type="text" class="motile"></td>
+            </tr>
+            <tr>
+                <td>Yerinde Hareketli Spermler</td>
+                <td><input type="text" class="yerinde"></td>
+                <td><input type="text" class="yerinde"></td>
+                <td><input type="text" class="yerinde"></td>
+                <td><input type="text" class="yerinde"></td>
+                <td><input type="text" class="yerinde"></td>
+            </tr>
+            <tr>
+                <td>Hareketsiz Spermler</td>
+                <td><input type="text" class="hareketsiz"></td>
+                <td><input type="text" class="hareketsiz"></td>
+                <td><input type="text" class="hareketsiz"></td>
+                <td><input type="text" class="hareketsiz"></td>
+                <td><input type="text" class="hareketsiz"></td>
+            </tr>
+        </table>
+
+        <button onclick="calculate()">Hesapla</button><br><br>
+        <div id="sonuc"></div>
+    </div>
+
+    <script>
+        // İlk sayfada inputlar inaktif olsun
+        // focus yeni sayım butonunda olsun
+        // enter a basıldığında focus hacim inputuna gelsin
+        // değer girilip enter a basıldığında bir sonraki inputa geçsin
+        // sıra ile en sonda boş duran hareketli inputuna gelsin entera basıldğında yerinde hareketli inputuna gelsin sonra da hareketsiz inputuna gelsin.
+        // yine entera basıldığnda sağda duran büyük artı butonuna gelsin. entera basıldığında yeni sütun oluştursun sağda bir artı butonu daha oluşsun. focus yeni sütunun ilk satırına gelsin
+        // fokus artı butondayken escape e basıldığında fokus hesapla (ya da yeni sayım?) butonuna gitsin. 
+        // en fazla 5 (ya da 3) sütun oluşturulabilsin. son sütun oluştuğunda son sütun artı butonunun yerini alsın yeni artı butonu oluşmasın
+        // yönlendirme oklarıyla sağ sol inputlara hatta inputların altında bulunan üç butona gidilebilsin. 
+        // bu üç buton yeni sayım / hesapla / sonuçları sıfırla butonları olsun
+        // fokus herhangi bir inputtayken escape e basıldığnda fokus hesapla (ya da yeni sayım?) butonuna gitsin. 
+        // yönlendirme oklarıyla butonlara geldindiğinde fokus ilk olarak hesapla butonuna gitsin. 
+        // sayfa yeni açıldığında hesapla butonu inaktif olsun. 
+        // hesapla butonuna basıldığında yeni sayım butonuna basana kadar da hesapla butonu inaktif olsun
+        // hesapla butonu inaktifken escape e basıldığında yeni sayım butonu fokuslansın (aktifken hesapla butonu fokuslanacak)
+        // sayfa yeni açıldığında ve sayfada hiç sonuç yokken sonuçları sıfırla butonu da inaktif olsun.
+        // tab butonuna basıldığında ne olacak? tabindex i çok saçma bir şekilde yapmamam lazım bunun için
+        // yeni oluşan sonuçlar üstte gösterilsin. Kullanılan değerler de sonuçların içinde gösterilsin. 
+        // her bir sonucun yanında buton olsun o buton kullanılan değerleri inputlara yazsın. 
+        // 
+
+        // Yukarıdaki algoritma nasıl oluşturulur?
+        // Escape, enter ve 4 adet yön butonu için event listenerlar koyarım.
+        // 
+        // 
+
+        // bir ihtimal de yalnızca sağ ve sol tuşların inputlar arasında gezinmeye izin vermesi. üst ve alt tuşlar number tip inputların sayı arttırıp arttırma işlevini yapsın
+        // 
+
+        // inputları da güzelleştirmeyi unutmamalıyım. 
+        // halka şeklindeki inputları kaldırabilirim. Zaten kareler içinde duruyor inputlar. O kareler input alanının kendisiymiş gibi görüntü? Fokus karedeyken etrafı kalınlaşabilir ya da arka plan rengi değişebilir.
+        
+
+        function calculate() {
+
+            const semenVolumeNode = document.getElementById('semenVolume');
+            let semenVolume = parseFloat(semenVolumeNode.value);
+            semenVolumeNode.value = '';
+            if (isNaN(semenVolume) || semenVolume === 0) {
+                alert('Geçerli bir semen hacmi değeri girin.');
+                return;
+            }
+
+            let totalMotileCount = 0,
+                totalMotileInputs = 0,
+                totalFixedMotileCount = 0,
+                totalFixedMotileInputs = 0,
+                totalImmotileCount = 0,
+                totalImmotileInputs = 0;
+
+            const motileInputs = document.querySelectorAll('.motile');
+            motileInputs.forEach(function(input) {
+                let parsedInput = parseFloat(input.value);
+                if (!isNaN(parsedInput)) {
+                    totalMotileCount += parseFloat(input.value);
+                    totalMotileInputs += 1;
+                } 
+                input.value = ''; // Girdileri sıfırlama
+            });
+
+            const fixedMotileInputs = document.querySelectorAll('.yerinde');
+            fixedMotileInputs.forEach(function(input) {
+                let parsedInput = parseFloat(input.value);
+                if (!isNaN(parsedInput)) {
+                    totalFixedMotileCount += parseFloat(input.value);
+                    totalFixedMotileInputs += 1;
+                }
+                input.value = ''; // Girdileri sıfırlama
+            });
+
+            const immotileInputs = document.querySelectorAll('.hareketsiz');
+            immotileInputs.forEach(function(input) {
+                let parsedInput = parseFloat(input.value);
+                if (!isNaN(parsedInput)) {
+                    totalImmotileCount += parseFloat(input.value);
+                    totalImmotileInputs += 1;
+                }                
+                input.value = ''; // Girdileri sıfırlama
+            });
+
+            if (totalMotileInputs === 0 ||
+                totalFixedMotileInputs === 0 ||
+                totalImmotileInputs === 0) {
+                alert('Her satıra en az bir geçerli değer girin.');
+                return;
+            }
+
+            let meanMotileCount = totalMotileCount / totalMotileInputs;
+            let meanFixedMotileCount = totalFixedMotileCount / totalFixedMotileInputs;
+            let meanImmotileCount = totalImmotileCount / totalImmotileInputs;
+
+            let meanTotalSpermsCount = meanMotileCount + meanFixedMotileCount + meanImmotileCount;
+
+            let motilityPercentage = Math.round(meanMotileCount / meanTotalSpermsCount * 100);
+            let fixedMotilityPercentage = Math.round(meanFixedMotileCount / meanTotalSpermsCount * 100);
+            let immotilityPercentage = Math.round(meanImmotileCount / meanTotalSpermsCount * 100);
+
+            let totalPercentages = motilityPercentage + fixedMotilityPercentage + immotilityPercentage;
+
+            if (totalPercentages !== 100) {
+                switch (Math.max(motilityPercentage, fixedMotilityPercentage, immotilityPercentage)) {
+                    case immotilityPercentage:
+                        immotilityPercentage += 100 - totalPercentages;
+                        break;
+                    case fixedMotilityPercentage:
+                        fixedMotilityPercentage += 100 - totalPercentages;
+                        break;
+                    case motilityPercentage:
+                        motilityPercentage += 100 - totalPercentages;
+                        break;
+                }                
+            }
+
+            // Buralardan sonrasını başka türlü yapmak için değiştirebilirim.
+
+            let totalSperms = (meanTotalSpermsCount * semenVolume * 1000000).toLocaleString() + "/ml";
+            let totalSpermConcentration = (meanTotalSpermsCount * 1000000).toLocaleString() + '/ml';
+            let totalProgressiveMotileSperms = (meanMotileCount * semenVolume * 1000000).toLocaleString() + '/ml';
+
+            let sonucMetin = 'Sperm Konsantrasyonu: ' + totalSpermConcentration + '<br>' +
+                             'Toplam Spermler: ' + totalSperms + '<br>' +
+                             'TPMSS: ' + totalProgressiveMotileSperms + '<br>' +
+                             'Hareketli Sperm Oranı: %' + motilityPercentage + '<br>' +
+                             'Yerinde Hareketli Sperm Oranı: %' + fixedMotilityPercentage + '<br>' +
+                             'Hareketsiz Sperm Oranı: %' + immotilityPercentage + '<br>';
+
+            document.getElementById('sonuc').innerHTML = sonucMetin;
+        }
+
+
+
+
+    </script>
+</body>
+</html>
