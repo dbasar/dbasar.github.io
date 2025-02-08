@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title>Ozan sayfa</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+
+body {
+	padding: 40px;
+}
+
+button {
+	display: block;
+	margin: auto;
+	height: 40px;
+	width: 220px;
+	cursor: pointer;
+}
+
+	</style>
+</head>
+
+<body>
+
+	<button id="buton">Sayfaya başka renk lazım</button>
+
+	<script>
+
+const buton = document.getElementById("buton");
+
+const validColors = [
+    'aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure', 'beige', 'bisque', 'black', 'blanchedalmond', 'blue', 
+    'blueviolet', 'brown', 'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'coral', 'cornflowerblue', 'cornsilk', 
+    'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 'darkgreen', 'darkkhaki', 'darkmagenta', 
+    'darkolivegreen', 'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen', 'darkslateblue', 'darkslategray', 
+    'darkturquoise', 'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 
+    'fuchsia', 'gainsboro', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'green', 'greenyellow', 'honeydew', 'hotpink', 
+    'indianred', 'indigo', 'ivory', 'khaki', 'lavender', 'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue', 'lightcoral', 
+    'lightcyan', 'lightgoldenrodyellow', 'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue', 
+    'lightslategray', 'lightsteelblue', 'lightyellow', 'lime', 'limegreen', 'linen', 'magenta', 'maroon', 'mediumaquamarine', 
+    'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen', 'mediumslateblue', 'mediumspringgreen', 'mediumturquoise', 
+    'mediumvioletred', 'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite', 'navy', 'oldlace', 'olive', 
+    'olivedrab', 'orange', 'orangered', 'orchid', 'palegoldenrod', 'palegreen', 'paleturquoise', 'palevioletred', 'papayawhip', 
+    'peachpuff', 'peru', 'pink', 'plum', 'powderblue', 'purple', 'rebeccapurple', 'red', 'rosybrown', 'royalblue', 
+    'saddlebrown', 'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'silver', 'skyblue', 'slateblue', 'slategray', 
+    'snow', 'springgreen', 'steelblue', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'white', 'whitesmoke', 
+    'yellow', 'yellowgreen'
+];
+
+buton.addEventListener("click", ()=> {
+	let randomNum = Math.floor(Math.random() * validColors.length);
+	let colorName = prompt("İngilizce renk adı pls", validColors[randomNum]);
+
+	if (colorName == '') {	
+		alert("Eski renkten devam");
+	} else if (!validColors.includes(colorName)) {
+		alert("Böyle renk olmaz olsun");
+	} else {		
+		document.body.style.backgroundColor = colorName;
+	}
+});
+
+
+
+	</script>
+
+</body>
+</html>
