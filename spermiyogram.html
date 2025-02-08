@@ -186,7 +186,7 @@
         <h1>Spermiyogram Hesaplama</h1>
         <label for="semenVolume">Semen Hacmi (ml):</label>
         <!-- <input type="number" id="semenVolume" step="0.1" required><br><br> -->
-        <input type="text" id="semenVolume" required><br><br>
+        <input type="text" id="semenVolume" class="semenVolume" required><br><br>
 
         <table id="spermiyogramTable">
             <tr>
@@ -227,11 +227,11 @@
             </tr>
             <tr>
                 <td>Yerinde Hareketli Spermler</td>
-                <td><input type="text" class="yerinde"></td>
-                <td><input type="text" class="yerinde"></td>
-                <td><input type="text" class="yerinde"></td>
-                <td><input type="text" class="yerinde"></td>
-                <td><input type="text" class="yerinde"></td>
+                <td><input type="text" class="npmotile"></td>
+                <td><input type="text" class="npmotile"></td>
+                <td><input type="text" class="npmotile"></td>
+                <td><input type="text" class="npmotile"></td>
+                <td><input type="text" class="npmotile"></td>
             </tr>
             <tr>
                 <td>Hareketsiz Spermler</td>
@@ -243,7 +243,7 @@
             </tr>
         </table>
 
-        <button onclick="calculate()">Hesapla</button><br><br>
+        <button id="calculate" class="calculate">Hesapla</button><br><br>
         <div id="sonuc"></div>
     </div>
 
@@ -293,8 +293,8 @@
 
             let totalMotileCount = 0,
                 totalMotileInputs = 0,
-                totalFixedMotileCount = 0,
-                totalFixedMotileInputs = 0,
+                totalNpmotileCount = 0,
+                totalNpmotileInputs = 0,
                 totalImmotileCount = 0,
                 totalImmotileInputs = 0;
 
@@ -308,12 +308,12 @@
                 input.value = ''; // Girdileri sıfırlama
             });
 
-            const fixedMotileInputs = document.querySelectorAll('.yerinde');
-            fixedMotileInputs.forEach(function(input) {
+            const npmotileInputs = document.querySelectorAll('.npmotile');
+            npmotileInputs.forEach(function(input) {
                 let parsedInput = parseFloat(input.value);
                 if (!isNaN(parsedInput)) {
-                    totalFixedMotileCount += parseFloat(input.value);
-                    totalFixedMotileInputs += 1;
+                    totalNpmotileCount += parseFloat(input.value);
+                    totalNpmotileInputs += 1;
                 }
                 input.value = ''; // Girdileri sıfırlama
             });
@@ -329,31 +329,31 @@
             });
 
             if (totalMotileInputs === 0 ||
-                totalFixedMotileInputs === 0 ||
+                totalNpmotileInputs === 0 ||
                 totalImmotileInputs === 0) {
                 alert('Her satıra en az bir geçerli değer girin.');
                 return;
             }
 
             let meanMotileCount = totalMotileCount / totalMotileInputs;
-            let meanFixedMotileCount = totalFixedMotileCount / totalFixedMotileInputs;
+            let meanNpmotileCount = totalNpmotileCount / totalNpmotileInputs;
             let meanImmotileCount = totalImmotileCount / totalImmotileInputs;
 
-            let meanTotalSpermsCount = meanMotileCount + meanFixedMotileCount + meanImmotileCount;
+            let meanTotalSpermsCount = meanMotileCount + meanNpmotileCount + meanImmotileCount;
 
             let motilityPercentage = Math.round(meanMotileCount / meanTotalSpermsCount * 100);
-            let fixedMotilityPercentage = Math.round(meanFixedMotileCount / meanTotalSpermsCount * 100);
+            let npmotilityPercentage = Math.round(meanNpmotileCount / meanTotalSpermsCount * 100);
             let immotilityPercentage = Math.round(meanImmotileCount / meanTotalSpermsCount * 100);
 
-            let totalPercentages = motilityPercentage + fixedMotilityPercentage + immotilityPercentage;
+            let totalPercentages = motilityPercentage + npmotilityPercentage + immotilityPercentage;
 
             if (totalPercentages !== 100) {
-                switch (Math.max(motilityPercentage, fixedMotilityPercentage, immotilityPercentage)) {
+                switch (Math.max(motilityPercentage, npmotilityPercentage, immotilityPercentage)) {
                     case immotilityPercentage:
                         immotilityPercentage += 100 - totalPercentages;
                         break;
-                    case fixedMotilityPercentage:
-                        fixedMotilityPercentage += 100 - totalPercentages;
+                    case npmotilityPercentage:
+                        npmotilityPercentage += 100 - totalPercentages;
                         break;
                     case motilityPercentage:
                         motilityPercentage += 100 - totalPercentages;
@@ -371,13 +371,96 @@
                              'Toplam Spermler: ' + totalSperms + '<br>' +
                              'TPMSS: ' + totalProgressiveMotileSperms + '<br>' +
                              'Hareketli Sperm Oranı: %' + motilityPercentage + '<br>' +
-                             'Yerinde Hareketli Sperm Oranı: %' + fixedMotilityPercentage + '<br>' +
+                             'Yerinde Hareketli Sperm Oranı: %' + npmotilityPercentage + '<br>' +
                              'Hareketsiz Sperm Oranı: %' + immotilityPercentage + '<br>';
 
             document.getElementById('sonuc').innerHTML = sonucMetin;
         }
 
 
+        document.body.addEventListener("keypress", (event) => {
+            if (event.key === 'Enter') {
+                let currentClass = document.activeElement.getAttribute("class");
+
+                if (event.shiftKey === false) {
+                    switch (currentClass) {
+                        case "semenVolume":
+                            const motileInputs = document.querySelectorAll(".motile");
+                            for (let i = 0; i < 5; i++) {
+                                if (motileInputs[i].value.trim() === '' || i === 4) {
+                                    motileInputs[i].select();
+                                    break;
+                                }
+                            }
+                            break;
+                        case "motile":
+                            const npmotileInputs = document.querySelectorAll(".npmotile");
+                            for (let i = 0; i < 5; i++) {
+                                if (npmotileInputs[i].value.trim() === '' || i === 4) {
+                                    npmotileInputs[i].select();
+                                    break;
+                                }
+                            }
+                            break;
+                        case "npmotile":
+                            const immotileInputs = document.querySelectorAll(".hareketsiz");
+                            for (let i = 0; i < 5; i++) {
+                                if (immotileInputs[i].value.trim() === '' || i === 4) {
+                                    immotileInputs[i].select();
+                                    break;
+                                }
+                            }
+                            break;
+                        case "hareketsiz":
+                            const calculateButton = document.getElementById("calculate");
+                            calculateButton.focus();
+                            break;
+                        case "calculate":
+                            calculate();
+                            break;
+                    }
+                } else {
+                    switch (currentClass) {
+                        case "motile":
+                            document.getElementById("semenVolume").select();
+                            break;
+                        case "npmotile":
+                            const motileInputs = document.querySelectorAll(".motile");
+                            for (let i = 0; i < 5; i++) {
+                                if (motileInputs[i].value.trim() === '' || i === 4) {
+                                    motileInputs[i].select();
+                                    break;
+                                }
+                            }
+                            break;
+                        case "hareketsiz":
+                            const npmotileInputs = document.querySelectorAll(".npmotile");
+                            for (let i = 0; i < 5; i++) {
+                                if (npmotileInputs[i].value.trim() === '' || i === 4) {
+                                    npmotileInputs[i].select();
+                                    break;
+                                }
+                            }
+                            break;
+                        case "calculate":
+                            const immotileInputs = document.querySelectorAll(".hareketsiz");
+                            for (let i = 0; i < 5; i++) {
+                                if (immotileInputs[i].value.trim() === '' || i === 4) {
+                                    immotileInputs[i].select();
+                                    break;
+                                }
+                            }
+                            break;
+                    }
+                }
+            }            
+        });
+
+        // Eksikler:
+        // Sonucu daha düzgün göstersin. MÜmkünse girilen sayılar ile birlikte. 
+        // Bir yeniden oluştur butonu oluşsun
+        // Yeniden oluşturma butonuna tıklayınca eski hesaplar gitmesin.
+        // Uyarı oluşturulunca uyarının verildği inputlara focus verilsin
 
 
     </script>
