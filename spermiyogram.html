@@ -5,103 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spermiyogram Hesaplama</title>
 <style>
-        /* body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f8f8;
-        color: #333;
-    }
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        text-align: center;
-        color: #4CAF50;
-        margin-bottom: 20px;
-    }
-    label {
-        font-weight: bold;
-    }
-    table {
-        width: 100%;
-        margin-bottom: 20px;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center;
-    }
-    input[type="number"], input[type="text"] {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    button:hover {
-        background-color: #45a049;
-    }
-    #sonuc {
-        margin-top: 20px;
-        padding: 20px;
-        background-color: #f0f0f0;
-        border-radius: 10px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    } */
 
-    /*  ------------------- */
+    * {
+        box-sizing: border-box;
+    }
+    html {
+        font-size: 10px;
+    }
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
         background-color: #f4f7fc;
         color: #333;
+        font-size: 1.5rem;
     }
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
+    div#container {
+        max-width: 80rem;
+        min-height: 100vh;
+        margin: auto;
+        padding: 2rem;
         background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.1);
     }
     h1 {
         text-align: center;
         color: #ff4f4f;
         margin-bottom: 20px;
     }
+    h2 {
+        text-align: center;
+    }
+    div#essentialInputsContainer {
+        display: flex;
+        margin-bottom: 0.8rem;
+        gap: 0.8rem;
+    }
+    div#essentialInputsContainer div {
+        flex: 1 1 50%;
+    }
     label {
         font-weight: bold;
     }
     table {
         width: 100%;
-        margin-bottom: 20px;
+        /*margin-bottom: 20px;*/
         border-collapse: collapse;
     }
     th, td {
         border: 1px solid #ccc;
-        padding: 10px;
         text-align: center;
+    }
+    td:first-child {
+        text-align: left;
+    }
+    
+    table#spermiogramTable {
+        margin-bottom: 2rem;
+    }
+    table#spermiogramTable th,
+    table#spermiogramTable td {        
+        padding: 1rem;
     }
     input[type="number"], input[type="text"] {
         width: 100%;
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -118,18 +86,70 @@
         -moz-appearance: textfield;
     }
 
-    button {
-        padding: 12px 24px;
+    div#buttonsContainer {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 2rem;
+        gap: 0.8rem;
+        justify-content: center;
+    }
+    div#buttonsContainer button {
+        flex: 0 1 12rem;
+        min-height: 3rem;
+        padding: 0.5rem;
         background-color: #ff4f4f;
         color: #fff;
         border: none;
         border-radius: 6px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        font-size: 1.3rem;
     }
-    button:hover {
+    div#buttonsContainer button:hover {
         background-color: #e63c3c;
     }
+    div#buttonsContainer button[disabled] {
+        background-color: #fabcbc;
+        cursor: default;
+    }
+
+    div.resultsContainer h3 {
+        margin: .8rem auto;
+        text-align: center;
+    }
+    div.resultsTablesContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .8rem;
+        margin-bottom: 2rem;
+    }
+    div.resultsTablesContainer table {
+        flex: 1 1 20rem;
+    }
+    div.resultsTablesContainer table tr:first-child {
+        height: 1rem;
+    }
+    div.resultsTablesContainer table th, 
+    div.resultsTablesContainer table td {
+        padding: 0.5rem;
+        font-size: 1.3rem;
+    }
+
+    table.inputPrintsTable tr td:first-child {
+        width: 50%;
+    }
+    table.resultsTable tr td:first-child {
+        width: 50%;
+    }
+    table.resultsTable tr td:last-child {
+        width: 25%;
+        font-size: 1rem;
+    }
+
+    div.borderDiv {
+        border-top: .1rem #ccc solid;
+    }
+
     #sonuc {
         margin-top: 20px;
         padding: 20px;
@@ -138,85 +158,28 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
 
-
-/*         ------------------------------ */
-
-    /* body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    h1 {
-        text-align: center;
-    }
-    label {
-        font-weight: bold;
-    }
-    table {
-        width: 100%;
-        margin-bottom: 20px;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-    }
-    input[type="number"], input[type="text"] {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 6px;
-    }
-    button {
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #45a049;
-    }
-    #sonuc {
-        margin-top: 20px;
-    } */
 </style>
 </head>
 <body>
-    <div class="container">
+    <div id="container">
         <h1>Spermiyogram Hesaplama</h1>
-        <label for="semenVolume">Semen Hacmi (ml):</label>
-        <!-- <input type="number" id="semenVolume" step="0.1" required><br><br> -->
-        <input type="text" id="semenVolume" class="semenVolume" required><br><br>
 
-        <table id="spermiyogramTable">
+        <div id="essentialInputsContainer">
+            <div>
+                <label for="patientName">Hasta Adı:</label>
+                <input type="text" id="patientName" class="patientName">
+            </div>                 
+            <div>                
+                <label for="semenVolume">Semen Hacmi (ml):</label>
+                <input type="text" id="semenVolume" class="semenVolume">
+            </div>       
+        </div>
+
+
+        <table id="spermiogramTable">
             <tr>
-                <th></th>
-                <th colspan="5">Sayım</th>
+                <th colspan="6">Sayım</th>
             </tr>
-            <!-- <tr>
-                <td>Hareketli Spermler</td>
-                <td><input type="number" class="motile" min="0"></td>
-                <td><input type="number" class="motile" min="0"></td>
-                <td><input type="number" class="motile" min="0"></td>
-                <td><input type="number" class="motile" min="0"></td>
-                <td><input type="number" class="motile" min="0"></td>
-            </tr>
-            <tr>
-                <td>Yerinde Hareketli Spermler</td>
-                <td><input type="number" class="yerinde" min="0"></td>
-                <td><input type="number" class="yerinde" min="0"></td>
-                <td><input type="number" class="yerinde" min="0"></td>
-                <td><input type="number" class="yerinde" min="0"></td>
-                <td><input type="number" class="yerinde" min="0"></td>
-            </tr>
-            <tr>
-                <td>Hareketsiz Spermler</td>
-                <td><input type="number" class="hareketsiz" min="0"></td>
-                <td><input type="number" class="hareketsiz" min="0"></td>
-                <td><input type="number" class="hareketsiz" min="0"></td>
-                <td><input type="number" class="hareketsiz" min="0"></td>
-                <td><input type="number" class="hareketsiz" min="0"></td>
-            </tr> -->
             <tr>
                 <td>Hareketli Spermler</td>
                 <td><input type="text" class="motile"></td>
@@ -235,51 +198,103 @@
             </tr>
             <tr>
                 <td>Hareketsiz Spermler</td>
-                <td><input type="text" class="hareketsiz"></td>
-                <td><input type="text" class="hareketsiz"></td>
-                <td><input type="text" class="hareketsiz"></td>
-                <td><input type="text" class="hareketsiz"></td>
-                <td><input type="text" class="hareketsiz"></td>
+                <td><input type="text" class="immotile"></td>
+                <td><input type="text" class="immotile"></td>
+                <td><input type="text" class="immotile"></td>
+                <td><input type="text" class="immotile"></td>
+                <td><input type="text" class="immotile"></td>
             </tr>
         </table>
 
-        <button id="calculate" class="calculate">Hesapla</button><br><br>
-        <div id="sonuc"></div>
+        <div id="buttonsContainer">
+            <button id="calculate" class="calculate" type="button">Hesapla</button>
+            <button id="newCount" type="button" disabled>Yeni Sayım</button>
+            <button id="resetResults" type="button" disabled>Sonuçları Sıfırla</button>
+        </div>
+     
+        <template id="resultsContainerTemplate">
+            <div class="resultsContainer">
+                <h3>Ghmet Doğan</h3>
+                <div class="resultsTablesContainer">
+                    <table class="inputPrintsTable">
+                        <tr>
+                            <th colspan="6">Sperm Sayımları</th>
+                        </tr>
+                        <tr class="motileInputs">
+                            <td>Hareketli</td>
+                        </tr>
+                        <tr class="npmotileInputs">
+                            <td>Yerinde hareketli</td>
+                        </tr>
+                        <tr class="immotileInputs">
+                            <td>Hareketsiz</td>
+                        </tr>
+                    </table>
+    
+                    <table class="resultsTable">
+                        <tr>
+                            <th colspan="3">Sayım Sonuçları</th>
+                        </tr>
+                        <tr>
+                            <td>Sperm konsantrasyonu</td>
+                            <td class="spermConcentrationValue"></td>
+                            <td>x1.000.000/ml</td>
+                        </tr>
+                        <tr>
+                            <td>Toplam sperm sayısı</td>
+                            <td class="totalSpermsValue"></td>
+                            <td>x1.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>TPMSS</td>
+                            <td class="totalProgressiveMotileSpermsValue"></td>
+                            <td>x1.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Hareketli spermler</td>
+                            <td class="motilityPercentageValue"></td>
+                            <td>%</td>
+                        </tr>
+                        <tr>
+                            <td>Yerinde hareketli spermler</td>
+                            <td class="npmotilityPercentageValue"></td>
+                            <td>%</td>
+                        </tr>
+                        <tr>
+                            <td>Hareketsiz spermler</td>
+                            <td class="immotilityPercentageValue"></td>
+                            <td>%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </template>
+
+        <template id="borderDivTemplate">
+            <div class="borderDiv"></div>
+        </template>
+
+        <template id="previousResultsTitleTemplate">
+            <h2>Eski Sonuçlar</h2>
+        </template>
+
+        <div id="resultsAnchor"></div>
+
+        <div id="previousResultsAnchor">
+            
+        </div>
+
+
     </div>
 
     <script>
-        // İlk sayfada inputlar inaktif olsun
-        // focus yeni sayım butonunda olsun
-        // enter a basıldığında focus hacim inputuna gelsin
-        // değer girilip enter a basıldığında bir sonraki inputa geçsin
-        // sıra ile en sonda boş duran hareketli inputuna gelsin entera basıldğında yerinde hareketli inputuna gelsin sonra da hareketsiz inputuna gelsin.
-        // yine entera basıldığnda sağda duran büyük artı butonuna gelsin. entera basıldığında yeni sütun oluştursun sağda bir artı butonu daha oluşsun. focus yeni sütunun ilk satırına gelsin
-        // fokus artı butondayken escape e basıldığında fokus hesapla (ya da yeni sayım?) butonuna gitsin. 
-        // en fazla 5 (ya da 3) sütun oluşturulabilsin. son sütun oluştuğunda son sütun artı butonunun yerini alsın yeni artı butonu oluşmasın
-        // yönlendirme oklarıyla sağ sol inputlara hatta inputların altında bulunan üç butona gidilebilsin. 
-        // bu üç buton yeni sayım / hesapla / sonuçları sıfırla butonları olsun
-        // fokus herhangi bir inputtayken escape e basıldığnda fokus hesapla (ya da yeni sayım?) butonuna gitsin. 
-        // yönlendirme oklarıyla butonlara geldindiğinde fokus ilk olarak hesapla butonuna gitsin. 
-        // sayfa yeni açıldığında hesapla butonu inaktif olsun. 
-        // hesapla butonuna basıldığında yeni sayım butonuna basana kadar da hesapla butonu inaktif olsun
-        // hesapla butonu inaktifken escape e basıldığında yeni sayım butonu fokuslansın (aktifken hesapla butonu fokuslanacak)
-        // sayfa yeni açıldığında ve sayfada hiç sonuç yokken sonuçları sıfırla butonu da inaktif olsun.
-        // tab butonuna basıldığında ne olacak? tabindex i çok saçma bir şekilde yapmamam lazım bunun için
-        // yeni oluşan sonuçlar üstte gösterilsin. Kullanılan değerler de sonuçların içinde gösterilsin. 
-        // her bir sonucun yanında buton olsun o buton kullanılan değerleri inputlara yazsın. 
-        // 
-
-        // Yukarıdaki algoritma nasıl oluşturulur?
-        // Escape, enter ve 4 adet yön butonu için event listenerlar koyarım.
-        // 
-        // 
-
-        // bir ihtimal de yalnızca sağ ve sol tuşların inputlar arasında gezinmeye izin vermesi. üst ve alt tuşlar number tip inputların sayı arttırıp arttırma işlevini yapsın
-        // 
-
-        // inputları da güzelleştirmeyi unutmamalıyım. 
-        // halka şeklindeki inputları kaldırabilirim. Zaten kareler içinde duruyor inputlar. O kareler input alanının kendisiymiş gibi görüntü? Fokus karedeyken etrafı kalınlaşabilir ya da arka plan rengi değişebilir.
         
+        const containerDivNode = document.getElementById("container");
+
+        //const patientsCollectionArray = [];
+        // buna nesne yükleyeceğim dah sonra sildiğimde nesneler de silinecek mi diye sor
+
+        let anonymousPatientCount = 1;
 
         function calculate() {
 
@@ -291,6 +306,14 @@
                 return;
             }
 
+/*             const patientObj = {
+                name: "",
+                semenVolume: 0,
+                motileInputsArray: [],
+                npmotileInputsArray: [],
+                immotileInputsArray: []
+            }
+ */
             let totalMotileCount = 0,
                 totalMotileInputs = 0,
                 totalNpmotileCount = 0,
@@ -298,12 +321,17 @@
                 totalImmotileCount = 0,
                 totalImmotileInputs = 0;
 
+            const motileInputsArray = [];
+            const npmotileInputsArray = [];
+            const immotileInputsArray = [];
+
             const motileInputs = document.querySelectorAll('.motile');
             motileInputs.forEach(function(input) {
                 let parsedInput = parseFloat(input.value);
                 if (!isNaN(parsedInput)) {
-                    totalMotileCount += parseFloat(input.value);
+                    totalMotileCount += parsedInput;
                     totalMotileInputs += 1;
+                    motileInputsArray.push(parsedInput);
                 } 
                 input.value = ''; // Girdileri sıfırlama
             });
@@ -312,18 +340,20 @@
             npmotileInputs.forEach(function(input) {
                 let parsedInput = parseFloat(input.value);
                 if (!isNaN(parsedInput)) {
-                    totalNpmotileCount += parseFloat(input.value);
+                    totalNpmotileCount += parsedInput;
                     totalNpmotileInputs += 1;
+                    npmotileInputsArray.push(parsedInput);
                 }
                 input.value = ''; // Girdileri sıfırlama
             });
 
-            const immotileInputs = document.querySelectorAll('.hareketsiz');
+            const immotileInputs = document.querySelectorAll('.immotile');
             immotileInputs.forEach(function(input) {
                 let parsedInput = parseFloat(input.value);
                 if (!isNaN(parsedInput)) {
-                    totalImmotileCount += parseFloat(input.value);
+                    totalImmotileCount += parsedInput;
                     totalImmotileInputs += 1;
+                    immotileInputsArray.push(parsedInput);
                 }                
                 input.value = ''; // Girdileri sıfırlama
             });
@@ -363,27 +393,100 @@
 
             // Buralardan sonrasını başka türlü yapmak için değiştirebilirim.
 
-            let totalSperms = (meanTotalSpermsCount * semenVolume * 1000000).toLocaleString() + "/ml";
-            let totalSpermConcentration = (meanTotalSpermsCount * 1000000).toLocaleString() + '/ml';
-            let totalProgressiveMotileSperms = (meanMotileCount * semenVolume * 1000000).toLocaleString() + '/ml';
+            //let totalSperms = (meanTotalSpermsCount * semenVolume * 1000000).toLocaleString() + "/ml";
+            //let spermConcentration = (meanTotalSpermsCount * 1000000).toLocaleString() + '/ml';
+            //let totalProgressiveMotileSperms = (meanMotileCount * semenVolume * 1000000).toLocaleString() + '/ml';
 
-            let sonucMetin = 'Sperm Konsantrasyonu: ' + totalSpermConcentration + '<br>' +
-                             'Toplam Spermler: ' + totalSperms + '<br>' +
-                             'TPMSS: ' + totalProgressiveMotileSperms + '<br>' +
-                             'Hareketli Sperm Oranı: %' + motilityPercentage + '<br>' +
-                             'Yerinde Hareketli Sperm Oranı: %' + npmotilityPercentage + '<br>' +
-                             'Hareketsiz Sperm Oranı: %' + immotilityPercentage + '<br>';
+            let totalSperms = meanTotalSpermsCount * semenVolume;
+            let spermConcentration = meanTotalSpermsCount;
+            let totalProgressiveMotileSperms = meanMotileCount * semenVolume;
 
-            document.getElementById('sonuc').innerHTML = sonucMetin;
+            const patientNameNode = document.getElementById('patientName');
+            let patientName = patientNameNode.value;
+            if (patientName === '') {
+                patientName = "İsimsiz Hasta " + anonymousPatientCount;
+                anonymousPatientCount++;
+            }
+            patientNameNode.value = '';
+
+
+            //let sonucMetin = 'Sperm Konsantrasyonu: ' + spermConcentration + '<br>' +
+            //                 'Toplam Spermler: ' + totalSperms + '<br>' +
+            //                 'TPMSS: ' + totalProgressiveMotileSperms + '<br>' +
+            //                 'Hareketli Sperm Oranı: %' + motilityPercentage + '<br>' +
+            //                 'Yerinde Hareketli Sperm Oranı: %' + npmotilityPercentage + '<br>' +
+            //                 'Hareketsiz Sperm Oranı: %' + immotilityPercentage + '<br>';
+
+            //document.getElementById('sonuc').innerHTML = sonucMetin;
+
+            // Yeni şablonu oluştur
+            const resultsContainerClone = document.getElementById("resultsContainerTemplate").content.cloneNode(true);
+            // İsmi ata
+            resultsContainerClone.querySelector("h3").textContent = patientName;
+            // Motil girdilerin satırını al ve içini doldur. 
+            const motileInputsRow = resultsContainerClone.querySelector(".motileInputs");
+            motileInputsArray.forEach(function(input) {
+                let newCell = document.createElement("td");
+                newCell.textContent = input;
+                motileInputsRow.appendChild(newCell);
+            });
+            // NP motil girdilerin satırını al ve içini doldur
+            const npmotileInputsRow = resultsContainerClone.querySelector(".npmotileInputs");
+            npmotileInputsArray.forEach(function(input) {
+                let newCell = document.createElement("td");
+                newCell.textContent = input;
+                npmotileInputsRow.appendChild(newCell);
+            });
+            // İmmotil girdilerin satırını al ve içini doldur
+            const immotileInputsRow = resultsContainerClone.querySelector(".immotileInputs");
+            immotileInputsArray.forEach(function(input) {
+                let newCell = document.createElement("td");
+                newCell.textContent = input;
+                immotileInputsRow.appendChild(newCell);
+            });
+            // Boş kalan hücreleri "-" şeklinde yerleştir
+            let maxArrayLength = Math.max(motileInputsArray.length, npmotileInputsArray.length, immotileInputsArray.length);
+            for (const arr of [motileInputsArray, npmotileInputsArray, immotileInputsArray]) {
+                if (arr.length < maxArrayLength) {
+                    let difference = maxArrayLength - arr.length;
+                    for (let i = 0; i < difference; i++) {
+                        let newCell = document.createElement("td");
+                        newCell.textContent = "-";
+                        if (arr === motileInputsArray) {
+                            motileInputsRow.appendChild(newCell);
+                        } else if (arr === npmotileInputsArray) {
+                            npmotileInputsRow.appendChild(newCell);
+                        } else if (arr === immotileInputsArray) {
+                            immotileInputsRow.appendChild(newCell);
+                        }
+                    }
+                }
+            }
+            // İkinci tabloyu doldur
+            resultsContainerClone.querySelector(".spermConcentrationValue").textContent = spermConcentration;
+            resultsContainerClone.querySelector(".totalSpermsValue").textContent = totalSperms;
+            resultsContainerClone.querySelector(".totalProgressiveMotileSpermsValue").textContent = totalProgressiveMotileSperms;
+            resultsContainerClone.querySelector(".motilityPercentageValue").textContent = motilityPercentage;
+            resultsContainerClone.querySelector(".npmotilityPercentageValue").textContent = npmotilityPercentage;
+            resultsContainerClone.querySelector(".immotilityPercentageValue").textContent = immotilityPercentage;
+            // Bitmiş şablonu ekle
+            containerDivNode.appendChild(resultsContainerClone);
         }
 
+        const calculateButton = document.getElementById("calculate");
+        
+        calculateButton.addEventListener("click", calculate);
+        calculateButton.addEventListener("touchstart", calculate);
 
-        document.body.addEventListener("keypress", (event) => {
+        document.body.addEventListener("keydown", (event) => {
             if (event.key === 'Enter') {
                 let currentClass = document.activeElement.getAttribute("class");
 
                 if (event.shiftKey === false) {
                     switch (currentClass) {
+                        case "patientName":
+                            document.getElementById("semenVolume").select();
+                            break;
                         case "semenVolume":
                             const motileInputs = document.querySelectorAll(".motile");
                             for (let i = 0; i < 5; i++) {
@@ -403,7 +506,7 @@
                             }
                             break;
                         case "npmotile":
-                            const immotileInputs = document.querySelectorAll(".hareketsiz");
+                            const immotileInputs = document.querySelectorAll(".immotile");
                             for (let i = 0; i < 5; i++) {
                                 if (immotileInputs[i].value.trim() === '' || i === 4) {
                                     immotileInputs[i].select();
@@ -411,16 +514,22 @@
                                 }
                             }
                             break;
-                        case "hareketsiz":
-                            const calculateButton = document.getElementById("calculate");
+                        case "immotile":
+                            //const calculateButton = document.getElementById("calculate");   
+                            event.preventDefault();                         
                             calculateButton.focus();
+                            
                             break;
                         case "calculate":
+                            event.preventDefault();
                             calculate();
                             break;
                     }
                 } else {
                     switch (currentClass) {
+                        case "semenVolume":
+                            document.getElementById("patientName").select();
+                            break;
                         case "motile":
                             document.getElementById("semenVolume").select();
                             break;
@@ -433,7 +542,7 @@
                                 }
                             }
                             break;
-                        case "hareketsiz":
+                        case "immotile":
                             const npmotileInputs = document.querySelectorAll(".npmotile");
                             for (let i = 0; i < 5; i++) {
                                 if (npmotileInputs[i].value.trim() === '' || i === 4) {
@@ -443,7 +552,7 @@
                             }
                             break;
                         case "calculate":
-                            const immotileInputs = document.querySelectorAll(".hareketsiz");
+                            const immotileInputs = document.querySelectorAll(".immotile");
                             for (let i = 0; i < 5; i++) {
                                 if (immotileInputs[i].value.trim() === '' || i === 4) {
                                     immotileInputs[i].select();
@@ -464,5 +573,8 @@
 
 
     </script>
+
+
+
 </body>
 </html>
