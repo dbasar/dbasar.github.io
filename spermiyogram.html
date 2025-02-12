@@ -281,7 +281,6 @@
         <div id="resultsAnchor"></div>
 
         <div id="previousResultsAnchor">
-            
         </div>
 
 
@@ -289,7 +288,13 @@
 
     <script>
         
-        const containerDivNode = document.getElementById("container");
+        // acaba global scope da oluşturduğum bu node değişkenlerini silmem ya da silinmesi 
+        // için fonksiyon içine almam gerekli mi?
+
+        // bunu artık silebilirim
+        //const containerDivNode = document.getElementById("container");
+        
+        let previousResultsPresent = false;
 
         //const patientsCollectionArray = [];
         // buna nesne yükleyeceğim dah sonra sildiğimde nesneler de silinecek mi diye sor
@@ -314,6 +319,8 @@
                 immotileInputsArray: []
             }
  */
+            // Burdn itibren çlışmy bşlıyor
+
             let totalMotileCount = 0,
                 totalMotileInputs = 0,
                 totalNpmotileCount = 0,
@@ -469,18 +476,45 @@
             resultsContainerClone.querySelector(".motilityPercentageValue").textContent = motilityPercentage;
             resultsContainerClone.querySelector(".npmotilityPercentageValue").textContent = npmotilityPercentage;
             resultsContainerClone.querySelector(".immotilityPercentageValue").textContent = immotilityPercentage;
-            // Bitmiş şablonu ekle
-            containerDivNode.appendChild(resultsContainerClone);
-        }
+            
+            // Gösterilecek divi al ve içinde sonuç varsa onu da al
+            const resultsAnchorNode = document.getElementById("resultsAnchor");
+            const showcasedResult = resultsAnchorNode.querySelector(".resultsContainer");
+
+            if (!showcasedResult) {
+                // hiç sonuç yoksa
+                resultsAnchorNode.appendChild(resultsContainerClone);
+            } else {
+                const previousResultsAnchorNode = document.getElementById("previousResultsAnchor");
+
+                //////////////////////
+                // Buraya çizgi templatelerini ekleyebilirim sonrasında //
+                /////////////////////
+                if (!previousResultsPresent) {
+                    const previousResultsTitle = document.getElementById("previousResultsTitleTemplate").content.cloneNode(true);                    
+                    previousResultsAnchorNode.appendChild(previousResultsTitle);                    
+                    previousResultsPresent = true;
+                }
+                const firstPresentPreviousResult = previousResultsAnchorNode.querySelector(".resultsContainer");    
+                if (firstPresentPreviousResult) {
+                    previousResultsAnchorNode.insertBefore(showcasedResult, firstPresentPreviousResult);
+                } else {
+                    previousResultsAnchorNode.appendChild(showcasedResult);
+                }
+                resultsAnchorNode.appendChild(resultsContainerClone);
+            }
+        }   
 
         const calculateButton = document.getElementById("calculate");
          
+        // Touchscreen Hesapla tıklaması
         calculateButton.addEventListener("touchstart", (event) => {
             event.preventDefault();
             calculate();
         });
+        // Mouse ile hesapla tıklaması
         calculateButton.addEventListener("click", calculate);
-
+        // Enter ve shift Enter tuşlarının değerlendirilmesi
         document.body.addEventListener("keydown", (event) => {
             if (event.key === 'Enter') {
                 let currentClass = document.activeElement.getAttribute("class");
@@ -573,7 +607,6 @@
         // Bir yeniden oluştur butonu oluşsun
         // Yeniden oluşturma butonuna tıklayınca eski hesaplar gitmesin.
         // Uyarı oluşturulunca uyarının verildği inputlara focus verilsin
-
 
     </script>
 
