@@ -474,9 +474,12 @@
         }
 
         const calculateButton = document.getElementById("calculate");
-        
+         
+        calculateButton.addEventListener("touchstart", (event) => {
+            event.preventDefault();
+            calculate();
+        });
         calculateButton.addEventListener("click", calculate);
-        calculateButton.addEventListener("touchstart", calculate);
 
         document.body.addEventListener("keydown", (event) => {
             if (event.key === 'Enter') {
