@@ -208,7 +208,7 @@
 
         <div id="buttonsContainer">
             <button id="calculate" class="calculate" type="button">Hesapla</button>
-            <button id="newCount" type="button" disabled>Yeni Sayım</button>
+            <button id="newCount" type="button">Yeni Sayım</button>
             <button id="resetResults" type="button" disabled>Sonuçları Sıfırla</button>
         </div>
      
@@ -305,9 +305,10 @@
 
             const semenVolumeNode = document.getElementById('semenVolume');
             let semenVolume = parseFloat(semenVolumeNode.value);
-            semenVolumeNode.value = '';
+            // semenVolumeNode.value = '';
             if (isNaN(semenVolume) || semenVolume === 0) {
                 alert('Geçerli bir semen hacmi değeri girin.');
+                semenVolumeNode.select();
                 return;
             }
 
@@ -340,8 +341,19 @@
                     totalMotileInputs += 1;
                     motileInputsArray.push(parsedInput);
                 } 
-                input.value = ''; // Girdileri sıfırlama
+                //input.value = ''; // Girdileri sıfırlama
             });
+            if (totalMotileInputs === 0) {
+                alert("Her satıra en az bir geçerli değer girin.");
+                //for (let i = 0; i < )
+                Array.from(motileInputs).some((input) => {
+                    if (input.value === "") {
+                        input.select();
+                        return true;
+                    }
+                });
+                return;
+            }
 
             const npmotileInputs = document.querySelectorAll('.npmotile');
             npmotileInputs.forEach(function(input) {
@@ -351,8 +363,20 @@
                     totalNpmotileInputs += 1;
                     npmotileInputsArray.push(parsedInput);
                 }
-                input.value = ''; // Girdileri sıfırlama
+                //input.value = ''; // Girdileri sıfırlama
             });
+            if (totalNpmotileInputs === 0) {
+                alert("Her satıra en az bir geçerli değer girin.");
+                //for (let i = 0; i < )
+                Array.from(npmotileInputs).some((input) => {
+                    if (input.value === "") {
+                        input.select();
+                        return true;
+                    }
+                });
+                return;
+            }
+
 
             const immotileInputs = document.querySelectorAll('.immotile');
             immotileInputs.forEach(function(input) {
@@ -362,15 +386,20 @@
                     totalImmotileInputs += 1;
                     immotileInputsArray.push(parsedInput);
                 }                
-                input.value = ''; // Girdileri sıfırlama
+                //input.value = ''; // Girdileri sıfırlama
             });
-
-            if (totalMotileInputs === 0 ||
-                totalNpmotileInputs === 0 ||
-                totalImmotileInputs === 0) {
-                alert('Her satıra en az bir geçerli değer girin.');
+            if (totalImmotileInputs === 0) {
+                alert("Her satıra en az bir geçerli değer girin.");
+                //for (let i = 0; i < )
+                Array.from(immotileInputs).some((input) => {
+                    if (input.value === "") {
+                        input.select();
+                        return true;
+                    }
+                });
                 return;
             }
+
 
             let meanMotileCount = totalMotileCount / totalMotileInputs;
             let meanNpmotileCount = totalNpmotileCount / totalNpmotileInputs;
@@ -491,6 +520,7 @@
                 // Buraya çizgi templatelerini ekleyebilirim sonrasında //
                 /////////////////////
                 if (!previousResultsPresent) {
+                    // Sonuç var ama eski sonuçlar kısmı görünür değilse
                     const previousResultsTitle = document.getElementById("previousResultsTitleTemplate").content.cloneNode(true);                    
                     previousResultsAnchorNode.appendChild(previousResultsTitle);                    
                     previousResultsPresent = true;
@@ -503,7 +533,34 @@
                 }
                 resultsAnchorNode.appendChild(resultsContainerClone);
             }
+
+            // Yeni sayım butonuna focus ver
+            document.getElementById("newCount").focus();
+
+            // Sonuçları sıfırla butonunu aktif et
+            if (document.getElementById("resetResults").hasAttribute("disabled")) {
+                document.getElementById("resetResults").removeAttribute("disabled");
+            }
         }   
+
+        // yeni sayım butonu
+        function newCount() {
+            const allInputs = document.body.querySelectorAll("input");
+            allInputs.forEach((input) => {
+                input.value = "";
+            });
+            document.getElementById("patientName").select();
+        }
+
+        function resetResults() {
+            const resultsAnchorNode = document.getElementById("resultsAnchor");
+            const previousResultsAnchorNode = document.getElementById("previousResultsAnchor");
+            resultsAnchorNode.innerHTML = "";
+            previousResultsAnchorNode.innerHTML = "";
+            previousResultsPresent = false;
+            document.getElementById("resetResults").setAttribute("disabled", "");
+            newCount();
+        }
 
         const calculateButton = document.getElementById("calculate");
          
@@ -602,11 +659,26 @@
             }            
         });
 
+
+        const newCountButton = document.getElementById("newCount");
+
+        // Bunu diğer event listenerlar ile zenginleştirmeliyim. 
+        newCountButton.addEventListener("click", newCount);
         // Eksikler:
-        // Sonucu daha düzgün göstersin. MÜmkünse girilen sayılar ile birlikte. 
-        // Bir yeniden oluştur butonu oluşsun
-        // Yeniden oluşturma butonuna tıklayınca eski hesaplar gitmesin.
-        // Uyarı oluşturulunca uyarının verildği inputlara focus verilsin
+
+        const resetResultsButton = document.getElementById("resetResults");
+        resetResultsButton.addEventListener("click", resetResults);
+
+        // Sonuçlar kısmına hacmi de yaz
+
+
+
+
+
+
+        window.addEventListener("load", () => {
+            document.getElementById("patientName").select();
+        });
 
     </script>
 
