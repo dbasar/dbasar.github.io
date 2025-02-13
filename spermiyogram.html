@@ -531,18 +531,25 @@
             } else {
                 const previousResultsAnchorNode = document.getElementById("previousResultsAnchor");
 
-                //////////////////////
-                // Buraya çizgi templatelerini ekleyebilirim sonrasında //
-                /////////////////////
                 if (!previousResultsPresent) {
                     // Sonuç var ama eski sonuçlar kısmı görünür değilse
+                    //const borderDiv1 = document.getElementById("borderDivTemplate").content.cloneNode(true);
+                    //previousResultsAnchorNode.appendChild(borderDiv1);
+
                     const previousResultsTitle = document.getElementById("previousResultsTitleTemplate").content.cloneNode(true);                    
-                    previousResultsAnchorNode.appendChild(previousResultsTitle);                    
+                    previousResultsAnchorNode.appendChild(previousResultsTitle);   
+                    
+                    //const borderDiv2 = document.getElementById("borderDivTemplate").content.cloneNode(true);
+                    //previousResultsAnchorNode.appendChild(borderDiv2);
+                    
                     previousResultsPresent = true;
                 }
+
                 const firstPresentPreviousResult = previousResultsAnchorNode.querySelector(".resultsContainer");    
                 if (firstPresentPreviousResult) {
                     previousResultsAnchorNode.insertBefore(showcasedResult, firstPresentPreviousResult);
+                    //const borderDiv = document.getElementById("borderDivTemplate").content.cloneNode(true);
+                    //previousResultsAnchorNode.insertBefore(borderDiv, firstPresentPreviousResult);
                 } else {
                     previousResultsAnchorNode.appendChild(showcasedResult);
                 }
